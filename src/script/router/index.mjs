@@ -5,7 +5,7 @@ export default async function router(pathname = window.location.pathname) {
       await import('./views/home.mjs')
       break
     case '/public': // Home non-logged-in users
-      await import('./views/publicHome.js')
+      await import('./views/publicHome.mjs')
       break
     case '/public/listings': // Listings non-logged-in users (categories page)
       await import('./views/listingsBrowse.mjs')
@@ -14,13 +14,13 @@ export default async function router(pathname = window.location.pathname) {
       await import('./views/login.mjs')
       break
     case '/auth/register': // Register
-      await import('./views/register.js')
+      await import('./views/register.mjs')
       break
     case '/profile': // Profile logged-in users
       await import('./views/profile.mjs')
       break
     case '/profile/update': // Update profile logged-in users
-      await import('./views/profileUpdate.js')
+      await import('./views/profileUpdate.mjs')
       break
     case '/listings/create': // Create new listing logged-in users
       await import('./views/listingCreate.mjs')
