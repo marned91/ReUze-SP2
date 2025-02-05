@@ -4,7 +4,11 @@
   "type": "module",
   "description": "My semester project 2 at Noroff Online Frontend developer course",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marned91/semester-project2.git"
@@ -20,6 +24,7 @@
     "@eslint/js": "^9.19.0",
     "eslint": "^9.19.0",
     "globals": "^15.14.0",
-    "prettier": "^3.4.2"
+    "prettier": "^3.4.2",
+    "vite": "^6.1.0"
   }
 }
