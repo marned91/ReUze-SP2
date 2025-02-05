@@ -2,31 +2,31 @@
 export default async function router(pathname = window.location.pathname) {
   switch (pathname) {
     case '/': // Home logged-in users
-      await import('./views/home.js');
+      await import('./views/home.mjs');
       break;
     case '/public': // Home non-logged-in users
       await import('./views/publicHome.js');
       break;
     case '/public/listings': // Listings non-logged-in users (categories page)
-      await import('./views/listingsBrowse.js');
+      await import('./views/listingsBrowse.mjs');
       break;
     case '/auth/login': // Login
-      await import('./views/login.js');
+      await import('./views/login.mjs');
       break;
     case '/auth/register': // Register
       await import('./views/register.js');
       break;
     case '/profile': // Profile logged-in users
-      await import('./views/profile.js');
+      await import('./views/profile.mjs');
       break;
     case '/profile/update': // Update profile logged-in users
       await import('./views/profileUpdate.js');
       break;
     case '/listings/create': // Create new listing logged-in users
-      await import('./views/listingCreate.js');
+      await import('./views/listingCreate.mjs');
       break;
     case '/listing/single': // View listing. Logged in users can place bids, non-logged-in users will not get this option
-      await import('./views/listingView.js');
+      await import('./views/listingView.mjs');
       break;
     case '/listings/category': // Listings per category for all users
       const category = pathname.split('/').pop();
@@ -39,12 +39,12 @@ export default async function router(pathname = window.location.pathname) {
         'vintage',
       ];
       if (validCategories.includes(category)) {
-        await import(`./views/listingsPerCategory.js`);
+        await import(`./views/listingsPerCategory.mjs`);
       } else {
-        await import('./views/notFound.js');
+        await import('./views/notFound.mjs');
       }
       break;
     default:
-      await import('./views/notFound.js');
+      await import('./views/notFound.mjs');
   }
 }
