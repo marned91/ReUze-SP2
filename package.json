@@ -1,0 +1,19 @@
+{
+  "name": "semester-project2",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "My semester project 2 at Noroff Online Frontend developer course",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marned91/semester-project2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marned91/semester-project2/issues"
+  },
+  "homepage": "https://github.com/marned91/semester-project2#readme"
+}
