@@ -2,34 +2,34 @@
 export default async function router(pathname = window.location.pathname) {
   switch (pathname) {
     case '/': // Home logged-in users
-      await import('./views/home.mjs');
-      break;
+      await import('./views/home.mjs')
+      break
     case '/public': // Home non-logged-in users
-      await import('./views/publicHome.js');
-      break;
+      await import('./views/publicHome.js')
+      break
     case '/public/listings': // Listings non-logged-in users (categories page)
-      await import('./views/listingsBrowse.mjs');
-      break;
+      await import('./views/listingsBrowse.mjs')
+      break
     case '/auth/login': // Login
-      await import('./views/login.mjs');
-      break;
+      await import('./views/login.mjs')
+      break
     case '/auth/register': // Register
-      await import('./views/register.js');
-      break;
+      await import('./views/register.js')
+      break
     case '/profile': // Profile logged-in users
-      await import('./views/profile.mjs');
-      break;
+      await import('./views/profile.mjs')
+      break
     case '/profile/update': // Update profile logged-in users
-      await import('./views/profileUpdate.js');
-      break;
+      await import('./views/profileUpdate.js')
+      break
     case '/listings/create': // Create new listing logged-in users
-      await import('./views/listingCreate.mjs');
-      break;
+      await import('./views/listingCreate.mjs')
+      break
     case '/listing/single': // View listing. Logged in users can place bids, non-logged-in users will not get this option
-      await import('./views/listingView.mjs');
-      break;
+      await import('./views/listingView.mjs')
+      break
     case '/listings/category': // Listings per category for all users
-      const category = pathname.split('/').pop();
+      const category = pathname.split('/').pop()
       const validCategories = [
         'sport',
         'fashion',
@@ -37,14 +37,14 @@ export default async function router(pathname = window.location.pathname) {
         'art',
         'decor',
         'vintage',
-      ];
+      ]
       if (validCategories.includes(category)) {
-        await import(`./views/listingsPerCategory.mjs`);
+        await import(`./views/listingsPerCategory.mjs`)
       } else {
-        await import('./views/notFound.mjs');
+        await import('./views/notFound.mjs')
       }
-      break;
+      break
     default:
-      await import('./views/notFound.mjs');
+      await import('./views/notFound.mjs')
   }
 }
