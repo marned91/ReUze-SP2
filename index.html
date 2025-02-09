@@ -19,7 +19,7 @@
     class="min-h-screen grid grid-rows-[auto_1fr_auto] overflow-x-hidden w-screen"
   >
     <header
-      class="bg-white w-full flex items-center justify-between py-4 px-10 border border-solid border-black fixed top-0 start-0 z-20"
+      class="bg-white w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 border border-solid border-black fixed top-0 start-0 z-20"
     >
       <nav class="w-full flex items-center justify-between">
         <!-- Left side: Hamburger menu (only visible on small screens) -->
@@ -66,17 +66,27 @@
         <!-- Navigation menu (hidden by default on mobile) -->
         <div
           id="mobile-menu"
-          class="hidden md:flex md:items-center md:gap-10 md:static md:w-auto absolute top-16 left-0 w-full bg-white border border-black md:border-none md:bg-transparent"
+          class="hidden md:flex md:items-center md:static md:w-auto absolute top-16 left-0 w-full bg-white border border-black md:border-none md:bg-transparent py-5 md:py-0 lg:py-0 xl:py-0 2xl:py-0"
         >
           <ul
-            class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between md:gap-10 font-headerFooter p-5 md:p-0"
+            class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between font-headerFooter gap-10"
           >
-            <li><a href="/" class="block py-3 px-3 md:px-0">HOME</a></li>
-            <li><a href="#" class="block py-3 px-3 md:px-0">LOG OUT</a></li>
+            <li>
+              <a
+                href="/"
+                class="block py-2.5 px-3 font-light hover:font-medium underline"
+                >HOME</a
+              >
+            </li>
+            <li>
+              <a href="#" class="block py-2.5 px-3 font-light hover:font-medium"
+                >LOG OUT</a
+              >
+            </li>
             <li class="hidden md:block">
               <a
                 href="/profile/"
-                class="block bg-highlight py-3 px-6 rounded-full"
+                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-accent-dark hover:text-white"
                 >PROFILE</a
               >
             </li>
@@ -90,7 +100,7 @@
       <i class="fa-regular fa-face-smile-beam" style="color: #383939"></i>
     </main>
     <footer
-      class="bg-white py-5 px-5 md:px-10 lg:px-10 xl:px-10 2xl:px-10 w-full mt-auto border border-solid border-black"
+      class="bg-white py-5 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 w-full mt-auto border border-solid border-black"
     >
       <div class="flex justify-between justify-center">
         <img
@@ -99,10 +109,12 @@
           class="md:w-44 lg:w-44 xl:w-44 2xl:w-44 w-32 h-auto"
         />
         <div
-          class="flex justify-between gap-3 md:gap-5 lg:gap-5 xl:gap-5 2xl:gap-5 items-center font-headerFooter"
+          class="flex justify-between gap-3 md:gap-5 lg:gap-5 xl:gap-5 2xl:gap-5 items-center font-headerFooter font-light"
         >
-          <a href="/global/about.html">ABOUT</a>
-          <a href="/global/terms.html">TERMS & CONDITIONS</a>
+          <a href="/global/about.html" class="hover:font-medium">ABOUT</a>
+          <a href="/global/terms.html" class="hover:font-medium"
+            >TERMS & CONDITIONS</a
+          >
         </div>
       </div>
     </footer>
