@@ -1,6 +1,7 @@
 // This function controls which JavaScript file is loaded on which page
 export default async function router(pathname = window.location.pathname) {
-  switch (pathname) {
+  const normalizedPath = pathname === '/index.html' ? '/' : pathname
+  switch (normalizedPath) {
     case '/': // Home logged-in users
       await import('./views/home.mjs')
       break
