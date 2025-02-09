@@ -1,3 +1,3 @@
-import { setupMenuToggle } from '../utils/menuToggle.mjs'
+import { setupMenuToggle } from '../../utils/menuToggle.mjs'
 
 setupMenuToggle()
