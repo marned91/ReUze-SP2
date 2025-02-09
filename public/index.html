@@ -9,13 +9,17 @@
     />
     <title>ReUze | Discover Listings and More!</title>
     <link rel="icon" type="image/png" href="/assets/monogram-hq.png" />
+    <script
+      src="https://kit.fontawesome.com/4abbc2116c.js"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="/src/main.mjs"></script>
   </head>
   <body
     class="min-h-screen grid grid-rows-[auto_1fr_auto] overflow-x-hidden w-screen"
   >
     <header
-      class="bg-white w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 border border-solid border-black fixed top-0 start-0 z-20"
+      class="bg-white w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 border-b-1 border-black"
     >
       <nav class="w-full flex items-center justify-between">
         <!-- Left side: Hamburger menu (only visible on small screens) -->
@@ -62,16 +66,23 @@
         <!-- Navigation menu (hidden by default on mobile) -->
         <div
           id="mobile-menu"
-          class="hidden md:flex md:items-center md:static md:w-auto absolute top-16 left-0 w-full bg-white border border-black md:border-none md:bg-transparent py-5 md:py-0 lg:py-0 xl:py-0 2xl:py-0"
+          class="hidden md:flex md:items-center md:static md:w-auto absolute top-16 left-0 w-full bg-white border-b-1 border-black md:border-none md:bg-transparent py-5 md:py-0 lg:py-0 xl:py-0 2xl:py-0"
         >
           <ul
             class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between font-headerFooter gap-10"
           >
             <li>
               <a
-                href="/"
+                href="/public/"
                 class="block py-2.5 px-3 font-light hover:font-medium underline"
                 >HOME</a
+              >
+            </li>
+            <li>
+              <a
+                href="/public/listings/"
+                class="block py-2.5 px-3 font-light hover:font-medium"
+                >LISTINGS</a
               >
             </li>
             <li>
@@ -94,21 +105,54 @@
       </nav>
     </header>
     <main>
-      <section class="flex bg-brand">
-        <div class="text-white">
-          <h1 class="font-largeFont">WELCOME TO THE JOURNEY OF REUSE!</h1>
-          <p>
-            Yhe auction site where unique finds get a second life! Browse
+      <section
+        class="flex flex-col lg:flex-row justify-between gap-10 bg-brand items-center p-10 md:p-20"
+      >
+        <div class="text-white px-5 max-w-[80%] lg:w-[50%] items-center">
+          <h1 class="font-largeFont text-4xl">
+            WELCOME TO THE JOURNEY OF REUSE!
+          </h1>
+          <p class="font-smallFont pt-5 pb-10">
+            The auction site where unique finds get a second life! Browse
             listings freely, and log in to place your bids.
           </p>
-          <a href="/public/listings/">View Listings</a>
+          <a
+            href="/public/listings/"
+            class="font-mediumFont font-semibold bg-brand-light rounded-full py-3 px-10 text-black transition-transform duration-300 ease-out hover:scale-105 inline-block"
+            >View Listings</a
+          >
         </div>
         <div>
           <img
             src="/assets/public-home.png"
             alt="orange lounge chair with a beige blanket on the side in a light modern living room"
+            class="w-full h-auto"
           />
         </div>
+      </section>
+      <section
+        class="py-20 px-32 flex flex-col md:flex-row justify-between justify-center text-center gap-20 md:gap-5"
+      >
+        <div>
+          <i class="fa-brands fa-pagelines text-brand-dark text-9xl"></i>
+          <p class="pt-5">For the environment</p>
+        </div>
+        <div>
+          <i class="fa-solid fa-house text-brand-dark text-9xl"></i>
+          <p class="pt-5">For your home</p>
+        </div>
+        <div>
+          <i class="fa-regular fa-face-smile-beam text-brand-dark text-9xl"></i>
+          <p class="pt-5">For your economy</p>
+        </div>
+      </section>
+      <section class="bg-brand-light p-20 md:p-32">
+        <h2 class="font-mediumFont text-3xl">Search Listings</h2>
+        <p class="font-smallFont pt-5">
+          Search our listings to see if you find anything you like! Psst! You
+          need to be logged in to make a bid.
+        </p>
+        <div id="search-container"></div>
       </section>
     </main>
     <footer

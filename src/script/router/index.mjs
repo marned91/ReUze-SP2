@@ -5,7 +5,7 @@ export default async function router(pathname = window.location.pathname) {
     case '/': // Home logged-in users
       await import('./views/home.mjs')
       break
-    case '/public': // Home non-logged-in users
+    case '/public/': // Home non-logged-in users
       await import('./views/publicHome.mjs')
       break
     case '/public/listings': // Listings non-logged-in users (categories page)

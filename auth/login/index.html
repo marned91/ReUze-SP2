@@ -15,7 +15,7 @@
     class="min-h-screen grid grid-rows-[auto_1fr_auto] overflow-x-hidden w-screen"
   >
     <header
-      class="bg-white w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 border border-solid border-black fixed top-0 start-0 z-20"
+      class="bg-white w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 border border-solid border-black"
     >
       <nav class="w-full flex items-center justify-between">
         <!-- Left side: Hamburger menu (only visible on small screens) -->
@@ -91,7 +91,47 @@
         </div>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <div
+        class="bg-brand text-white rounded-[4rem] pt-8 pb-8 px-10 max-w-lg w-[80%]"
+      >
+        <h1 class="font-h1 text-3xl font-bold mb-6 text-center">Log In</h1>
+        <form name="login" id="login-form" class="space-y-6">
+          <fieldset>
+            <div>
+              <label for="email" class="block text-black font-body"
+                >Email</label
+              >
+              <input
+                id="email"
+                type="email"
+                name="email"
+                required
+                class="w-full bg-white text-black font-body rounded-full px-4 py-2 focus:outline-none focus:ring focus:ring-accent"
+              />
+            </div>
+            <div>
+              <label for="password" class="block text-black font-body mt-10"
+                >Password</label
+              >
+              <input
+                type="password"
+                name="password"
+                id="password"
+                required
+                class="w-full bg-white text-black font-body rounded-full px-4 py-2 focus:outline-none focus:ring focus:ring-accent"
+              />
+            </div>
+            <button
+              type="submit"
+              class="font-semibold bg-black text-white font-headlines-nav px-6 py-2 rounded-full w-full transition duration-300 ease-out hover:scale-105 mt-10"
+            >
+              To BLUB!
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </main>
     <footer
       class="bg-white py-5 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 w-full mt-auto border border-solid border-black"
     >
