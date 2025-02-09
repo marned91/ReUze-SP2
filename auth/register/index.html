@@ -54,9 +54,9 @@
 
         <!-- Right side: Profile link (only visible on small screens) -->
         <a
-          href="/profile/"
+          href="/auth/register/"
           class="md:hidden font-headerFooter bg-highlight px-5 py-2.5 rounded-full"
-          >PROFILE</a
+          >SIGN UP!</a
         >
 
         <!-- Navigation menu (hidden by default on mobile) -->
@@ -72,17 +72,19 @@
                 >HOME</a
               >
             </li>
-            <li
-              id="logout-nav"
-              class="block py-2.5 px-3 font-light hover:font-medium"
-            >
-              LOG OUT
+            <li>
+              <a
+                href="/auth/login/"
+                class="block py-2.5 px-3 font-light hover:font-medium underline"
+              >
+                LOG IN</a
+              >
             </li>
             <li class="hidden md:block">
               <a
-                href="/profile/"
+                href="/auth/register/"
                 class="block py-2.5 px-8 rounded-full font-medium bg-accent-dark text-white"
-                >PROFILE</a
+                >SIGN UP!</a
               >
             </li>
           </ul>

@@ -54,9 +54,9 @@
 
         <!-- Right side: Profile link (only visible on small screens) -->
         <a
-          href="/profile/"
+          href="/auth/register/"
           class="md:hidden font-headerFooter bg-highlight px-5 py-2.5 rounded-full"
-          >PROFILE</a
+          >SIGN UP!</a
         >
 
         <!-- Navigation menu (hidden by default on mobile) -->
@@ -68,21 +68,25 @@
             class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between font-headerFooter gap-10"
           >
             <li>
-              <a href="/" class="block py-2.5 px-3 font-light hover:font-medium"
+              <a
+                href="/"
+                class="block py-2.5 px-3 font-light hover:font-medium underline"
                 >HOME</a
               >
             </li>
-            <li
-              id="logout-nav"
-              class="block py-2.5 px-3 font-light hover:font-medium"
-            >
-              LOG OUT
+            <li>
+              <a
+                href="/auth/login/"
+                class="block py-2.5 px-3 font-light hover:font-medium"
+              >
+                LOG IN</a
+              >
             </li>
             <li class="hidden md:block">
               <a
-                href="/profile/"
-                class="block py-2.5 px-8 rounded-full font-medium bg-accent-dark text-white"
-                >PROFILE</a
+                href="/auth/register/"
+                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-accent-dark hover:text-white"
+                >SIGN UP!</a
               >
             </li>
           </ul>
@@ -95,7 +99,7 @@
     >
       <div class="flex justify-between justify-center">
         <img
-          src="../assets/reuze-high-resolution-logo-transparent.png"
+          src="../../assets/reuze-high-resolution-logo-transparent.png"
           alt="ReUze logo"
           class="md:w-44 lg:w-44 xl:w-44 2xl:w-44 w-32 h-auto"
         />
