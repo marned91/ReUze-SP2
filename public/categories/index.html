@@ -76,8 +76,8 @@
             </li>
             <li>
               <a
-                href="/public/categories/"
-                class="block py-2.5 px-3 font-light hover:font-medium"
+                href="/public/listings/"
+                class="block py-2.5 px-3 font-light hover:font-medium underline"
                 >LISTINGS</a
               >
             </li>
@@ -101,9 +101,103 @@
       </nav>
     </header>
     <main>
-      <div id="category-container"></div>
-      <div id="filter-containter"></div>
-      <div id="listings-container"></div>
+      <section class="bg-brand text-white py-36 px-24">
+        <div>
+          <h1 class="font-largeFont text-4xl">BROWSE CATEGORIES</h1>
+          <p class="pt-10 font-smallFont">
+            Check out out categories to find what you need! Remember, you need
+            to be logged in to bid.
+          </p>
+        </div>
+      </section>
+      <section class="py-20">
+        <div class="grid grid-cols-3 content-center gap-5 px-20">
+          <div
+            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+          >
+            <h3
+              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
+            >
+              SPORT
+            </h3>
+            <img
+              src="/assets/sport.png"
+              alt="a blue bike with orange wheels leaning against a light brick wall"
+              class="w-full h-auto rounded-3xl"
+            />
+          </div>
+          <div
+            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+          >
+            <h3
+              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
+            >
+              FASHION
+            </h3>
+            <img
+              src="/assets/fashion.png"
+              alt="various clothes hanging on a clothes rack in front of a light brick wall"
+              class="w-full h-auto rounded-3xl"
+            />
+          </div>
+          <div
+            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+          >
+            <h3
+              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
+            >
+              INTERIOR
+            </h3>
+            <img
+              src="/assets/interior.png"
+              alt="a modern orange leather couch"
+              class="w-full h-auto rounded-3xl"
+            />
+          </div>
+          <div
+            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+          >
+            <h3
+              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
+            >
+              ART
+            </h3>
+            <img
+              src="/assets/art.png"
+              alt="a framed poster with the the alphabet and font type Helvetica in bold orange"
+              class="w-full h-auto rounded-3xl"
+            />
+          </div>
+          <div
+            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+          >
+            <h3
+              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
+            >
+              DECOR
+            </h3>
+            <img
+              src="/assets/decor.png"
+              alt="an old turquoise tricycle with a terracotta pot with a green plant on the seat"
+              class="w-full h-auto rounded-3xl"
+            />
+          </div>
+          <div
+            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+          >
+            <h3
+              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
+            >
+              VINTAGE
+            </h3>
+            <img
+              src="/assets/vintage.png"
+              alt="vintage but modern and neat record player on a bedside table"
+              class="w-full h-auto rounded-3xl"
+            />
+          </div>
+        </div>
+      </section>
     </main>
     <footer
       class="bg-white py-5 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 w-full mt-auto border border-solid border-black"
