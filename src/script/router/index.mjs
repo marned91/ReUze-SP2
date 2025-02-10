@@ -8,8 +8,22 @@ export default async function router(pathname = window.location.pathname) {
     case '/public/': // Home non-logged-in users
       await import('./views/publicHome.mjs')
       break
-    case '/public/listings': // Listings non-logged-in users (categories page)
-      await import('./views/listingsBrowse.mjs')
+    case '/public/listings': // Listings non-logged-in users (all listings per category)
+    case '/listings': //Listings logged-in users (all listings per category)
+      const category = pathname.split('/').pop()
+      const validCategories = [
+        'sport',
+        'fashion',
+        'interior',
+        'art',
+        'decor',
+        'vintage',
+      ]
+      if (validCategories.includes(category)) {
+        await import(`./views/listingsPerCategory.mjs`)
+      } else {
+        await import('./views/notFound.mjs')
+      }
       break
     case '/auth/login': // Login
       await import('./views/login.mjs')
@@ -28,22 +42,6 @@ export default async function router(pathname = window.location.pathname) {
       break
     case '/listing/single': // View listing. Logged in users can place bids, non-logged-in users will not get this option
       await import('./views/listingView.mjs')
-      break
-    case '/listings/category': // Listings per category for all users
-      const category = pathname.split('/').pop()
-      const validCategories = [
-        'sport',
-        'fashion',
-        'interior',
-        'art',
-        'decor',
-        'vintage',
-      ]
-      if (validCategories.includes(category)) {
-        await import(`./views/listingsPerCategory.mjs`)
-      } else {
-        await import('./views/notFound.mjs')
-      }
       break
     default:
       await import('./views/notFound.mjs')
