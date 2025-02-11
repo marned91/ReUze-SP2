@@ -3,3 +3,5 @@ import { setupMenuToggle } from '../../utils/menuToggle.mjs'
 
 updateHeader()
 setupMenuToggle()
+
+console.log('Hello!')
