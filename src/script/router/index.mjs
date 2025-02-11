@@ -1,5 +1,6 @@
 // This function controls which JavaScript file is loaded on which page
 export default async function router(pathname = window.location.pathname) {
+  console.log('Router is running, pathname:', window.location.pathname)
   const normalizedPath = pathname === '/index.html' ? '/' : pathname
   switch (normalizedPath) {
     case '/': // Home logged-in users

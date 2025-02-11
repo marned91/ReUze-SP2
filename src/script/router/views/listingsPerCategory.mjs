@@ -1,5 +1,9 @@
-import { updateHeader } from '../../utils/updateHeader.mjs'
-import { setupMenuToggle } from '../../utils/menuToggle.mjs'
+const urlParams = new URLSearchParams(window.location.search)
+const category = urlParams.get('tag')
 
-updateHeader()
-setupMenuToggle()
+const listingsHeadline = document.getElementById('listings-headline')
+const heading = document.createElement('h1')
+heading.textContent = `${category}`
+listingsHeadline.appendChild(heading)
+
+fetchListings(category)
