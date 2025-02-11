@@ -19,6 +19,7 @@ export default defineConfig({
         register: resolve(__dirname, 'auth/register/index.html'), // Register
         profile: resolve(__dirname, 'profile/index.html'), // Profile logged-in users
         profileUpdate: resolve(__dirname, 'profile/update/index.html'), // Profile update
+        profilePurchases: resolve(__dirname, 'profile/purchases/index.html'), // Profile purchases
         listingCreate: resolve(__dirname, 'listings/create/index.html'), // Create new listing
         listingView: resolve(__dirname, 'listings/single/index.html'), // View listing
       },

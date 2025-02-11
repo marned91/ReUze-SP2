@@ -12,10 +12,9 @@
     class="min-h-screen grid grid-rows-[auto_1fr_auto] overflow-x-hidden w-screen"
   >
     <header
-      class="bg-white w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 border border-solid border-black fixed top-0 start-0 z-20"
+      class="bg-white w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 border border-solid border-black"
     >
       <nav class="w-full flex items-center justify-between">
-        <!-- Left side: Hamburger menu (only visible on small screens) -->
         <button
           id="menu-toggle"
           class="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300"
@@ -37,7 +36,6 @@
           </svg>
         </button>
 
-        <!-- Center: Logo -->
         <a
           href="/"
           class="absolute left-1/2 transform -translate-x-1/2 md:static md:translate-x-0"
@@ -49,37 +47,79 @@
           />
         </a>
 
-        <!-- Right side: Profile link (only visible on small screens) -->
         <a
           href="/profile/"
           class="md:hidden font-headerFooter bg-highlight px-5 py-2.5 rounded-full"
+          id="profile-mobile"
           >PROFILE</a
         >
 
-        <!-- Navigation menu (hidden by default on mobile) -->
+        <a
+          href="/auth/register/"
+          class="md:hidden font-headerFooter bg-highlight px-5 py-2.5 rounded-full"
+          id="signup-mobile"
+          >SIGN UP!</a
+        >
+
         <div
           id="mobile-menu"
           class="hidden md:flex md:items-center md:static md:w-auto absolute top-16 left-0 w-full bg-white border border-black md:border-none md:bg-transparent py-5 md:py-0 lg:py-0 xl:py-0 2xl:py-0"
         >
           <ul
-            class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between font-headerFooter gap-10"
+            class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between font-headerFooter gap-5"
           >
             <li>
-              <a href="/" class="block py-2.5 px-3 font-light hover:font-medium"
+              <a
+                href="/"
+                class="block py-2.5 px-3 font-light hover:font-medium underline"
+                id="home"
                 >HOME</a
               >
             </li>
+            <li>
+              <a
+                href="/public/"
+                class="block py-2.5 px-3 font-light hover:font-medium underline"
+                id="public-home"
+                >HOME</a
+              >
+            </li>
+            <li>
+              <a
+                href="/public/categories/"
+                class="block py-2.5 px-3 font-light hover:font-medium"
+                id="public-categories"
+                >LISTINGS</a
+              >
+            </li>
             <li
-              id="logout-nav"
+              id="logout"
               class="block py-2.5 px-3 font-light hover:font-medium"
             >
               LOG OUT
             </li>
+            <li>
+              <a
+                href="/auth/login/"
+                class="block py-2.5 px-3 font-light hover:font-medium"
+                id="login"
+                >LOG IN</a
+              >
+            </li>
             <li class="hidden md:block">
               <a
                 href="/profile/"
-                class="block py-2.5 px-8 rounded-full font-medium bg-accent-dark text-white"
+                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-accent-dark hover:text-white"
+                id="profile"
                 >PROFILE</a
+              >
+            </li>
+            <li class="hidden md:block">
+              <a
+                href="/auth/register/"
+                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-accent-dark hover:text-white"
+                id="signup"
+                >SIGN UP!</a
               >
             </li>
           </ul>

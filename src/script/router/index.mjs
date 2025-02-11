@@ -8,22 +8,27 @@ export default async function router(pathname = window.location.pathname) {
     case '/public/': // Home non-logged-in users
       await import('./views/publicHome.mjs')
       break
-    case '/public/listings': // Listings non-logged-in users (all listings per category)
-    case '/listings': //Listings logged-in users (all listings per category)
-      const category = pathname.split('/').pop()
-      const validCategories = [
-        'sport',
-        'fashion',
-        'interior',
-        'art',
-        'decor',
-        'vintage',
-      ]
-      if (validCategories.includes(category)) {
-        await import(`./views/listingsPerCategory.mjs`)
+    case '/listings': // all listings per category
+      if (category) {
+        const validCategories = [
+          'sport',
+          'fashion',
+          'interior',
+          'art',
+          'decor',
+          'vintage',
+        ]
+        if (validCategories.includes(category.toLowerCase())) {
+          await import('./views/listingsPerCategory.mjs')
+        } else {
+          await import('./views/notFound.mjs')
+        }
       } else {
         await import('./views/notFound.mjs')
       }
+      break
+    case '/public/categories': //categories for non-logged in users
+      await import('./views/publicCategories.mjs')
       break
     case '/auth/login': // Login
       await import('./views/login.mjs')
@@ -37,10 +42,13 @@ export default async function router(pathname = window.location.pathname) {
     case '/profile/update': // Update profile logged-in users
       await import('./views/profileUpdate.mjs')
       break
+    case '/profile/purchases':
+      await import('./views/profilePurchases.mjs')
+      break
     case '/listings/create': // Create new listing logged-in users
       await import('./views/listingCreate.mjs')
       break
-    case '/listing/single': // View listing. Logged in users can place bids, non-logged-in users will not get this option
+    case '/listing/view': // View listing. Logged in users can place bids, non-logged-in users will not get this option
       await import('./views/listingView.mjs')
       break
     default:
