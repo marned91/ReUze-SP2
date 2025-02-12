@@ -1,6 +1,11 @@
 // This function controls which JavaScript file is loaded on which page
 export default async function router(pathname = window.location.pathname) {
   console.log('Router is running, pathname:', window.location.pathname)
+
+  const urlParams = new URLSearchParams(window.location.search)
+  const category = urlParams.get('tag')
+
+  console.log('Category:', category)
   const normalizedPath = pathname === '/index.html' ? '/' : pathname
   switch (normalizedPath) {
     case '/': // Home logged-in users
@@ -9,7 +14,8 @@ export default async function router(pathname = window.location.pathname) {
     case '/public/': // Home non-logged-in users
       await import('./views/publicHome.mjs')
       break
-    case '/listings': // all listings per category
+    case '/listings/':
+    case '/listings/index.html': // all listings per category
       if (category) {
         const validCategories = [
           'sport',
@@ -28,7 +34,8 @@ export default async function router(pathname = window.location.pathname) {
         await import('./views/notFound.mjs')
       }
       break
-    case '/public/categories': //categories for non-logged in users
+    case '/public/categories/index.html':
+    case '/public/categories/': //categories for non-logged in users
       await import('./views/publicCategories.mjs')
       break
     case '/auth/login': // Login

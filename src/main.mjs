@@ -6,3 +6,5 @@ await router(window.location.pathname)
 
 updateHeader()
 setupMenuToggle()
+
+console.log('main.mjs is loading')
