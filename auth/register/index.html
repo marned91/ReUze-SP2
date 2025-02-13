@@ -74,7 +74,7 @@
             <li>
               <a
                 href="/"
-                class="block py-2.5 px-3 font-light hover:font-medium underline"
+                class="block py-2.5 px-3 font-light hover:font-medium"
                 id="home"
                 >HOME</a
               >
@@ -82,7 +82,7 @@
             <li>
               <a
                 href="/public/"
-                class="block py-2.5 px-3 font-light hover:font-medium underline"
+                class="block py-2.5 px-3 font-light hover:font-medium"
                 id="public-home"
                 >HOME</a
               >
@@ -129,7 +129,105 @@
         </div>
       </nav>
     </header>
-    <main></main>
+    <main class="bg-brand">
+      <section
+        class="flex flex-col-reverse lg:flex-row p-10 md:p-20 lg:p-30 justify-center"
+      >
+        <div class="flex-1">
+          <img
+            src="/assets/register.png"
+            alt="young woman in an urban designed apartment sitting on a couch with a laptop"
+            class="w-full h-full"
+          />
+        </div>
+        <div class="flex-1 flex flex-col pb-10 justify-center bg-white">
+          <h1 class="font-largeFont text-4xl text-center mt-10">JOIN US!</h1>
+          <form
+            name="register"
+            id="register-form"
+            class="space-y-6 w-[70%] m-auto"
+          >
+            <fieldset>
+              <div>
+                <label for="name" class="block text-black mt-2 text-sm"
+                  >Name</label
+                >
+                <input
+                  id="name"
+                  type="text"
+                  name="name"
+                  required
+                  maxlength="20"
+                  pattern="^[\w]+$"
+                  title="Please enter a username using only letters and numbers"
+                  class="w-full rounded-2xl border border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent mt-3"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-black mt-2 text-sm"
+                  >Email</label
+                >
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  required
+                  pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+                  title="Please enter a valid noroff.no or stud.noroff.no address"
+                  class="w-full rounded-2xl border border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent mt-3"
+                />
+              </div>
+              <div>
+                <label for="password" class="block text-black mt-2 text-sm"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  required
+                  minlength="8"
+                  class="w-full rounded-2xl border border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent mt-3"
+                />
+              </div>
+              <div>
+                <label for="avatarUrl" class="block text-black mt-2 text-sm"
+                  >Avatar URL</label
+                >
+                <input
+                  id="avatarUrl"
+                  type="url"
+                  name="avatarUrl"
+                  required
+                  placeholder="Enter avatar image URL"
+                  class="w-full rounded-2xl border border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent mt-3"
+                />
+              </div>
+              <div>
+                <label for="avatarAlt" class="block text-black mt-2 text-sm"
+                  >Avatar Alt Text</label
+                >
+                <input
+                  id="avatarAlt"
+                  type="text"
+                  name="avatarAlt"
+                  required
+                  maxlength="50"
+                  placeholder="Describe avatar image. Max 50 characters"
+                  class="w-full rounded-2xl border border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent mt-3"
+                />
+              </div>
+              <button
+                type="submit"
+                class="font-mediumFont py-3 bg-brand-dark text-white rounded-full w-full transition duration-300 ease-out hover:scale-105 mt-10"
+              >
+                Create Account
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+    </main>
     <footer
       class="bg-white py-5 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 w-full mt-auto border border-solid border-black"
     >
