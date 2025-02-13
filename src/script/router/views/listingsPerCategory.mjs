@@ -2,25 +2,35 @@ import { API_AUCTION } from '../../api/constants.mjs'
 
 const urlParams = new URLSearchParams(window.location.search)
 const category = urlParams.get('tag')
+console.log('Category:', category)
 
 const listingsHeadline = document.getElementById('listings-headline')
 const heading = document.createElement('h1')
 heading.textContent = `${category}`
 listingsHeadline.appendChild(heading)
 
-fetchListings(category)
+const normalizedCategory = category ? category.toLowerCase() : ''
+fetchListings(normalizedCategory)
 
 async function fetchListings(category) {
   try {
     const response = await fetch(`${API_AUCTION}?tags=${category}`)
     const data = await response.json()
 
-    console.log('API Response:', data)
-
-    if (data && data.data && data.data.length > 0) {
-      data.data.forEach((listing) => {
-        console.log('Listing media:', listing.media)
-      })
+    if (data?.data?.length) {
+      const validTags = [
+        'art',
+        'fashion',
+        'sport',
+        'interior',
+        'decor',
+        'vintage',
+      ]
+      const filteredListings = data.data.filter(
+        (listing) =>
+          listing.tags &&
+          listing.tags.some((tag) => validTags.includes(tag.toLowerCase())),
+      )
       displayListings(data.data)
     } else {
       showNoListingsMessage(category)
@@ -44,21 +54,15 @@ function createListingElement(listing) {
   const listingElement = document.createElement('div')
   listingElement.classList.add('listing-item')
 
+  const imageUrl =
+    listing.media && listing.media[0] && listing.media[0].url
+      ? listing.media[0].url
+      : '/assets/default-listing-image.png'
+
   const image = document.createElement('img')
-  image.src = listing.media[0].url
+  image.src = imageUrl
   image.alt = listing.title
   image.classList.add('listing-image')
-
-  listing.media.forEach((mediaItem) => {
-    // Check if mediaItem and its 'url' property exist
-    if (mediaItem && mediaItem.url) {
-      // Proceed with using mediaItem.url
-      console.log('Media URL:', mediaItem.url)
-    } else {
-      // Handle the case where there is no media or url
-      console.log('No media or URL found for this listing.')
-    }
-  })
 
   const title = document.createElement('h3')
   title.textContent = listing.title
@@ -66,9 +70,11 @@ function createListingElement(listing) {
 
   const description = document.createElement('p')
   description.textContent =
-    listing.description.length > 100
-      ? listing.description.substring(0, 100) + '...'
-      : listing.description
+    listing.description && listing.description.length > 0
+      ? listing.description.length > 100
+        ? listing.description.substring(0, 100) + '...'
+        : listing.description
+      : 'No description added'
   description.classList.add('listing-description')
 
   const deadline = document.createElement('p')

@@ -11,7 +11,9 @@
     <link rel="icon" type="image/png" href="/assets/monogram-hq.png" />
     <script type="module" src="/src/main.mjs"></script>
   </head>
-  <body>
+  <body
+    class="min-h-screen grid grid-rows-[auto_1fr_auto] overflow-x-hidden w-screen"
+  >
     <header
       class="bg-white w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 border border-solid border-black"
     >
@@ -67,12 +69,12 @@
           class="hidden md:flex md:items-center md:static md:w-auto absolute top-16 left-0 w-full bg-white border border-black md:border-none md:bg-transparent py-5 md:py-0 lg:py-0 xl:py-0 2xl:py-0"
         >
           <ul
-            class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between font-headerFooter gap-5"
+            class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between font-headerFooter gap-2"
           >
             <li>
               <a
                 href="/"
-                class="block py-2.5 px-3 font-light hover:font-medium underline"
+                class="block py-2.5 px-3 font-light hover:font-medium"
                 id="home"
                 >HOME</a
               >
@@ -80,7 +82,7 @@
             <li>
               <a
                 href="/public/"
-                class="block py-2.5 px-3 font-light hover:font-medium underline"
+                class="block py-2.5 px-3 font-light hover:font-medium"
                 id="public-home"
                 >HOME</a
               >
@@ -95,7 +97,7 @@
             </li>
             <li
               id="logout"
-              class="block py-2.5 px-3 font-light hover:font-medium"
+              class="block py-2.5 px-3 font-light hover:font-medium mr-2"
             >
               LOG OUT
             </li>

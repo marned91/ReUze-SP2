@@ -19,7 +19,7 @@
     class="min-h-screen grid grid-rows-[auto_1fr_auto] overflow-x-hidden w-screen"
   >
     <header
-      class="bg-white w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 border border-solid border-black fixed top-0 start-0 z-20"
+      class="bg-white w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 border border-solid border-black"
     >
       <nav class="w-full flex items-center justify-between">
         <button
@@ -73,7 +73,7 @@
           class="hidden md:flex md:items-center md:static md:w-auto absolute top-16 left-0 w-full bg-white border border-black md:border-none md:bg-transparent py-5 md:py-0 lg:py-0 xl:py-0 2xl:py-0"
         >
           <ul
-            class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between font-headerFooter gap-10"
+            class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between font-headerFooter gap-2"
           >
             <li>
               <a
@@ -86,7 +86,7 @@
             <li>
               <a
                 href="/public/"
-                class="block py-2.5 px-3 font-light hover:font-medium underline"
+                class="block py-2.5 px-3 font-light hover:font-medium"
                 id="public-home"
                 >HOME</a
               >
@@ -101,7 +101,7 @@
             </li>
             <li
               id="logout"
-              class="block py-2.5 px-3 font-light hover:font-medium"
+              class="block py-2.5 px-3 font-light hover:font-medium mr-2"
             >
               LOG OUT
             </li>
@@ -133,7 +133,117 @@
         </div>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <section class="bg-brand p-40 text-white">
+        <div>
+          <h1 class="font-largeFont text-4xl pb-10">LET THE REUSE BEGIN!</h1>
+          <p class="font-smallFont font-light">
+            Check out out categories or search to find what you need! Remember,
+            the highest bid wins.
+          </p>
+        </div>
+        <div id="search-container"></div>
+      </section>
+      <section>
+        <h2 class="font-mediumFont text-3xl font-bold text-center pt-20">
+          Browse Categories
+        </h2>
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 content-center gap-5 px-20 py-20"
+        >
+          <div
+            id="sport-category"
+            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+          >
+            <h3
+              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
+            >
+              SPORT
+            </h3>
+            <img
+              src="/assets/sport.png"
+              alt="a blue bike with orange wheels leaning against a light brick wall"
+              class="w-full h-auto rounded-3xl"
+            />
+          </div>
+          <div
+            id="fashion-category"
+            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+          >
+            <h3
+              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
+            >
+              FASHION
+            </h3>
+            <img
+              src="/assets/fashion.png"
+              alt="various clothes hanging on a clothes rack in front of a light brick wall"
+              class="w-full h-auto rounded-3xl"
+            />
+          </div>
+          <div
+            id="interior-category"
+            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+          >
+            <h3
+              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
+            >
+              INTERIOR
+            </h3>
+            <img
+              src="/assets/interior.png"
+              alt="a modern orange leather couch"
+              class="w-full h-auto rounded-3xl"
+            />
+          </div>
+          <div
+            id="art-category"
+            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+          >
+            <h3
+              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
+            >
+              ART
+            </h3>
+            <img
+              src="/assets/art.png"
+              alt="a framed poster with the the alphabet and font type Helvetica in bold orange"
+              class="w-full h-auto rounded-3xl"
+            />
+          </div>
+          <div
+            id="decor-category"
+            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+          >
+            <h3
+              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
+            >
+              DECOR
+            </h3>
+            <img
+              src="/assets/decor.png"
+              alt="an old turquoise tricycle with a terracotta pot with a green plant on the seat"
+              class="w-full h-auto rounded-3xl"
+            />
+          </div>
+          <div
+            id="vintage-category"
+            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+          >
+            <h3
+              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
+            >
+              VINTAGE
+            </h3>
+            <img
+              src="/assets/vintage.png"
+              alt="vintage but modern and neat record player on a bedside table"
+              class="w-full h-auto rounded-3xl"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
     <footer
       class="bg-white py-5 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 w-full mt-auto border border-solid border-black"
     >
@@ -144,7 +254,7 @@
           class="md:w-44 lg:w-44 xl:w-44 2xl:w-44 w-32 h-auto"
         />
         <div
-          class="flex justify-between gap-3 md:gap-5 lg:gap-5 xl:gap-5 2xl:gap-5 items-center font-headerFooter font-light"
+          class="flex justify-between gap-3 md:gap-5 items-center font-headerFooter font-light"
         >
           <a href="/global/about.html" class="hover:font-medium">ABOUT</a>
           <a href="/global/terms.html" class="hover:font-medium"

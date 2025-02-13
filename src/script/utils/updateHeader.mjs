@@ -9,7 +9,7 @@ export function updateHeader() {
   const loginElement = document.getElementById('login')
   const categoriesElement = document.getElementById('public-categories')
 
-  const loginToken = localStorage.getItem('accessToken')
+  const loginToken = localStorage.getItem('token')
 
   if (loginToken) {
     signupElement.classList.add('hidden')

@@ -1,4 +1,4 @@
-const categories = ['sport', 'fashion', 'interior', 'art', 'decor', 'vintage']
+const categories = ['Sport', 'Fashion', 'Interior', 'Art', 'Decor', 'Vintage']
 
 categories.forEach((category) => {
   const categoriesElement = document.getElementById(`${category}-category`)
