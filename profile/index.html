@@ -129,7 +129,39 @@
         </div>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <section class="bg-brand p-20 md:p-26 lg:p-40">
+        <div class="flex flex-col lg:flex-row bg-white p-20 rounded-full">
+          <div id="profile-image"></div>
+          <div id="profile-info">
+            <div id="profile-name"></div>
+            <div>
+              <a
+                href="/profile/update/"
+                class="bg-brand-dark font-mediumFont text-white rounded-3xl py-2 px-5"
+                >Edit Profile</a
+              >
+              <a
+                href="/profile/purchases/"
+                class="bg-brand-dark font-mediumFont text-white rounded-3xl py-2 px-5"
+                >Purchase History</a
+              >
+            </div>
+            <div id="profile-bio"></div>
+            <div id="profile-credit"></div>
+            <div id="profile-listings"></div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2
+          class="font-mediumFont text-3xl font-bold text-center text-brand-dark py-10"
+        >
+          My Listings
+        </h2>
+        <div id="profile-listings"></div>
+      </section>
+    </main>
     <footer
       class="bg-white py-5 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 w-full mt-auto border border-solid border-black"
     >
