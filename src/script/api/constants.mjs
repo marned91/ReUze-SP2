@@ -10,4 +10,4 @@ export const API_AUCTION = `${API_BASE}/auction/listings`
 
 export const API_AUCTION_PROFILE = `${API_BASE}/auction/profiles`
 
-export const API_KEY = '1baa6c49-32c2-4f57-b579-228bb90cb546'
+export const API_KEY = '3fc37fe0-a306-47da-a608-cf5196d46e16'
