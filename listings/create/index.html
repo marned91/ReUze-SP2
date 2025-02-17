@@ -8,7 +8,9 @@
     <link rel="icon" type="image/png" href="/assets/monogram-hq.png" />
     <script type="module" src="/src/main.mjs"></script>
   </head>
-  <body>
+  <body
+    class="min-h-screen grid grid-rows-[auto_1fr_auto] overflow-x-hidden w-screen"
+  >
     <header
       class="bg-white w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 border border-solid border-black"
     >
@@ -107,7 +109,7 @@
             <li class="hidden md:block">
               <a
                 href="/profile/"
-                class="block py-2.5 px-8 rounded-full font-medium bg-accent-dark text-white"
+                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-brand-dark hover:text-white"
                 id="profile"
                 >PROFILE</a
               >
@@ -115,7 +117,7 @@
             <li class="hidden md:block">
               <a
                 href="/auth/register/"
-                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-accent-dark hover:text-white"
+                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-brand-dark hover:text-white"
                 id="signup"
                 >SIGN UP!</a
               >
@@ -124,7 +126,123 @@
         </div>
       </nav>
     </header>
-    <main></main>
-    <footer></footer>
+    <main class="bg-brand">
+      <div
+        class="bg-white rounded-3xl p-10 md:p-20 m-auto w-[80%] md:w-[60%] mt-20 mb-20"
+      >
+        <h1 class="font-largeFont text-4xl text-center mb-10">NEW LISTING</h1>
+        <form
+          name="createListing"
+          id="create-listing-form"
+          class="form space-y-6"
+        >
+          <fieldset>
+            <div>
+              <label
+                for="title"
+                class="block text-sm font-smallFont text-gray-700 mb-2 font-body"
+                >Title:</label
+              >
+              <input
+                type="text"
+                id="title"
+                name="title"
+                required
+                class="w-full font-smallFont px-4 py-2 border border-black rounded-xl focus:ring-1 focus:ring-brand-dark focus:outline-none"
+              />
+            </div>
+            <div>
+              <label
+                for="body"
+                class="block text-sm font-smallFont text-gray-700 mt-10 mb-2 font-body"
+                >Description</label
+              >
+              <textarea
+                id="body"
+                name="body"
+                required
+                rows="6"
+                class="w-full font-smallFont px-4 py-2 border border-black rounded-xl focus:ring-1 focus:ring-brand-dark focus:outline-none"
+              ></textarea>
+            </div>
+            <div>
+              <label
+                for="mediaUrl"
+                class="block text-sm font-smallFont text-gray-700 mt-10 mb-2"
+                >Image URL</label
+              >
+              <input
+                type="url"
+                id="mediaUrl"
+                name="mediaUrl"
+                required
+                class="w-full font-smallFont px-4 py-2 border border-black rounded-xl focus:ring-1 focus:ring-brand-dark focus:outline-none"
+              />
+            </div>
+            <div>
+              <label
+                for="deadline"
+                class="block text-sm font-smallFont text-gray-700 mt-10 mb-2"
+                >Deadline:</label
+              >
+              <input
+                type="date"
+                id="deadline"
+                name="deadline"
+                required
+                class="w-full font-smallFont px-4 py-2 border border-black rounded-xl focus:ring-1 focus:ring-brand-dark focus:outline-none"
+              />
+            </div>
+            <div>
+              <label
+                for="category"
+                class="block text-sm font-smallFont mt-10 mb-2 text-gray-700"
+                >Category:</label
+              >
+              <select
+                id="category"
+                name="category"
+                required
+                class="w-full font-smallFont px-4 py-2 border border-black rounded-xl focus:ring-1 focus:ring-brand-dark focus:outline-none"
+              >
+                <option value="" disabled selected>Select a category</option>
+                <option value="art">Art</option>
+                <option value="fashion">Fashion</option>
+                <option value="decor">Decor</option>
+                <option value="interior">Interior</option>
+                <option value="sport">Sport</option>
+                <option value="vintage">Vintage</option>
+              </select>
+            </div>
+            <button
+              type="submit"
+              id="button"
+              class="bg-brand-dark text-white text-lg font-headlines-nav px-6 py-2 rounded-2xl transform transition duration-300 ease-out hover:scale-105 w-full hover:bg-accent mt-10"
+            >
+              Create Listing
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </main>
+    <footer
+      class="bg-white py-5 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 w-full mt-auto border border-solid border-black"
+    >
+      <div class="flex justify-between justify-center">
+        <img
+          src="/assets/reuze-high-resolution-logo-transparent.png"
+          alt="ReUze logo"
+          class="md:w-44 lg:w-44 xl:w-44 2xl:w-44 w-32 h-auto"
+        />
+        <div
+          class="flex justify-between gap-3 md:gap-5 lg:gap-5 xl:gap-5 2xl:gap-5 items-center font-headerFooter font-light"
+        >
+          <a href="../global/about.html" class="hover:font-medium">ABOUT</a>
+          <a href="../global/terms.html" class="hover:font-medium"
+            >TERMS & CONDITIONS</a
+          >
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

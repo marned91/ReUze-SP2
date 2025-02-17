@@ -10,7 +10,6 @@ async function displayProfile() {
 
   try {
     const profileData = await doFetch(`${API_AUCTION_PROFILE}/${username}`)
-    console.log('Profile Data:', profileData)
 
     const {
       name,
@@ -22,14 +21,13 @@ async function displayProfile() {
     const listingsCount = _count?.listings ?? 0
 
     const profileInfo = document.getElementById('profile-info')
-    profileInfo.classList.add('pl-10')
 
     // Profile image
     const profileImage = document.getElementById('profile-image')
     const img = document.createElement('img')
     img.src = avatar?.url || '/assets/default-profile-image.jpg'
     img.alt = avatar?.alt || 'Default ReUze avatar image'
-    img.classList.add('w-full', 'max-h-[500px]', 'object-cover', 'pl-10')
+    img.classList.add('w-full', 'max-h-[500px]', 'object-cover')
     profileImage.appendChild(img)
 
     // Profile name (H1)
@@ -53,6 +51,10 @@ async function displayProfile() {
       'py-2',
       'px-5',
       'text-sm',
+      'transition',
+      'duration-300',
+      'ease-out',
+      'hover:scale-105',
     )
     editProfileLink.textContent = 'Edit Profile'
 
@@ -66,6 +68,10 @@ async function displayProfile() {
       'py-2',
       'px-5',
       'text-sm',
+      'transition',
+      'duration-300',
+      'ease-out',
+      'hover:scale-105',
     )
     purchaseHistoryLink.textContent = 'Purchase History'
 
@@ -141,3 +147,41 @@ async function displayProfile() {
 }
 
 displayProfile()
+
+async function displayProfileListings() {
+  const userInfo = JSON.parse(localStorage.getItem('user'))
+  const username = userInfo?.name
+
+  const listingsContainer = document.getElementById('profile-listings')
+
+  const createListingCard = document.createElement('a')
+  createListingCard.href = '/listings/create/'
+  createListingCard.classList.add(
+    'p-6',
+    'flex',
+    'flex-col',
+    'items-center',
+    'justify-center',
+    'cursor-pointer',
+    'transition',
+    'duration-300',
+    'ease-out',
+    'hover:scale-105',
+    'shadow-2xl',
+    'bg-white',
+  )
+
+  const plusListingSign = document.createElement('div')
+  plusListingSign.textContent = '+'
+  plusListingSign.classList.add('text-6xl', 'text-brand-dark')
+
+  const createListingText = document.createElement('p')
+  createListingText.textContent = 'New Listing'
+  createListingText.classList.add('mt-2', 'text-lg')
+
+  createListingCard.appendChild(plusListingSign)
+  createListingCard.appendChild(createListingText)
+  listingsContainer.appendChild(createListingCard)
+}
+
+displayProfileListings()
