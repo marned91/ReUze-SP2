@@ -11,7 +11,7 @@ async function onCreateListing(event) {
 
   const media = [{ url: mediaUrl.value, alt: title.value }]
   const endsAt = new Date(deadline.value).toISOString()
-  const tags = [category.value]
+  const tags = [category.value.toLowerCase()]
 
   const listingData = {
     title: title.value,
