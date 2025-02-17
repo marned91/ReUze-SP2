@@ -29,7 +29,7 @@ async function displayProfile() {
     const img = document.createElement('img')
     img.src = avatar?.url || '/assets/default-profile-image.jpg'
     img.alt = avatar?.alt || 'Default ReUze avatar image'
-    img.classList.add('w-full', 'max-h-[500px]', 'object-cover')
+    img.classList.add('w-full', 'max-h-[700px]', 'object-cover')
     profileImage.appendChild(img)
 
     // Profile name (H1)
@@ -92,6 +92,7 @@ async function displayProfile() {
       'font-bold',
       'text-lg',
       'text-brand-dark',
+      'w-[50%]',
     )
 
     const bioText = document.createElement('p')

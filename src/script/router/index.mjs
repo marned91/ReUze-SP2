@@ -26,7 +26,7 @@ export default async function router(pathname = window.location.pathname) {
     case '/profile/': // Profile logged-in users
       await import('./views/profile.mjs')
       break
-    case '/profile/update': // Update profile logged-in users
+    case '/profile/update/': // Update profile logged-in users
       await import('./views/profileUpdate.mjs')
       break
     case '/profile/purchases/':
