@@ -1,6 +1,7 @@
 import { authGuard } from '../../utils/authGuard.mjs'
 import { doFetch } from '../../api/doFetch.mjs'
 import { API_AUCTION_PROFILE } from '../../api/constants.mjs'
+import { displayProfileListings } from '../../utils/listingsPerProfile.mjs'
 
 authGuard()
 
@@ -18,6 +19,7 @@ async function displayProfile() {
       avatar,
       _count,
     } = profileData
+
     const listingsCount = _count?.listings ?? 0
 
     const profileInfo = document.getElementById('profile-info')
@@ -77,7 +79,7 @@ async function displayProfile() {
 
     linksContainer.appendChild(editProfileLink)
     linksContainer.appendChild(purchaseHistoryLink)
-    profileInfo.appendChild(linksContainer) // Append buttons below profile name
+    profileInfo.appendChild(linksContainer)
 
     // Profile BIO
     const bioContainer = document.createElement('div')
@@ -138,50 +140,12 @@ async function displayProfile() {
     listingsText.textContent = listingsCount
     listingsText.classList.add('font-smallFont', 'font-light')
 
-    listingsContainer.appendChild(listingsLabel)
-    listingsContainer.appendChild(listingsText)
+    listingsContainer.append(listingsLabel, listingsText)
     profileInfo.appendChild(listingsContainer)
+    displayProfileListings(username)
   } catch (error) {
     console.error('Error displaying profile:', error)
   }
 }
 
 displayProfile()
-
-async function displayProfileListings() {
-  const userInfo = JSON.parse(localStorage.getItem('user'))
-  const username = userInfo?.name
-
-  const listingsContainer = document.getElementById('profile-listings')
-
-  const createListingCard = document.createElement('a')
-  createListingCard.href = '/listings/create/'
-  createListingCard.classList.add(
-    'p-6',
-    'flex',
-    'flex-col',
-    'items-center',
-    'justify-center',
-    'cursor-pointer',
-    'transition',
-    'duration-300',
-    'ease-out',
-    'hover:scale-105',
-    'shadow-2xl',
-    'bg-white',
-  )
-
-  const plusListingSign = document.createElement('div')
-  plusListingSign.textContent = '+'
-  plusListingSign.classList.add('text-6xl', 'text-brand-dark')
-
-  const createListingText = document.createElement('p')
-  createListingText.textContent = 'New Listing'
-  createListingText.classList.add('mt-2', 'text-lg')
-
-  createListingCard.appendChild(plusListingSign)
-  createListingCard.appendChild(createListingText)
-  listingsContainer.appendChild(createListingCard)
-}
-
-displayProfileListings()
