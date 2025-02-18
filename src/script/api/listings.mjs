@@ -1,18 +1,20 @@
 import { API_AUCTION, API_KEY } from './constants.mjs'
 import { doFetch } from './doFetch.mjs'
 
-export async function fetchAllListings() {
+export async function fetchListings(tag) {
   try {
-    const token = localStorage.getItem('token')
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-      'X-Noroff-API-Key': API_KEY,
-    }
-    const listings = await doFetch(API_AUCTION, { method: 'GET', headers })
-    return listings
+    const response = await doFetch(`${API_AUCTION}?_tag=${tag}`)
+    return response.data // Assuming response contains a data array
   } catch (error) {
     console.error('Error fetching listings:', error)
-    return []
+    return [] // Return empty array if there's an error
   }
+}
+
+//for creating listings
+export async function createListing(listingData) {
+  return doFetch(API_AUCTION, {
+    method: 'POST',
+    body: JSON.stringify(listingData),
+  })
 }

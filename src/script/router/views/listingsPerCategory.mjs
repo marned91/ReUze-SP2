@@ -1,90 +1,52 @@
-import { fetchAllListings } from '../../api/listings.mjs'
-import { tagCategories } from '../../utils/tagsHandling.mjs'
+import { fetchListings } from '../../api/listings.mjs'
 
-async function displayListings() {
-  try {
-    const urlParams = new URLSearchParams(window.location.search)
-    const tag = urlParams.get('tag')
+async function displayListings(listings) {
+  const listingsContainer = document.getElementById('listings')
+  listingsContainer.innerHTML = ''
 
-    if (!tag) {
-      console.error('No tag provided in URL query')
-      return
-    }
-
-    const pageTitle = document.getElementById('listings-headline')
-    pageTitle.textContent = tag[0].toUpperCase() + tag.slice(1)
-
-    const listings = (await fetchAllListings()) || []
-
-    const listingsWithFixedTags = listings.map((listing) => {
-      if (!Array.isArray(listing.tags) || listing.tags.length === 0) {
-        return {
-          ...listing,
-          tags: tagCategories(listing.title, listing.description),
-        }
-      }
-      return listing
-    })
-
-    const filteredListings = listingsWithFixedTags.filter(
-      (listing) => Array.isArray(listing.tags) && listing.tags.includes(tag),
-    )
-
-    const listingsContainer = document.getElementById('listings')
-    listingsContainer.innerHTML = ''
-
-    if (filteredListings.length === 0) {
-      const noListingsMessage = document.createElement('p')
-      noListingsMessage.textContent =
-        'No listings available in this category at the moment. Please check back later!'
-      listingsContainer.appendChild(noListingsMessage)
-      return
-    }
-
-    filteredListings.forEach((listing) => {
-      const listingElement = createListingElement(listing)
-      listingsContainer.appendChild(listingElement)
-    })
-  } catch (error) {
-    console.error('Error displaying listings by tag:', error)
+  if (listings.length === 0) {
+    const noListingsMessage = document.createElement('p')
+    noListingsMessage.textContent = 'No listings available for this tag.'
+    listingsContainer.appendChild(noListingsMessage)
   }
+
+  listings.forEach((listing) => {
+    const listingElement = document.createElement('div')
+    listingElement.classList.add('listing')
+
+    const listingTitle = document.createElement('h2')
+    listingTitle.textContent = listing.title
+
+    const listingDescription = document.createElement('p')
+    listingDescription.textContent =
+      listing.description || 'No description added'
+
+    const listingImage = document.createElement('img')
+    const imageSrc =
+      listing.media && listing.media[0]
+        ? listing.media[0].url
+        : '/assets/default-listing-image.png'
+    listingImage.src = imageSrc
+    listingImage.alt = listing.title
+
+    // Append elements to the listing element
+    listingElement.appendChild(listingTitle)
+    listingElement.appendChild(listingDescription)
+    listingElement.appendChild(listingImage)
+
+    // Append the listing element to the container
+    listingsContainer.appendChild(listingElement)
+  })
 }
 
-function createListingElement(listing) {
-  const listingElement = document.createElement('div')
-  listingElement.classList.add('listing')
+async function handleListingsPage() {
+  const urlParams = new URLSearchParams(window.location.search)
+  const tag = urlParams.get('tag') // Get the tag from the query string
 
-  const imageElement = document.createElement('img')
-  const imageSrc =
-    listing.media && listing.media[0]
-      ? listing.media[0].url
-      : '/assets/default-listing-image.png'
-  imageElement.src = imageSrc
-  imageElement.alt = listing.title
-  listingElement.appendChild(imageElement)
-
-  const titleElement = document.createElement('h2')
-  titleElement.textContent = listing.title
-  listingElement.appendChild(titleElement)
-
-  const descriptionElement = document.createElement('p')
-  descriptionElement.textContent = listing.description || 'No description added'
-  listingElement.appendChild(descriptionElement)
-
-  const deadlineElement = document.createElement('p')
-  deadlineElement.textContent = `Deadline: ${new Date(listing.endsAt).toLocaleString()}`
-  listingElement.appendChild(deadlineElement)
-
-  const bidElement = document.createElement('p')
-  let bidAmountText = 'No bids yet'
-  if (Array.isArray(listing.bids) && listing.bids.length > 0) {
-    const bidAmount = Math.max(...listing.bids.map((bid) => bid.amount))
-    bidAmountText = `Current Bid: $${bidAmount}`
+  if (tag) {
+    const listings = await fetchListings(tag) // Fetch listings for the tag
+    displayListings(listings) // Display the listings
+  } else {
+    console.error('No tag found in URL')
   }
-  bidElement.textContent = bidAmountText
-  listingElement.appendChild(bidElement)
-
-  return listingElement
 }
-
-displayListings()

@@ -1,3 +1,3 @@
-import { setupCategoryClicks } from '../../utils/categories.mjs'
+import { setupCategoryClicks } from '../../utils/goToTag.mjs'
 
 setupCategoryClicks()

@@ -1,7 +1,7 @@
 import { authGuard } from '../../utils/authGuard.mjs'
-import { setupCategoryClicks } from '../../utils/categories.mjs'
+import { setupTagNavigation } from '../../utils/goToTag.mjs'
 
 authGuard()
-setupCategoryClicks()
+setupTagNavigation()
 
 console.log('home.mjs is loading')
