@@ -7,8 +7,9 @@ export function setupCategoryClicks() {
     )
     if (categoriesElement) {
       categoriesElement.addEventListener('click', () => {
-        console.log(`Navigating to: /listings/index.html?tag=${category}`)
-        window.location.href = `/listings/index.html?tag=${category}`
+        const tag = category.toLowerCase()
+        console.log(`Navigating to: /listings/index.html?tag=${tag}`)
+        window.location.href = `/listings/index.html?tag=${tag}`
       })
     }
   })

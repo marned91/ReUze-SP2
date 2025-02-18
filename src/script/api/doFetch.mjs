@@ -13,6 +13,7 @@ export async function doFetch(url, options = {}) {
     const response = await fetch(url, { ...options, headers })
     if (response.ok) {
       const { data } = await response.json()
+      console.log('API Response:', data)
       return data
     }
   } catch (error) {

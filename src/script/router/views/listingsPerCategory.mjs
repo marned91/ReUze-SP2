@@ -1,101 +1,90 @@
-import { API_AUCTION } from '../../api/constants.mjs'
+import { fetchAllListings } from '../../api/listings.mjs'
+import { tagCategories } from '../../utils/tagsHandling.mjs'
 
-const urlParams = new URLSearchParams(window.location.search)
-const category = urlParams.get('tag')
-console.log('Category:', category)
-
-const listingsHeadline = document.getElementById('listings-headline')
-const heading = document.createElement('h1')
-heading.textContent = `${category}`
-listingsHeadline.appendChild(heading)
-
-const normalizedCategory = category ? category.toLowerCase() : ''
-fetchListings(normalizedCategory)
-
-async function fetchListings(category) {
+async function displayListings() {
   try {
-    const response = await fetch(`${API_AUCTION}?tags=${category}`)
-    const data = await response.json()
-    console.log('Fetched data:', data)
+    const urlParams = new URLSearchParams(window.location.search)
+    const tag = urlParams.get('tag')
 
-    const listings = data?.data || []
-    const filteredListings = listings.filter(
-      (listing) => listing.tags && listing.tags.includes(category),
+    if (!tag) {
+      console.error('No tag provided in URL query')
+      return
+    }
+
+    const pageTitle = document.getElementById('listings-headline')
+    pageTitle.textContent = tag[0].toUpperCase() + tag.slice(1)
+
+    const listings = (await fetchAllListings()) || []
+
+    const listingsWithFixedTags = listings.map((listing) => {
+      if (!Array.isArray(listing.tags) || listing.tags.length === 0) {
+        return {
+          ...listing,
+          tags: tagCategories(listing.title, listing.description),
+        }
+      }
+      return listing
+    })
+
+    const filteredListings = listingsWithFixedTags.filter(
+      (listing) => Array.isArray(listing.tags) && listing.tags.includes(tag),
     )
 
-    console.log('Filtered listings:', filteredListings)
+    const listingsContainer = document.getElementById('listings')
+    listingsContainer.innerHTML = ''
 
-    filteredListings.length
-      ? displayListings(filteredListings)
-      : showNoListingsMessage(category)
+    if (filteredListings.length === 0) {
+      const noListingsMessage = document.createElement('p')
+      noListingsMessage.textContent =
+        'No listings available in this category at the moment. Please check back later!'
+      listingsContainer.appendChild(noListingsMessage)
+      return
+    }
+
+    filteredListings.forEach((listing) => {
+      const listingElement = createListingElement(listing)
+      listingsContainer.appendChild(listingElement)
+    })
   } catch (error) {
-    console.error('Error fetching listings:', error)
+    console.error('Error displaying listings by tag:', error)
   }
-}
-
-function displayListings(listings) {
-  const listingsContainer = document.getElementById('listings')
-  listingsContainer.innerHTML = ''
-
-  if (listings.length === 0) {
-    showNoListingsMessage()
-    return
-  }
-
-  listings.forEach((listing) => {
-    const listingElement = createListingElement(listing)
-    listingsContainer.appendChild(listingElement)
-  })
 }
 
 function createListingElement(listing) {
   const listingElement = document.createElement('div')
-  listingElement.classList.add('listing-item')
+  listingElement.classList.add('listing')
 
-  const imageUrl =
-    listing.media?.[0]?.url || '/assets/default-listing-image.png'
+  const imageElement = document.createElement('img')
+  const imageSrc =
+    listing.media && listing.media[0]
+      ? listing.media[0].url
+      : '/assets/default-listing-image.png'
+  imageElement.src = imageSrc
+  imageElement.alt = listing.title
+  listingElement.appendChild(imageElement)
 
-  const image = document.createElement('img')
-  image.src = imageUrl
-  image.alt = listing.title
-  image.classList.add('listing-image')
+  const titleElement = document.createElement('h2')
+  titleElement.textContent = listing.title
+  listingElement.appendChild(titleElement)
 
-  const title = document.createElement('h3')
-  title.textContent = listing.title
-  title.classList.add('listing-title')
+  const descriptionElement = document.createElement('p')
+  descriptionElement.textContent = listing.description || 'No description added'
+  listingElement.appendChild(descriptionElement)
 
-  const description = document.createElement('p')
-  description.textContent =
-    listing.description?.length > 0
-      ? listing.description.length > 100
-        ? `${listing.description.substring(0, 100)}...`
-        : listing.description
-      : 'No description added'
-  description.classList.add('listing-description')
+  const deadlineElement = document.createElement('p')
+  deadlineElement.textContent = `Deadline: ${new Date(listing.endsAt).toLocaleString()}`
+  listingElement.appendChild(deadlineElement)
 
-  const deadline = document.createElement('p')
-  deadline.textContent = `Deadline: ${listing.endsAt}`
-  deadline.classList.add('listing-deadline')
-
-  const currentBid = document.createElement('p')
-  currentBid.textContent = `Current bid: $${listing._count.bids}`
-  currentBid.classList.add('listing-current-bid')
-
-  listingElement.appendChild(image)
-  listingElement.appendChild(title)
-  listingElement.appendChild(description)
-  listingElement.appendChild(deadline)
-  listingElement.appendChild(currentBid)
+  const bidElement = document.createElement('p')
+  let bidAmountText = 'No bids yet'
+  if (Array.isArray(listing.bids) && listing.bids.length > 0) {
+    const bidAmount = Math.max(...listing.bids.map((bid) => bid.amount))
+    bidAmountText = `Current Bid: $${bidAmount}`
+  }
+  bidElement.textContent = bidAmountText
+  listingElement.appendChild(bidElement)
 
   return listingElement
 }
 
-function showNoListingsMessage() {
-  const listingsContainer = document.getElementById('listings')
-  listingsContainer.innerHTML = ''
-
-  const message = document.createElement('p')
-  message.textContent =
-    'No listings available in this category at the moment. Please check back later!'
-  listingsContainer.appendChild(message)
-}
+displayListings()

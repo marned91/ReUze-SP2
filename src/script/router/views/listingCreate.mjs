@@ -1,31 +1,37 @@
 import { authGuard } from '../../utils/authGuard.mjs'
 import { API_AUCTION, API_KEY } from '../../api/constants.mjs'
+import { tagCategories } from '../../utils/tagsHandling.mjs'
 
 authGuard()
 
 async function onCreateListing(event) {
   event.preventDefault()
 
-  const { title, description, mediaUrl, deadline, category } =
-    event.target.elements
+  const { title, description, mediaUrl, deadline } = event.target.elements
 
-  const media = [{ url: mediaUrl.value, alt: title.value }]
-  const endsAt = new Date(deadline.value).toISOString()
-  const tags = [category.value.toLowerCase()]
+  const deadlineValue = deadline.value.trim()
+  const endsAt = deadlineValue ? new Date(deadlineValue).toISOString() : null
+
+  const mediaUrlValue = mediaUrl.value.trim()
+  const media = mediaUrlValue
+    ? [{ url: mediaUrlValue, alt: title.value.trim() || 'Listing image' }]
+    : []
+
+  const tags = tagCategories(title.value, description.value) || []
 
   const listingData = {
-    title: title.value,
-    description: description.value,
+    title: title.value.trim(),
+    description: description.value.trim(),
     media,
     endsAt,
     tags,
   }
 
   try {
-    const newListing = await createListing(listingData)
+    const response = await createListing(listingData)
     alert('Success! Your listing has been created.')
-    event.target.reset()
     setTimeout(() => (window.location.pathname = '/profile/'), 2000)
+    return response
   } catch (error) {
     console.error('Error:', error)
     alert(`Failed to create listing. Error: ${error.message}`)
@@ -73,7 +79,7 @@ async function createListing({ title, description, media, endsAt, tags }) {
       return data
     }
     const errorResponse = await response.json()
-    throw new error(errorResponse.message || 'Failed to create listing.')
+    throw new Error(errorResponse.message || 'Failed to create listing.')
   } catch (error) {
     console.error('Error creating listing:', error)
     throw error
