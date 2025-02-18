@@ -24,6 +24,8 @@ form.addEventListener('submit', async (event) => {
     endsAt: deadline,
   }
 
+  console.log('Final Listing Data:', listingData)
+
   try {
     const response = await createListing(listingData)
 

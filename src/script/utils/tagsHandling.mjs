@@ -7,7 +7,7 @@ const tags = {
   Decor:
     /\b(decor|vase(s)?|dish(es)?|tablecloth(S)?|glass|pot(s)?|candlestick(s)?|coaster(s)?|clock(s)?|cushion(s)?|candle(s)?|mirror(s)?|plant(s)?|stool(s)?|ceramic(s)?|globe(s)?|wallpaper|wall\s?art|baskets|tapestry)\b/i,
   Sport:
-    /\b(sport(s)?|ski|skiing|skiis|snowboard(s)?|sneakers|canoe|canoes|paddle(s)?|hiking|weights|treadmill(s)?|boxing|gym|fitness|exercise|workout|yoga|running|swimming|cycling)\b/i,
+    /\b(sport(s)?|ski|skiing|skiis|snowboard(s)?|sneakers|canoe|canoes|paddle(s)?|hiking|weights|treadmill(s)?|boxing|gym|fitness|exercise|workout|yoga|running|swimming|cycling|paddleboard|surf(ing)?)\b/i,
   vintage:
     /\b(vintage|retro|old|antique|classic|nostalgia|mid-century|heritage|throwback)\b/i,
 }

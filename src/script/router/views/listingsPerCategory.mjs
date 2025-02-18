@@ -4,7 +4,8 @@ async function displayListings(listings) {
   const listingsContainer = document.getElementById('listings')
   listingsContainer.innerHTML = ''
 
-  if (listings.length === 0) {
+  if (!Array.isArray(listings) || listings.length === 0) {
+    console.log('Listings array is empty or not an array:', listings)
     const noListingsMessage = document.createElement('p')
     noListingsMessage.textContent = 'No listings available for this tag.'
     listingsContainer.appendChild(noListingsMessage)
@@ -29,24 +30,24 @@ async function displayListings(listings) {
     listingImage.src = imageSrc
     listingImage.alt = listing.title
 
-    // Append elements to the listing element
     listingElement.appendChild(listingTitle)
     listingElement.appendChild(listingDescription)
     listingElement.appendChild(listingImage)
 
-    // Append the listing element to the container
     listingsContainer.appendChild(listingElement)
   })
 }
 
 async function handleListingsPage() {
   const urlParams = new URLSearchParams(window.location.search)
-  const tag = urlParams.get('tag') // Get the tag from the query string
+  const tag = urlParams.get('tag')
 
   if (tag) {
-    const listings = await fetchListings(tag) // Fetch listings for the tag
-    displayListings(listings) // Display the listings
+    const listings = (await fetchListings(tag)) || []
+    displayListings(listings)
   } else {
     console.error('No tag found in URL')
   }
 }
+
+handleListingsPage()
