@@ -35,7 +35,13 @@ async function displaySearchListings(listings) {
   const searchResultsDiv = document.getElementById('search-results')
   listings.forEach((listing) => {
     const listingDiv = document.createElement('div')
-    listingDiv.classList.add('listing-item')
+    listingDiv.classList.add(
+      'listing-item',
+      'p-4',
+      'shadow-md',
+      'rounded-lg',
+      'bg-white',
+    )
 
     const listingImage = document.createElement('img')
     listingImage.src =
@@ -43,6 +49,7 @@ async function displaySearchListings(listings) {
         ? listing.media[0].url
         : '/assets/default-listing-image.png'
     listingImage.alt = listing.title
+    listingImage.classList.add('w-full', 'h-48', 'object-cover', 'rounded-t-lg')
 
     const listingTitle = document.createElement('h3')
     listingTitle.textContent = listing.title

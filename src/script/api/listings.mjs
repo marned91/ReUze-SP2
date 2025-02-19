@@ -37,12 +37,29 @@ export async function fetchListingsBySearch(query) {
     const response = await doFetch(
       `${API_AUCTION}/search?q=${query}&_bids=true`,
     )
-    console.log('Raw API response in fetchListingsBySearch:', response)
 
     const listings = Array.isArray(response) ? response : response?.data || []
-    console.log('Filtered listings in fetchListingsBySearch:', listings)
 
-    return listings
+    const filteredListings = listings.filter((listing) => {
+      const lowerQuery = query.toLowerCase()
+      return (
+        listing.title.toLowerCase().includes(lowerQuery) ||
+        listing.description.toLowerCase().includes(lowerQuery)
+      )
+    })
+
+    const sortedListings = filteredListings.sort((a, b) => {
+      const aTitleMatch = a.title.toLowerCase().includes(query.toLowerCase())
+      const bTitleMatch = b.title.toLowerCase().includes(query.toLowerCase())
+
+      // Prioritize exact matches in the title
+      if (aTitleMatch && !bTitleMatch) return -1
+      if (!aTitleMatch && bTitleMatch) return 1
+
+      return 0 // If both are either matched or not, leave them as is
+    })
+
+    return sortedListings
   } catch (error) {
     console.error('Error fetching listings:', error)
     return []

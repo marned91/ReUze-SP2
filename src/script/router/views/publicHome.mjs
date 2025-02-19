@@ -1,1 +1,3 @@
-console.log('publicHome.mjs is loading')
+import { setUpSearch } from '../../utils/searchListings.mjs'
+
+setUpSearch('#search-input', '#search-button')
