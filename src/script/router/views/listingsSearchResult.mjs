@@ -34,7 +34,8 @@ async function displaySearchResults() {
 async function displaySearchListings(listings) {
   const searchResultsDiv = document.getElementById('search-results')
   listings.forEach((listing) => {
-    const listingDiv = document.createElement('div')
+    const listingDiv = document.createElement('a')
+    listingDiv.href = `/listings/view/index.html?id=${listing.id}`
     listingDiv.classList.add(
       'listing-item',
       'p-4',
@@ -44,6 +45,11 @@ async function displaySearchListings(listings) {
       'flex-col',
       'justify-between',
       'min-h-[300px]',
+      'cursor-pointer',
+      'transition',
+      'duration-300',
+      'ease-out',
+      'hover:scale-105',
     )
 
     const listingImage = document.createElement('img')

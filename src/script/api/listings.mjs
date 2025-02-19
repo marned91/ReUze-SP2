@@ -5,14 +5,27 @@ import { doFetch } from './doFetch.mjs'
 export async function fetchListings(tag) {
   try {
     const response = await doFetch(`${API_AUCTION}/search?q=${tag}&_bids=true`)
-    console.log('Raw API response in fetchListings:', response)
     const listings = Array.isArray(response) ? response : response?.data || []
-    console.log('Filtered listings in fetchListings:', response?.data)
     return listings
   } catch (error) {
     console.error('Error fetching listings:', error)
     return []
   }
+}
+
+//for fetching a single listing
+export async function fetchSingleListing() {
+  const urlParams = new URLSearchParams(window.location.search)
+  const listingId = urlParams.get('id')
+
+  if (!listingId) {
+    console.error('No listing ID found in URL.')
+    return null
+  }
+
+  const response = await doFetch(`${API_AUCTION}/${listingId}?_bids=true`)
+
+  return response || null
 }
 
 //for creating listings
@@ -52,11 +65,10 @@ export async function fetchListingsBySearch(query) {
       const aTitleMatch = a.title.toLowerCase().includes(query.toLowerCase())
       const bTitleMatch = b.title.toLowerCase().includes(query.toLowerCase())
 
-      // Prioritize exact matches in the title
       if (aTitleMatch && !bTitleMatch) return -1
       if (!aTitleMatch && bTitleMatch) return 1
 
-      return 0 // If both are either matched or not, leave them as is
+      return 0
     })
 
     return sortedListings

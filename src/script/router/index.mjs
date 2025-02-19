@@ -35,7 +35,8 @@ export default async function router(pathname = window.location.pathname) {
     case '/listings/create/': // Create new listing logged-in users
       await import('./views/listingCreate.mjs')
       break
-    case '/listings/view/': // View listing. Logged in users can place bids, non-logged-in users will not get this option
+    case '/listings/view/':
+    case '/listings/view/index.html': // View listing. Logged in users can place bids, non-logged-in users will not get this option
       await import('./views/listingView.mjs')
       break
     case '/listings/search/':
