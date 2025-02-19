@@ -38,9 +38,12 @@ async function displaySearchListings(listings) {
     listingDiv.classList.add(
       'listing-item',
       'p-4',
-      'shadow-md',
-      'rounded-lg',
+      'shadow-xl',
       'bg-white',
+      'flex',
+      'flex-col',
+      'justify-between',
+      'min-h-[300px]',
     )
 
     const listingImage = document.createElement('img')
@@ -97,11 +100,46 @@ async function displaySearchListings(listings) {
       listingBid.append(bidLabel, noBidsValue)
     }
 
+    const tagsDiv = document.createElement('div')
+    tagsDiv.classList.add('flex', 'flex-wrap', 'gap-2', 'mt-5', 'space-x-2')
+
+    if (listing.tags && listing.tags.length > 0) {
+      listing.tags.forEach((tag) => {
+        const tagElement = document.createElement('span')
+        tagElement.textContent = tag
+        tagElement.classList.add(
+          'rounded-full',
+          'bg-brand-dark',
+          'text-white',
+          'text-xs',
+          'px-3',
+          'py-1.5',
+        )
+        tagsDiv.appendChild(tagElement)
+      })
+    }
+
+    const currentDate = new Date()
+    const endAtDate = new Date(listing.endsAt)
+    const status = endAtDate > currentDate ? 'active' : 'expired'
+    const statusElement = document.createElement('span')
+    statusElement.textContent = status
+    statusElement.classList.add(
+      'rounded-full',
+      'text-white',
+      'text-xs',
+      'px-3',
+      'py-1.5',
+      status === 'active' ? 'bg-accent-dark' : 'bg-accent-light',
+    )
+    tagsDiv.appendChild(statusElement)
+
     listingDiv.appendChild(listingImage)
     listingDiv.appendChild(listingTitle)
     listingDiv.appendChild(listingDescription)
     listingDiv.appendChild(listingDeadline)
     listingDiv.appendChild(listingBid)
+    listingDiv.appendChild(tagsDiv)
 
     searchResultsDiv.appendChild(listingDiv)
   })
