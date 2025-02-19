@@ -33,10 +33,10 @@ async function displaySingleListing() {
 
   const deadline = document.createElement('p')
   deadline.textContent = `Deadline: ${new Date(listing.endsAt).toLocaleString()}`
-  deadline.classList.add('font-smallFont', 'font-bold', 'text-sm', 'mt-5')
+  deadline.classList.add('font-smallFont', 'font-bold', 'text-sm', 'mt-20')
 
   const bidInfo = document.createElement('p')
-  bidInfo.classList.add('font-smallFont', 'font-semibold', 'mt-4')
+  bidInfo.classList.add('font-smallFont', 'font-semibold', 'mt-2')
   if (listing._count?.bids > 0) {
     bidInfo.textContent = `Current bid: $${listing.bids[listing.bids.length - 1].amount}`
   } else {

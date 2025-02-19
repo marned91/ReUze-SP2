@@ -130,20 +130,36 @@
       </nav>
     </header>
     <main>
-      <section class="bg-brand text-white py-36 px-24">
+      <section class="bg-brand text-white p-10 md:p-24">
         <div>
           <h1 class="font-largeFont text-4xl">BROWSE CATEGORIES</h1>
-          <p class="pt-10 font-smallFont">
+          <p class="pt-10 font-smallFont font-light">
             Check out out categories to find what you need! Remember, you need
             to be logged in to bid.
           </p>
+          <div id="search-container" class="flex gap-3 mt-10">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search listing titles..."
+              class="rounded-3xl p-1.5 w-[40%] ps-5 text-black"
+            />
+            <button
+              id="search-button"
+              class="font-mediumFont bg-brand-light text-black px-7 py-2 rounded-full sm:text-base text-sm font-medium duration-300 ease-out hover:scale-105"
+            >
+              Search
+            </button>
+          </div>
         </div>
       </section>
-      <section class="py-20">
-        <div class="grid grid-cols-1 md:grid-cols-3 content-center gap-5 px-20">
+      <section class="py-5">
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 content-center gap-5 px-20 py-10"
+        >
           <div
             id="sport"
-            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+            class="tag relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
           >
             <h2
               class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
@@ -157,23 +173,8 @@
             />
           </div>
           <div
-            id="fashion"
-            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
-          >
-            <h2
-              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
-            >
-              FASHION
-            </h2>
-            <img
-              src="/assets/fashion.png"
-              alt="various clothes hanging on a clothes rack in front of a light brick wall"
-              class="w-full h-auto rounded-3xl"
-            />
-          </div>
-          <div
             id="interior"
-            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+            class="tag relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
           >
             <h2
               class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
@@ -187,23 +188,23 @@
             />
           </div>
           <div
-            id="art"
-            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+            id="fashion"
+            class="tag relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
           >
             <h2
               class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
             >
-              ART
+              FASHION
             </h2>
             <img
-              src="/assets/art.png"
-              alt="a framed poster with the the alphabet and font type Helvetica in bold orange"
+              src="/assets/fashion.png"
+              alt="various clothes hanging on a clothes rack in front of a light brick wall"
               class="w-full h-auto rounded-3xl"
             />
           </div>
           <div
             id="decor"
-            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+            class="tag relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
           >
             <h2
               class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
@@ -217,8 +218,23 @@
             />
           </div>
           <div
+            id="art"
+            class="tag relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+          >
+            <h2
+              class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
+            >
+              ART
+            </h2>
+            <img
+              src="/assets/art.png"
+              alt="a framed poster with the the alphabet and font type Helvetica in bold orange"
+              class="w-full h-auto rounded-3xl"
+            />
+          </div>
+          <div
             id="vintage"
-            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+            class="tag relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
           >
             <h2
               class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
@@ -232,8 +248,8 @@
             />
           </div>
           <div
-            id="other"
-            class="relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
+            id="sport"
+            class="tag relative transition-transform duration-300 ease-out hover:scale-105 inline-block drop-shadow-xl cursor-pointer"
           >
             <h2
               class="font-mediumFont text-2xl font-semibold w-full absolute top-0 left-0 text-center mt-5"
