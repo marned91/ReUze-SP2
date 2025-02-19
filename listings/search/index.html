@@ -3,11 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Discover a variety of listings on ReUze. Sign up or log in to create and bid on listings."
-    />
-    <title>ReUze | Discover Listings and More!</title>
+    <meta name="description" content="ReUZe search results" />
+    <title>ReUze | Search Results</title>
     <link rel="icon" type="image/png" href="/assets/monogram-hq.png" />
     <script
       src="https://kit.fontawesome.com/4abbc2116c.js"
@@ -73,7 +70,7 @@
           class="hidden md:flex md:items-center md:static md:w-auto absolute top-16 left-0 w-full bg-white border border-black md:border-none md:bg-transparent py-5 md:py-0 lg:py-0 xl:py-0 2xl:py-0"
         >
           <ul
-            class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between font-headerFooter gap-5"
+            class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between font-headerFooter gap-2"
           >
             <li>
               <a
@@ -86,7 +83,7 @@
             <li>
               <a
                 href="/public/"
-                class="block py-2.5 px-3 font-light hover:font-medium underline"
+                class="block py-2.5 px-3 font-light hover:font-medium"
                 id="public-home"
                 >HOME</a
               >
@@ -101,7 +98,7 @@
             </li>
             <li
               id="logout"
-              class="block py-2.5 px-3 font-light hover:font-medium"
+              class="block py-2.5 px-3 font-light hover:font-medium mr-2"
             >
               LOG OUT
             </li>
@@ -116,7 +113,7 @@
             <li class="hidden md:block">
               <a
                 href="/profile/"
-                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-accent-dark hover:text-white"
+                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-brand-dark hover:text-white"
                 id="profile"
                 >PROFILE</a
               >
@@ -134,67 +131,32 @@
       </nav>
     </header>
     <main>
-      <section
-        class="flex flex-col lg:flex-row justify-between gap-10 bg-brand items-center p-10 md:p-20"
-      >
-        <div class="text-white px-5 max-w-[80%] lg:w-[50%] items-center">
-          <h1 class="font-largeFont text-4xl">
-            WELCOME TO THE JOURNEY OF REUSE!
-          </h1>
-          <p class="font-smallFont font-light pt-5 pb-10">
-            The auction site where unique finds get a second life! Browse
-            listings freely, and log in to place your bids.
-          </p>
-          <a
-            href="/public/categories/"
-            class="font-mediumFont font-semibold text-lg bg-brand-light rounded-full py-3 px-10 text-black transition-transform duration-300 ease-out hover:scale-105 inline-block"
-            >View Listings</a
-          >
-        </div>
-        <div>
-          <img
-            src="/assets/public-home.png"
-            alt="orange lounge chair with a beige blanket on the side in a light modern living room"
-            class="w-full h-auto"
-          />
-        </div>
-      </section>
-      <section
-        class="py-20 px-32 flex flex-col md:flex-row justify-between justify-center text-center gap-20 md:gap-5"
-      >
-        <div>
-          <i class="fa-brands fa-pagelines text-brand-dark text-9xl"></i>
-          <p class="pt-5">For the environment</p>
-        </div>
-        <div>
-          <i class="fa-solid fa-house text-brand-dark text-9xl"></i>
-          <p class="pt-5">For your home</p>
-        </div>
-        <div>
-          <i class="fa-regular fa-face-smile-beam text-brand-dark text-9xl"></i>
-          <p class="pt-5">For your economy</p>
-        </div>
-      </section>
-      <section class="bg-brand-light p-20 md:p-32">
-        <h2 class="font-mediumFont text-3xl">Search Listings</h2>
-        <p class="font-smallFont pt-5 pb-10 w-[50%]">
-          Search our listings to see if you find anything you like! Psst! You
-          need to be logged in to make a bid.
+      <section class="bg-brand text-white p-36">
+        <div id="search-query" class="pb-5"></div>
+        <p class="font-smallFont font-light pb-10">
+          Couldn’t find what you were looking for? Try searching for something
+          else!
         </p>
         <div id="search-container" class="flex gap-3">
           <input
             type="text"
             id="search-input"
             placeholder="Search listing titles..."
-            class="rounded-3xl border border-gray-400 p-1.5 w-[40%] ps-5 text-black font-smallFont"
+            class="rounded-3xl p-1.5 w-[40%] ps-5 text-black"
           />
           <button
             id="search-button"
-            class="font-mediumFont bg-accent-dark text-white px-7 py-2 rounded-full sm:text-base text-sm transition-transform duration-300 ease-out hover:scale-105"
+            class="font-mediumFont bg-brand-light text-black px-7 py-2 rounded-full sm:text-base text-sm transition-transform duration-300 ease-out hover:scale-105"
           >
             Search
           </button>
         </div>
+      </section>
+      <section class="p-20">
+        <div
+          id="search-results"
+          class="grid grid-cols-1 lg:grid-cols-3 gap-10"
+        ></div>
       </section>
     </main>
     <footer
@@ -202,12 +164,12 @@
     >
       <div class="flex justify-between justify-center">
         <img
-          src="../../assets/reuze-high-resolution-logo-transparent.png"
+          src="/assets/reuze-high-resolution-logo-transparent.png"
           alt="ReUze logo"
           class="md:w-44 lg:w-44 xl:w-44 2xl:w-44 w-32 h-auto"
         />
         <div
-          class="flex justify-between gap-3 md:gap-5 lg:gap-5 xl:gap-5 2xl:gap-5 items-center font-headerFooter font-light"
+          class="flex justify-between gap-3 md:gap-5 items-center font-headerFooter font-light"
         >
           <a href="/global/about.html" class="hover:font-medium">ABOUT</a>
           <a href="/global/terms.html" class="hover:font-medium"

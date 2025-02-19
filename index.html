@@ -134,15 +134,28 @@
       </nav>
     </header>
     <main>
-      <section class="bg-brand p-40 text-white">
+      <section class="bg-brand p-36 text-white">
         <div>
           <h1 class="font-largeFont text-4xl pb-10">LET THE REUSE BEGIN!</h1>
-          <p class="font-smallFont font-light">
+          <p class="font-smallFont font-light pb-10">
             Check out our categories or search to find what you need! Remember,
             the highest bid wins.
           </p>
         </div>
-        <div id="search-container"></div>
+        <div id="search-container" class="flex gap-3">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search listing titles..."
+            class="rounded-3xl p-1.5 w-[40%] ps-5 text-black"
+          />
+          <button
+            id="search-button"
+            class="font-mediumFont bg-brand-light text-black px-7 py-2 rounded-full sm:text-base text-sm transition-transform duration-300 ease-out hover:scale-105"
+          >
+            Search
+          </button>
+        </div>
       </section>
       <section>
         <h2 class="font-mediumFont text-3xl font-bold text-center pt-20">

@@ -19,6 +19,7 @@ export default defineConfig({
         profilePurchases: resolve(__dirname, 'profile/purchases/index.html'), // Profile purchases
         listingCreate: resolve(__dirname, 'listings/create/index.html'), // Create new listing
         listingView: resolve(__dirname, 'listings/view/index.html'), // View listing
+        listingsSearch: resolve(__dirname, 'listings/search/index.html'), //Search results
       },
     },
   },
