@@ -53,6 +53,7 @@ export default async function router(pathname = window.location.pathname) {
           'art',
           'decor',
           'vintage',
+          'other',
         ]
         if (validCategories.includes(category.toLowerCase())) {
           await import('./views/listingsPerCategory.mjs')

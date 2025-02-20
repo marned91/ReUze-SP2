@@ -1,53 +1,62 @@
-import { fetchListings } from '../../api/listings.mjs'
+import { fetchAllListingsByTag } from '../../api/listings.mjs'
 
-async function displayListings(listings) {
-  const listingsContainer = document.getElementById('listings')
-  listingsContainer.innerHTML = ''
-
-  if (!Array.isArray(listings) || listings.length === 0) {
-    console.log('Listings array is empty or not an array:', listings)
-    const noListingsMessage = document.createElement('p')
-    noListingsMessage.textContent = 'No listings available for this tag.'
-    listingsContainer.appendChild(noListingsMessage)
-  }
-
-  listings.forEach((listing) => {
-    const listingElement = document.createElement('div')
-    listingElement.classList.add('listing')
-
-    const listingTitle = document.createElement('h2')
-    listingTitle.textContent = listing.title
-
-    const listingDescription = document.createElement('p')
-    listingDescription.textContent =
-      listing.description || 'No description added'
-
-    const listingImage = document.createElement('img')
-    const imageSrc =
-      listing.media && listing.media[0]
-        ? listing.media[0].url
-        : '/assets/default-listing-image.png'
-    listingImage.src = imageSrc
-    listingImage.alt = listing.title
-
-    listingElement.appendChild(listingTitle)
-    listingElement.appendChild(listingDescription)
-    listingElement.appendChild(listingImage)
-
-    listingsContainer.appendChild(listingElement)
-  })
-}
-
-async function handleListingsPage() {
+async function displayListings() {
   const urlParams = new URLSearchParams(window.location.search)
   const tag = urlParams.get('tag')
 
-  if (tag) {
-    const listings = (await fetchListings(tag)) || []
-    displayListings(listings)
-  } else {
-    console.error('No tag found in URL')
+  const listingsContainer = document.getElementById('listings')
+  listingsContainer.innerHTML = ''
+
+  try {
+    const listings = await fetchAllListingsByTag(tag)
+
+    if (!listings || !listings.length) {
+      const noListingsMessage = document.createElement('p')
+      noListingsMessage.textContent =
+        'No available listings for this category, please check again later!'
+      listingsContainer.appendChild(noListingsMessage)
+      return
+    }
+
+    listings.forEach((listing) => {
+      const listingElement = document.createElement('div')
+      listingElement.classList.add('border', 'p-4', 'rounded-lg', 'shadow-lg')
+
+      const imageUrl =
+        listing.media && listing.media.length > 0
+          ? listing.media[0].url
+          : '/assets/default-listing-image.png'
+      const img = document.createElement('img')
+      img.src = imageUrl
+      img.alt = listing.title
+      img.classList.add('w-full', 'h-auto', 'object-cover')
+
+      const title = document.createElement('h2')
+      title.textContent = listing.title
+      title.classList.add('font-mediumFont', 'text-xl', 'font-medium', 'mt-2')
+
+      const description = document.createElement('p')
+      description.textContent = listing.description || 'No description added'
+      description.classList.add('font-smallFont', 'italic')
+
+      const bids = document.createElement('p')
+      bids.textContent = `Bids: ${listing._count.bids}`
+      bids.classList.add('text-sm', 'font-smallFont')
+
+      listingElement.appendChild(img)
+      listingElement.appendChild(title)
+      listingElement.appendChild(description)
+      listingElement.appendChild(bids)
+
+      listingsContainer.appendChild(listingElement)
+    })
+  } catch (error) {
+    console.error('Error fetching listings:', error)
+    const errorMessage = document.createElement('p')
+    errorMessage.textContent = 'Failed to load listings.'
+    errorMessage.classList.add('text-red-500')
+    listingsContainer.appendChild(errorMessage)
   }
 }
 
-handleListingsPage()
+displayListings()

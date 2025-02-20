@@ -102,21 +102,21 @@ export async function displayProfileListings(username) {
           endDate,
           bidCount,
         )
-        if (_count?.bids > 0) {
-          const lastBid = document.createElement('p')
-          const currentBidLabel = document.createElement('span')
-          currentBidLabel.textContent = 'Current Bid:'
-          currentBidLabel.classList.add('font-bold')
 
-          const currentBidValue = document.createElement('span')
-          currentBidValue.textContent = `$${bids[bids.length - 1].amount}`
-          currentBidValue.classList.add('font-normal')
+        const lastBid = document.createElement('p')
+        const currentBidLabel = document.createElement('span')
+        currentBidLabel.textContent = 'Current Bid:'
+        currentBidLabel.classList.add('font-bold')
 
-          lastBid.classList.add('text-sm', 'text-gray-600', 'mt-1')
-          lastBid.append(currentBidLabel, currentBidValue)
+        const currentBidValue = document.createElement('span')
+        currentBidValue.textContent =
+          _count?.bids > 0 ? `$${bids[bids.length - 1].amount}` : '$0'
+        currentBidValue.classList.add('font-normal')
 
-          listingCard.append(lastBid)
-        }
+        lastBid.classList.add('text-sm', 'text-gray-600', 'mt-1')
+        lastBid.append(currentBidLabel, currentBidValue)
+
+        listingCard.append(lastBid)
 
         listingsContainer.appendChild(listingCard)
       },

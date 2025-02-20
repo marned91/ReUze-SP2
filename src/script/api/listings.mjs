@@ -2,15 +2,28 @@ import { API_AUCTION } from './constants.mjs'
 import { doFetch } from './doFetch.mjs'
 
 //for fetching all listings
-export async function fetchListings(tag) {
-  try {
-    const response = await doFetch(`${API_AUCTION}/search?q=${tag}&_bids=true`)
-    const listings = Array.isArray(response) ? response : response?.data || []
-    return listings
-  } catch (error) {
-    console.error('Error fetching listings:', error)
-    return []
+export async function fetchAllListingsByTag(tag) {
+  let url = `${API_AUCTION}/?_bids=true`
+
+  if (tag) {
+    if (tag === 'other') {
+      const allListings = await doFetch(url)
+      const latestListings = allListings
+        .filter(
+          (listing) =>
+            listing.tags &&
+            listing.tags.length > 0 &&
+            !['art', 'fashion', 'sport', 'vintage', 'interior', 'decor'].some(
+              (excludedTag) => listing.tags.includes(excludedTag),
+            ),
+        )
+        .sort((a, b) => new Date(b.created) - new Date(a.created))
+      return latestListings.slice(0, 50)
+    } else url = `${API_AUCTION}/?_tag=${encodeURIComponent(tag)}&_bids=true`
   }
+  const listings = await doFetch(url)
+
+  return listings.sort((a, b) => new Date(b.created) - new Date(a.created))
 }
 
 //for fetching a single listing
