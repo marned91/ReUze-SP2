@@ -38,8 +38,9 @@ async function displaySearchListings(listings) {
     listingDiv.href = `/listings/view/index.html?id=${listing.id}`
     listingDiv.classList.add(
       'listing-item',
+      'border',
       'p-4',
-      'shadow-xl',
+      'shadow-2xl',
       'bg-white',
       'flex',
       'flex-col',
@@ -66,7 +67,8 @@ async function displaySearchListings(listings) {
 
     const listingDescription = document.createElement('p')
     const descriptionLabel = document.createElement('span')
-    descriptionLabel.textContent = listing.description.slice(0, 100) + '...'
+    descriptionLabel.textContent =
+      listing.description.slice(0, 100) + '...' || 'No description added.'
     descriptionLabel.classList.add('italic', 'text-sm', 'text-gray-600', 'mt-1')
 
     listingDescription.append(descriptionLabel)

@@ -4,6 +4,12 @@ async function displayListings() {
   const urlParams = new URLSearchParams(window.location.search)
   const tag = urlParams.get('tag')
 
+  const headlineElement = document.getElementById('listings-headline')
+  if (tag) {
+    const formattedTag = tag.charAt(0).toUpperCase() + tag.slice(1)
+    headlineElement.textContent = `${formattedTag}`
+  }
+
   const listingsContainer = document.getElementById('listings')
   listingsContainer.innerHTML = ''
 
@@ -19,8 +25,23 @@ async function displayListings() {
     }
 
     listings.forEach((listing) => {
-      const listingElement = document.createElement('div')
-      listingElement.classList.add('border', 'p-4', 'rounded-lg', 'shadow-lg')
+      const listingElement = document.createElement('a')
+      listingElement.href = `/listings/view/index.html?id=${listing.id}`
+      listingElement.classList.add(
+        'border',
+        'p-4',
+        'shadow-2xl',
+        'bg-white',
+        'flex',
+        'flex-col',
+        'justify-between',
+        'min-h-[300px]',
+        'cursor-pointer',
+        'transition',
+        'duration-300',
+        'ease-out',
+        'hover:scale-105',
+      )
 
       const imageUrl =
         listing.media && listing.media.length > 0
@@ -29,24 +50,44 @@ async function displayListings() {
       const img = document.createElement('img')
       img.src = imageUrl
       img.alt = listing.title
-      img.classList.add('w-full', 'h-auto', 'object-cover')
+      img.classList.add('w-full', 'h-48', 'object-cover')
 
       const title = document.createElement('h2')
       title.textContent = listing.title
       title.classList.add('font-mediumFont', 'text-xl', 'font-medium', 'mt-2')
 
       const description = document.createElement('p')
-      description.textContent = listing.description || 'No description added'
-      description.classList.add('font-smallFont', 'italic')
+      description.textContent =
+        listing.description.slice(0, 100) + '...' || 'No description added.'
+      description.classList.add(
+        'font-smallFont',
+        'italic',
+        'text-sm',
+        'text-gray-600',
+        'mt-2',
+      )
 
-      const bids = document.createElement('p')
-      bids.textContent = `Bids: ${listing._count.bids}`
-      bids.classList.add('text-sm', 'font-smallFont')
+      const highestBid = listing.bids.length
+        ? Math.max(...listing.bids.map((bid) => bid.amount))
+        : 0
+      const highestBidElement = document.createElement('p')
+      highestBidElement.textContent = `Current Bid: $${highestBid}`
+      highestBidElement.classList.add('text-sm', 'font-bold', 'mt-1')
+
+      const deadline = new Date(listing.endsAt).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+      const deadlineElement = document.createElement('p')
+      deadlineElement.textContent = `Deadline: ${deadline}`
+      deadlineElement.classList.add('text-sm', 'mt-2')
 
       listingElement.appendChild(img)
       listingElement.appendChild(title)
       listingElement.appendChild(description)
-      listingElement.appendChild(bids)
+      listingElement.appendChild(deadlineElement)
+      listingElement.appendChild(highestBidElement)
 
       listingsContainer.appendChild(listingElement)
     })

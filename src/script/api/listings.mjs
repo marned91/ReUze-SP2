@@ -48,8 +48,6 @@ export async function createListing(listingData) {
       method: 'POST',
       body: JSON.stringify(listingData),
     })
-
-    console.log('Created Listing Response:', response)
     return response
   } catch (error) {
     console.error('Error creating listing:', error)

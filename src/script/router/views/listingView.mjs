@@ -35,6 +35,10 @@ async function displaySingleListing() {
   deadline.textContent = `Deadline: ${new Date(listing.endsAt).toLocaleString()}`
   deadline.classList.add('font-smallFont', 'font-bold', 'text-sm', 'mt-20')
 
+  const bidCount = document.createElement('p')
+  bidCount.textContent = `Bids: ${listing._count.bids}`
+  bidCount.classList.add('text-sm', 'font-smallFont')
+
   const bidInfo = document.createElement('p')
   bidInfo.classList.add('font-smallFont', 'font-semibold', 'mt-2')
   if (listing._count?.bids > 0) {
@@ -44,7 +48,7 @@ async function displaySingleListing() {
   }
 
   // Append all elements
-  singleListingInfo.append(title, description, deadline, bidInfo)
+  singleListingInfo.append(title, description, deadline, bidCount, bidInfo)
 }
 
 displaySingleListing()
