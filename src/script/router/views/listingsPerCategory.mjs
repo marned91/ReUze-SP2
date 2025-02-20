@@ -1,6 +1,7 @@
 import { fetchAllListingsByTag } from '../../api/listings.mjs'
+import { setupStatusFilter } from '../../utils/filterActiveExpired.mjs'
 
-async function displayListings() {
+async function displayListings(statusFilter = 'all') {
   const urlParams = new URLSearchParams(window.location.search)
   const tag = urlParams.get('tag')
 
@@ -24,7 +25,9 @@ async function displayListings() {
       return
     }
 
-    listings.forEach((listing) => {
+    const filteredListings = filterListingsByStatus(listings, statusFilter)
+
+    filteredListings.forEach((listing) => {
       const listingElement = document.createElement('a')
       listingElement.href = `/listings/view/index.html?id=${listing.id}`
       listingElement.classList.add(
@@ -83,11 +86,46 @@ async function displayListings() {
       deadlineElement.textContent = `Deadline: ${deadline}`
       deadlineElement.classList.add('text-sm', 'mt-2')
 
+      const tagsDiv = document.createElement('div')
+      tagsDiv.classList.add('flex', 'flex-wrap', 'gap-1', 'mt-5', 'space-x-2')
+
+      if (listing.tags && listing.tags.length > 0) {
+        listing.tags.forEach((tag) => {
+          const tagElement = document.createElement('span')
+          tagElement.textContent = tag
+          tagElement.classList.add(
+            'rounded-full',
+            'bg-brand-dark',
+            'text-white',
+            'text-xs',
+            'px-3',
+            'py-1.5',
+          )
+          tagsDiv.appendChild(tagElement)
+        })
+      }
+
+      const currentDate = new Date()
+      const endAtDate = new Date(listing.endsAt)
+      const status = endAtDate > currentDate ? 'active' : 'expired'
+      const statusElement = document.createElement('span')
+      statusElement.textContent = status
+      statusElement.classList.add(
+        'rounded-full',
+        'text-white',
+        'text-xs',
+        'px-3',
+        'py-1.5',
+        status === 'active' ? 'bg-accent-dark' : 'bg-accent-light',
+      )
+      tagsDiv.appendChild(statusElement)
+
       listingElement.appendChild(img)
       listingElement.appendChild(title)
       listingElement.appendChild(description)
       listingElement.appendChild(deadlineElement)
       listingElement.appendChild(highestBidElement)
+      listingElement.appendChild(tagsDiv)
 
       listingsContainer.appendChild(listingElement)
     })
@@ -99,5 +137,19 @@ async function displayListings() {
     listingsContainer.appendChild(errorMessage)
   }
 }
+
+function filterListingsByStatus(listings, statusFilter) {
+  const currentDate = new Date()
+
+  return listings.filter((listing) => {
+    const endAtDate = new Date(listing.endsAt)
+    const status = endAtDate > currentDate ? 'active' : 'expired'
+
+    if (statusFilter === 'all') return true
+    return statusFilter === status
+  })
+}
+
+setupStatusFilter(displayListings)
 
 displayListings()

@@ -133,12 +133,24 @@
         </div>
       </nav>
     </header>
-    <main class="p-20 bg-brand-light">
-      <div
-        id="listings-headline"
-        class="font-largeFont text-4xl mb-16 ml-2"
-      ></div>
-      <div id="listings-filter"></div>
+    <main class="py-20 px-28 bg-brand-light">
+      <div class="flex justify-between">
+        <div
+          id="listings-headline"
+          class="font-largeFont text-4xl mb-16 ml-2"
+        ></div>
+        <div id="listings-filter">
+          <label for="status-filter" class="sr-only">Filter Listings</label>
+          <select
+            id="status-filter"
+            class="rounded-2xl border border-gray-400 py-2 px-5"
+          >
+            <option value="all">All Listings</option>
+            <option value="active">Active</option>
+            <option value="expired">Expired</option>
+          </select>
+        </div>
+      </div>
       <div
         id="listings"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"

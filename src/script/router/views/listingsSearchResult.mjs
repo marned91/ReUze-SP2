@@ -109,7 +109,7 @@ async function displaySearchListings(listings) {
     }
 
     const tagsDiv = document.createElement('div')
-    tagsDiv.classList.add('flex', 'flex-wrap', 'gap-2', 'mt-5', 'space-x-2')
+    tagsDiv.classList.add('flex', 'flex-wrap', 'gap-1', 'mt-5', 'space-x-2')
 
     if (listing.tags && listing.tags.length > 0) {
       listing.tags.forEach((tag) => {
