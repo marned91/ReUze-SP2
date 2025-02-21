@@ -129,23 +129,23 @@
         </div>
       </nav>
     </header>
-    <main class="bg-brand p-20 md:p-26 lg:p-28">
+    <main class="bg-brand p-10 md:p-20 lg:p-28">
       <div
         id="single-listing-container"
-        class="flex flex-col lg:flex-row bg-white p-10 rounded-3xl gap-10 lg:gap-20 m-auto"
+        class="flex flex-col justify-center bg-white py-16 rounded-3xl gap-10 m-auto w-[80%]"
       >
         <div
           id="single-listing-image"
-          class="w-full lg:w-[45%] flex-shrink-0 max-h-[700px] overflow-hidden"
+          class="items-center px-10 md:px-20"
         ></div>
         <div class="w-full">
-          <div id="single-listing-info" class="w-full"></div>
+          <div id="single-listing-info" class="px-10 md:px-20"></div>
           <div class="text-sm w-full mt-10">
-            <form id="bid-form" class="w-full flex items-center gap-3">
+            <form id="bid-form" class="flex items-center gap-3 px-10 md:px-20">
               <select
                 id="bid-amount"
                 name="bid-amount"
-                class="rounded-2xl border border-gray-400 px-2 py-3 w-full text-black font-smallFont text-sm"
+                class="rounded-3xl border border-gray-400 px-2 py-3 w-auto sm:w-full text-black font-smallFont text-sm"
                 required
               >
                 <option value="" disabled selected>Select bid amount</option>
@@ -173,7 +173,7 @@
               <button
                 id="bid-button"
                 type="submit"
-                class="font-mediumFont bg-brand-dark w-[30%] px-2 py-3 rounded-2xl text-sm text-white font-medium duration-300 ease-out hover:scale-105"
+                class="font-mediumFont bg-brand-dark w-[30%] px-2 py-3 rounded-3xl text-sm text-white font-medium duration-300 ease-out hover:scale-105"
               >
                 BID NOW!
               </button>

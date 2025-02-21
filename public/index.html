@@ -134,33 +134,35 @@
       </nav>
     </header>
     <main>
-      <section
-        class="flex flex-col lg:flex-row justify-between gap-10 bg-brand items-center p-10 md:p-20"
-      >
-        <div class="text-white px-5 max-w-[80%] lg:w-[50%] items-center">
-          <h1 class="font-largeFont text-4xl">
-            WELCOME TO THE JOURNEY OF REUSE!
-          </h1>
-          <p class="font-smallFont font-light pt-5 pb-10">
-            The auction site where unique finds get a second life! Browse
-            listings freely, and log in to place your bids.
-          </p>
-          <a
-            href="/public/categories/"
-            class="font-mediumFont font-semibold text-lg bg-brand-light rounded-full py-3 px-10 text-black transition-transform duration-300 ease-out hover:scale-105 inline-block"
-            >View Listings</a
-          >
-        </div>
-        <div>
-          <img
-            src="/assets/public-home.png"
-            alt="orange lounge chair with a beige blanket on the side in a light modern living room"
-            class="w-full h-auto"
-          />
+      <section class="bg-brand">
+        <div
+          class="flex flex-col lg:flex-row justify-between gap-10 items-center p-10 md:p-20 lg:p-30 w-[90%] 2xl:w-[80%] m-auto"
+        >
+          <div class="text-white px-5 items-center">
+            <h1 class="font-largeFont text-4xl">
+              WELCOME TO THE JOURNEY OF REUSE!
+            </h1>
+            <p class="font-smallFont font-light pt-5 pb-10">
+              The auction site where unique finds get a second life! Browse
+              listings freely, and log in to place your bids.
+            </p>
+            <a
+              href="/public/categories/"
+              class="font-mediumFont font-semibold text-lg bg-brand-light rounded-3xl py-3 px-10 text-black transition-transform duration-300 ease-out hover:scale-105 inline-block"
+              >View Listings</a
+            >
+          </div>
+          <div>
+            <img
+              src="/assets/public-home.png"
+              alt="orange lounge chair with a beige blanket on the side in a light modern living room"
+              class="w-full h-auto"
+            />
+          </div>
         </div>
       </section>
       <section
-        class="py-20 px-32 flex flex-col md:flex-row justify-between justify-center text-center gap-20 md:gap-5"
+        class="py-20 px-32 flex flex-col md:flex-row justify-between justify-center text-center gap-20 md:gap-5 m-auto w-full lg:w-[85%]"
       >
         <div>
           <i class="fa-brands fa-pagelines text-brand-dark text-9xl"></i>
@@ -175,25 +177,27 @@
           <p class="pt-5">For your economy</p>
         </div>
       </section>
-      <section class="bg-brand-light p-20 md:p-32">
-        <h2 class="font-mediumFont text-3xl">Search Listings</h2>
-        <p class="font-smallFont pt-5 pb-10 w-[50%]">
-          Search our listings to see if you find anything you like! Psst! You
-          need to be logged in to make a bid.
-        </p>
-        <div id="search-container" class="flex gap-3">
-          <input
-            type="text"
-            id="search-input"
-            placeholder="Search listing titles..."
-            class="rounded-2xl border border-gray-400 p-1.5 w-[40%] ps-5 text-black font-smallFont"
-          />
-          <button
-            id="search-button"
-            class="font-mediumFont bg-accent-dark text-white px-7 py-2 rounded-full font-medium sm:text-base text-sm transition-transform duration-300 ease-out hover:scale-105"
-          >
-            Search
-          </button>
+      <section class="bg-brand-light px-10 py-40 lg:px-30">
+        <div class="m-auto w-full lg:w-[80%]">
+          <h2 class="font-mediumFont text-3xl">Search Listings</h2>
+          <p class="font-smallFont pt-5 pb-10 w.fill xl:w-[50%]">
+            Search our listings to see if you find anything you like! Psst! You
+            need to be logged in to make a bid.
+          </p>
+          <div id="search-container" class="flex gap-3">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search listing titles..."
+              class="rounded-3xl border border-gray-400 p-1.5 w-[40%] ps-5 text-black font-smallFont"
+            />
+            <button
+              id="search-button"
+              class="font-mediumFont bg-accent-dark text-white px-7 py-2 rounded-3xl font-medium sm:text-base text-sm transition-transform duration-300 ease-out hover:scale-105"
+            >
+              Search
+            </button>
+          </div>
         </div>
       </section>
     </main>

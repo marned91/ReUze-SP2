@@ -131,21 +131,21 @@
     </header>
     <main class="bg-brand">
       <section
-        class="flex flex-col-reverse lg:flex-row p-10 md:p-20 lg:p-30 justify-center"
+        class="flex flex-col-reverse p-10 md:p-20 lg:p-30 justify-center m-auto w-full lg:w-[70%] xl:w-[50%] 2xl:w-[40%]"
       >
         <div class="flex-1">
           <img
             src="/assets/register.png"
             alt="young woman in an urban designed apartment sitting on a couch with a laptop"
-            class="w-full h-full"
+            class="w-full h-auto"
           />
         </div>
         <div class="flex-1 flex flex-col pb-10 justify-center bg-white">
-          <h1 class="font-largeFont text-4xl text-center mt-10">JOIN US!</h1>
+          <h1 class="font-largeFont text-4xl text-center py-10">JOIN US!</h1>
           <form
             name="register"
             id="register-form"
-            class="space-y-6 w-[70%] m-auto"
+            class="space-y-10 w-[70%] m-auto"
           >
             <fieldset>
               <div>
@@ -160,11 +160,11 @@
                   maxlength="20"
                   pattern="^[\w]+$"
                   title="Please enter a username using only letters and numbers"
-                  class="w-full rounded-2xl border border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent mt-3"
+                  class="w-full border-b-[1px] border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent"
                 />
               </div>
               <div>
-                <label for="email" class="block text-black mt-2 text-sm"
+                <label for="email" class="block text-black text-sm mt-5"
                   >Email</label
                 >
                 <input
@@ -174,11 +174,11 @@
                   required
                   pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
                   title="Please enter a valid noroff.no or stud.noroff.no address"
-                  class="w-full rounded-2xl border border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent mt-3"
+                  class="w-full border-b-[1px] border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent"
                 />
               </div>
               <div>
-                <label for="password" class="block text-black mt-2 text-sm"
+                <label for="password" class="block text-black text-sm mt-5"
                   >Password</label
                 >
                 <input
@@ -187,11 +187,11 @@
                   id="password"
                   required
                   minlength="8"
-                  class="w-full rounded-2xl border border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent mt-3"
+                  class="w-full border-b-[1px] border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent"
                 />
               </div>
               <div>
-                <label for="avatarUrl" class="block text-black mt-2 text-sm"
+                <label for="avatarUrl" class="block text-black mt-5 text-sm"
                   >Avatar URL</label
                 >
                 <input
@@ -199,12 +199,11 @@
                   type="url"
                   name="avatarUrl"
                   required
-                  placeholder="Enter avatar image URL"
-                  class="w-full rounded-2xl border border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent mt-3"
+                  class="w-full border-b-[1px] border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent"
                 />
               </div>
               <div>
-                <label for="avatarAlt" class="block text-black mt-2 text-sm"
+                <label for="avatarAlt" class="block text-black mt-5 text-sm"
                   >Avatar Alt Text</label
                 >
                 <input
@@ -214,12 +213,12 @@
                   required
                   maxlength="50"
                   placeholder="Describe avatar image. Max 50 characters"
-                  class="w-full rounded-2xl border border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent mt-3"
+                  class="w-full border-b-[1px] border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent"
                 />
               </div>
               <button
                 type="submit"
-                class="font-mediumFont py-3 bg-brand-dark text-white rounded-full w-full transition duration-300 ease-out hover:scale-105 mt-10"
+                class="font-mediumFont py-3 bg-brand-dark text-white rounded-3xl w-full transition duration-300 ease-out hover:scale-105 hover:font-bold mt-10"
               >
                 Create Account
               </button>
