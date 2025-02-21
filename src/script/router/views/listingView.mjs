@@ -49,6 +49,17 @@ async function displaySingleListing() {
 
   // Append all elements
   singleListingInfo.append(title, description, deadline, bidCount, bidInfo)
+
+  const biddingOption = document.getElementById('bid-form')
+  const token = localStorage.getItem('token')
+  const endsAt = new Date(listing.endsAt)
+  const currentDate = new Date()
+
+  if (token && endsAt > currentDate) {
+    biddingOption.classList.remove('hidden')
+  } else {
+    biddingOption.classList.add('hidden')
+  }
 }
 
 displaySingleListing()
