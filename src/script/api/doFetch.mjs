@@ -11,6 +11,11 @@ export async function doFetch(url, options = {}) {
       ...options.headers,
     }
     const response = await fetch(url, { ...options, headers })
+
+    if (response.status === 204) {
+      return null // Return null when there's no content
+    }
+
     if (response.ok) {
       const { data } = await response.json()
       console.log('API Response:', data)

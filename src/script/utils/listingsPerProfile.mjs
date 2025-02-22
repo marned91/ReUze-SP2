@@ -1,4 +1,5 @@
 import { fetchProfileListings } from '../api/profile.mjs'
+import { deleteListing } from '../api/listings.mjs'
 
 export async function displayProfileListings(username) {
   const listingsContainer = document.getElementById('profile-listings')
@@ -19,6 +20,7 @@ export async function displayProfileListings(username) {
     'shadow-2xl',
     'bg-white',
     'rounded-lg',
+    'h-full',
   )
 
   const plusListingSign = document.createElement('div')
@@ -32,15 +34,27 @@ export async function displayProfileListings(username) {
   createListingCard.append(plusListingSign, createListingText)
   listingsContainer.appendChild(createListingCard)
 
-  // Fetch listings using the new function
   const listings = await fetchProfileListings(username)
   console.log('Fetched Listings:', listings)
 
   if (!listings || listings.length === 0) {
-    const noListingsMessage = document.createElement('p')
-    noListingsMessage.textContent = 'No listings available.'
-    noListingsMessage.classList.add('text-gray-500', 'mt-4')
-    listingsContainer.appendChild(noListingsMessage)
+    listingsContainer.classList.add('grid-cols-2', 'w-[40%]')
+    const createNoListingCard = document.createElement('div')
+    createNoListingCard.textContent = 'You have not created any listings yet'
+    createNoListingCard.classList.add(
+      'p-6',
+      'flex',
+      'flex-col',
+      'items-center',
+      'justify-center',
+      'shadow-2xl',
+      'bg-white',
+      'rounded-lg',
+      'text-center',
+      'py-20',
+      'italic',
+    )
+    listingsContainer.appendChild(createNoListingCard)
     return
   }
 
@@ -48,12 +62,23 @@ export async function displayProfileListings(username) {
     ({ id, title, description, media, endsAt, _count, bids }) => {
       const listingCard = document.createElement('div')
       listingCard.href = `/listings/${id}`
-      listingCard.classList.add('p-4', 'shadow-md', 'rounded-lg', 'bg-white')
+      listingCard.classList.add(
+        'p-4',
+        'shadow-md',
+        'rounded-lg',
+        'bg-white',
+        'flex',
+        'flex-col',
+        'h-full',
+      )
 
       const img = document.createElement('img')
       img.src = media?.[0]?.url || '/assets/default-image.jpg'
       img.alt = media?.[0]?.alt || 'Listing image'
       img.classList.add('w-full', 'h-48', 'object-cover', 'rounded-t-lg')
+
+      const contentWrapper = document.createElement('div')
+      contentWrapper.classList.add('flex', 'flex-col', 'h-full')
 
       const titleElement = document.createElement('h3')
       titleElement.textContent = title
@@ -92,14 +117,6 @@ export async function displayProfileListings(username) {
       bidCount.classList.add('text-sm', 'text-gray-600', 'mt-1')
       bidCount.append(bidsLabel, bidCountValue)
 
-      listingCard.append(
-        img,
-        titleElement,
-        descriptionElement,
-        endDate,
-        bidCount,
-      )
-
       const lastBid = document.createElement('p')
       const currentBidLabel = document.createElement('span')
       currentBidLabel.textContent = 'Current Bid:'
@@ -113,8 +130,33 @@ export async function displayProfileListings(username) {
       lastBid.classList.add('text-sm', 'text-gray-600', 'mt-1')
       lastBid.append(currentBidLabel, currentBidValue)
 
-      listingCard.append(lastBid)
+      const deleteListingIcon = document.createElement('i')
+      deleteListingIcon.classList.add(
+        'fa-solid',
+        'fa-trash',
+        'text-brand-dark',
+        'cursor-pointer',
+        'hover:text-red-700',
+        'text-lg',
+      )
+      deleteListingIcon.id = 'delete-listing-icon'
 
+      deleteListingIcon.addEventListener('click', () => {
+        deleteListing(id)
+      })
+
+      const deleteWrapper = document.createElement('div')
+      deleteWrapper.classList.add('flex', 'justify-end', 'mt-auto')
+      deleteWrapper.appendChild(deleteListingIcon)
+
+      contentWrapper.append(
+        titleElement,
+        descriptionElement,
+        endDate,
+        bidCount,
+        lastBid,
+      )
+      listingCard.append(img, contentWrapper, deleteWrapper)
       listingsContainer.appendChild(listingCard)
     },
   )

@@ -88,3 +88,24 @@ export async function fetchListingsBySearch(query) {
     return []
   }
 }
+
+//Delete listing
+export async function deleteListing(id) {
+  const confirmDelete = confirm('Are you sure you want to delete this listing?')
+  if (!confirmDelete) return
+
+  const DELETE_LISTING_API = `${API_AUCTION}/${id}`
+
+  try {
+    const response = await doFetch(DELETE_LISTING_API, { method: 'DELETE' })
+    if (response === null) {
+      alert('Listing deleted successfully!')
+      window.location.reload()
+    } else {
+      console.error('Failed to delete the listing:', response)
+      throw new Error('Failed to delete the listing')
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
