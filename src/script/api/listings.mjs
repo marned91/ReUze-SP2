@@ -48,6 +48,12 @@ export async function createListing(listingData) {
       method: 'POST',
       body: JSON.stringify(listingData),
     })
+
+    if (response === null) {
+      throw new Error('No content received from the server')
+    }
+
+    console.log('API Response:', response)
     return response
   } catch (error) {
     console.error('Error creating listing:', error)
