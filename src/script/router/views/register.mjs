@@ -24,6 +24,7 @@ async function onRegister(event) {
   const name = formData.get('name')
   const email = formData.get('email')
   const password = formData.get('password')
+  const bio = formData.get('bio-register')
   const avatarUrl = formData.get('avatarUrl')
   const avatarAlt = formData.get('avatarAlt')
 
@@ -36,7 +37,7 @@ async function onRegister(event) {
   button.textContent = 'Registering...'
 
   try {
-    const data = await register({ name, email, password, avatar })
+    const data = await register({ name, email, password, bio, avatar })
     alert('Registration was successful! You can now log in.', 'success')
     form.reset()
     setTimeout(() => (window.location.pathname = '/auth/login/'), 2000)

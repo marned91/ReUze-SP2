@@ -1,10 +1,9 @@
 import { authGuard } from '../../utils/authGuard.mjs'
-import { API_AUCTION_PROFILE } from '../../api/constants.mjs'
-import { doFetch } from '../../api/doFetch.mjs'
+import { fetchProfileData, updateProfileData } from '../../api/profile.mjs'
 
 authGuard()
 
-async function updateProfile() {
+async function handleProfileUpdate() {
   const userInfo = JSON.parse(localStorage.getItem('user'))
   const username = userInfo?.name
 
@@ -13,11 +12,11 @@ async function updateProfile() {
   const imageUrlField = document.getElementById('image-url')
 
   try {
-    const profile = await doFetch(`${API_AUCTION_PROFILE}/${username}`)
+    const profile = await fetchProfileData(username)
 
-    bioField.value = profile.bio || 'No BIO added yet'
+    bioField.value = profile?.bio || 'No BIO added yet'
 
-    if (profile.avatar?.url) {
+    if (profile?.avatar?.url) {
       const profileImage = document.createElement('img')
       profileImage.src = profile.avatar.url
       profileImage.alt = profile.avatar.alt || 'Profile Image'
@@ -40,13 +39,7 @@ async function updateProfile() {
       }
 
       try {
-        const updatedProfile = await doFetch(
-          `${API_AUCTION_PROFILE}/${username}`,
-          {
-            method: 'PUT',
-            body: JSON.stringify(updatedData),
-          },
-        )
+        await updateProfileData(username, updatedData) // Corrected function call
         alert('Profile updated successfully!')
         setTimeout(() => (window.location.pathname = '/profile/'), 2000)
       } catch (updateError) {
@@ -59,4 +52,12 @@ async function updateProfile() {
   }
 }
 
-updateProfile()
+const bioInput = document.getElementById('bio')
+const charCount = document.getElementById('char-count')
+
+bioInput.addEventListener('input', () => {
+  const length = bioInput.value.length
+  charCount.textContent = `${length} / 160`
+})
+
+handleProfileUpdate() // Use the renamed function

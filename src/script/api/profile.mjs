@@ -24,3 +24,16 @@ export async function fetchProfileListings(username) {
     return []
   }
 }
+
+//Edit profile
+export async function updateProfileData(username, updatedData) {
+  try {
+    return await doFetch(`${API_AUCTION_PROFILE}/${username}`, {
+      method: 'PUT',
+      body: JSON.stringify(updatedData),
+    })
+  } catch (error) {
+    console.error('Error updating profile:', error)
+    throw error
+  }
+}
