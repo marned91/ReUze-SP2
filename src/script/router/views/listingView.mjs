@@ -1,8 +1,31 @@
 import { fetchSingleListing } from '../../api/listings.mjs'
+import { handleBid } from '../../utils/handleBid.mjs'
+
+const bidButton = document.getElementById('bid-button')
+
+const urlParams = new URLSearchParams(window.location.search)
+const listingId = urlParams.get('id')
+
+bidButton.addEventListener('click', async (event) => {
+  event.preventDefault()
+
+  const bidAmount = document.getElementById('bid-amount').value
+
+  try {
+    const result = await handleBid(listingId, bidAmount)
+    console.log('Bid placed successfully:', result)
+  } catch (error) {
+    console.error('Error placing bid:', error)
+    alert('Failed to place bid. Please try again.')
+  }
+})
 
 async function displaySingleListing() {
   const listing = await fetchSingleListing()
   console.log('Fetched listing:', listing)
+
+  const urlParams = new URLSearchParams(window.location.search)
+  const listingId = urlParams.get('id')
 
   if (!listing) {
     console.error('Listing not found.')
