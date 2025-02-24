@@ -37,27 +37,6 @@ export async function displayProfileListings(username) {
   const listings = await fetchProfileListings(username)
   console.log('Fetched Listings:', listings)
 
-  if (!listings || listings.length === 0) {
-    listingsContainer.classList.add('grid-cols-2', 'w-[40%]')
-    const createNoListingCard = document.createElement('div')
-    createNoListingCard.textContent = 'You have not created any listings yet'
-    createNoListingCard.classList.add(
-      'p-6',
-      'flex',
-      'flex-col',
-      'items-center',
-      'justify-center',
-      'shadow-2xl',
-      'bg-white',
-      'rounded-lg',
-      'text-center',
-      'py-20',
-      'italic',
-    )
-    listingsContainer.appendChild(createNoListingCard)
-    return
-  }
-
   listings.forEach(
     ({ id, title, description, media, endsAt, _count, bids }) => {
       const listingCard = document.createElement('div')

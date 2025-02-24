@@ -31,19 +31,19 @@ async function displayProfile() {
   const img = document.createElement('img')
   img.src = avatar?.url || '/assets/default-profile-image.jpg'
   img.alt = avatar?.alt || 'Default ReUze avatar image'
-  img.classList.add('w-full', 'max-h-[700px]', 'object-cover')
+  img.classList.add('w-full', 'max-h-[500px]', 'object-cover')
   profileImage.appendChild(img)
 
   // Profile name (H1)
   const profileName = document.createElement('h1')
   profileName.id = 'profile-name'
-  profileName.classList.add('font-largeFont', 'text-4xl', 'pl-1')
+  profileName.classList.add('font-largeFont', 'text-4xl')
   profileName.textContent = name
   profileInfo.appendChild(profileName)
 
   // Buttons (Edit Profile & Purchase History)
   const linksContainer = document.createElement('div')
-  linksContainer.classList.add('flex', 'gap-4', 'pt-5')
+  linksContainer.classList.add('flex', 'gap-4', 'pt-5', 'w-full')
 
   const editProfileLink = document.createElement('a')
   editProfileLink.href = '/profile/update/'
@@ -85,7 +85,7 @@ async function displayProfile() {
 
   // Profile BIO
   const bioContainer = document.createElement('div')
-  bioContainer.classList.add('mt-4', 'pt-5', 'pl-1')
+  bioContainer.classList.add('mt-2', 'lg:mt-4', 'pt-3')
 
   const bioLabel = document.createElement('p')
   bioLabel.textContent = 'BIO:'
@@ -94,7 +94,6 @@ async function displayProfile() {
     'font-bold',
     'text-lg',
     'text-brand-dark',
-    'w-[50%]',
   )
 
   const bioText = document.createElement('p')
@@ -107,7 +106,7 @@ async function displayProfile() {
 
   // Profile credit
   const creditContainer = document.createElement('div')
-  creditContainer.classList.add('mt-4', 'pl-1')
+  creditContainer.classList.add('mt-4')
 
   const creditLabel = document.createElement('p')
   creditLabel.textContent = 'CREDIT:'
@@ -128,7 +127,7 @@ async function displayProfile() {
 
   // Profile listings count
   const listingsContainer = document.createElement('div')
-  listingsContainer.classList.add('mt-4', 'pl-1')
+  listingsContainer.classList.add('mt-4')
 
   const listingsLabel = document.createElement('p')
   listingsLabel.textContent = 'LISTINGS:'

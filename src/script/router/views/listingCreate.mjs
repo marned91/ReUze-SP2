@@ -37,3 +37,11 @@ form.addEventListener('submit', async (event) => {
     alert('Failed to create listing. Please try again.')
   }
 })
+
+const descriptionInput = document.getElementById('description')
+const charCount = document.getElementById('char-count')
+
+descriptionInput.addEventListener('input', () => {
+  const length = descriptionInput.value.length
+  charCount.textContent = `${length} / 280`
+})

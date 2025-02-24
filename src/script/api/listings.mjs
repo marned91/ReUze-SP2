@@ -2,12 +2,13 @@ import { API_AUCTION } from './constants.mjs'
 import { doFetch } from './doFetch.mjs'
 
 //for fetching all listings
-export async function fetchAllListingsByTag(tag) {
-  let url = `${API_AUCTION}/?_bids=true`
+export async function fetchAllListingsByTag(tag, page = 1, limit = 50) {
+  let url = `${API_AUCTION}/?_bids=true&limit=${limit}&page=${page}&sort=created&sortOrder=desc`
 
   if (tag) {
     if (tag === 'other') {
       const allListings = await doFetch(url)
+      console.log('All Listings:', allListings)
       const latestListings = allListings
         .filter(
           (listing) =>
@@ -19,7 +20,8 @@ export async function fetchAllListingsByTag(tag) {
         )
         .sort((a, b) => new Date(b.created) - new Date(a.created))
       return latestListings.slice(0, 50)
-    } else url = `${API_AUCTION}/?_tag=${encodeURIComponent(tag)}&_bids=true`
+    } else
+      url = `${API_AUCTION}/?_tag=${encodeURIComponent(tag)}&_bids=true&limit=${limit}&page=${page}&sort=created&sortOrder=desc`
   }
   const listings = await doFetch(url)
 

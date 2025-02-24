@@ -160,10 +160,15 @@
               <textarea
                 id="description"
                 name="description"
+                maxlength="280"
                 required
                 rows="6"
+                placeholder="Max 280 characters."
                 class="w-full font-smallFont px-4 py-2 border border-black rounded-xl focus:ring-1 focus:ring-brand-dark focus:outline-none"
               ></textarea>
+              <p id="char-count" class="text-sm font-smallFont text-gray-500">
+                0 / 280
+              </p>
             </div>
             <div>
               <label
