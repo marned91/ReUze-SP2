@@ -1,7 +1,7 @@
 import { placeBid } from '../api/bid.mjs'
 import { fetchSingleListing } from '../api/listings.mjs'
 
-export async function handleBid(listingId, bidAmount) {
+export async function handleBid(listingId, bidAmount, displaySingleListing) {
   const token = localStorage.getItem('token')
 
   if (!token) {
@@ -27,7 +27,7 @@ export async function handleBid(listingId, bidAmount) {
       alert(
         `Your bid of $${numericBidAmount} has been placed! The new current bid is $${newBid}.`,
       )
-      updateBidUI(newBid)
+      displaySingleListing() // Refresh the listing to show the updated bid
     }
   } catch (error) {
     console.error('Error placing bid:', error)
