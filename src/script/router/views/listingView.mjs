@@ -5,9 +5,6 @@ async function displaySingleListing() {
   const listing = await fetchSingleListing()
   console.log('Fetched listing:', listing)
 
-  const urlParams = new URLSearchParams(window.location.search)
-  const listingId = urlParams.get('id')
-
   if (!listing) {
     console.error('Listing not found.')
     return
@@ -26,14 +23,59 @@ async function displaySingleListing() {
   img.classList.add('w-full', 'max-h-[400px]', 'object-cover', 'rounded-3xl')
   singleListingImage.appendChild(img)
 
-  // Create info elements
+  // Create title container
+  const titleContainer = document.createElement('div')
+  titleContainer.classList.add('flex', 'items-center', 'gap-4', 'flex-wrap')
+
+  // Create title element
   const title = document.createElement('h1')
   title.textContent = listing.title || 'No title available'
   title.classList.add('font-largeFont', 'text-4xl')
 
+  // Create tags container
+  const tagsDiv = document.createElement('div')
+  tagsDiv.classList.add('flex', 'flex-wrap', 'gap-1')
+
+  // Add status tag
+  const currentDateTag = new Date()
+  const endAtDate = new Date(listing.endsAt)
+  const status = endAtDate > currentDateTag ? 'active' : 'expired'
+
+  const statusElement = document.createElement('span')
+  statusElement.textContent = status
+  statusElement.classList.add(
+    'rounded-full',
+    'text-white',
+    'text-xs',
+    'px-3',
+    'py-1.5',
+    status === 'active' ? 'bg-accent-dark' : 'bg-accent-light',
+  )
+  tagsDiv.appendChild(statusElement)
+
+  // Add listing tags
+  if (listing.tags && listing.tags.length > 0) {
+    listing.tags.forEach((tag) => {
+      const tagElement = document.createElement('span')
+      tagElement.textContent = tag
+      tagElement.classList.add(
+        'rounded-full',
+        'bg-brand-dark',
+        'text-white',
+        'text-xs',
+        'px-3',
+        'py-1.5',
+      )
+      tagsDiv.appendChild(tagElement)
+    })
+  }
+
+  // Append title and tags together
+  titleContainer.append(title, tagsDiv)
+
   const description = document.createElement('p')
   description.textContent = listing.description || 'No description added.'
-  description.classList.add('font-smallFont', 'italic', 'mt-5')
+  description.classList.add('font-smallFont', 'italic', 'mt-7')
 
   const deadline = document.createElement('p')
   deadline.textContent = `Deadline: ${new Date(listing.endsAt).toLocaleString()}`
@@ -52,7 +94,13 @@ async function displaySingleListing() {
   }
 
   // Append all elements
-  singleListingInfo.append(title, description, deadline, bidCount, bidInfo)
+  singleListingInfo.append(
+    titleContainer,
+    description,
+    deadline,
+    bidCount,
+    bidInfo,
+  )
 
   const biddingOption = document.getElementById('bid-form')
   const token = localStorage.getItem('token')

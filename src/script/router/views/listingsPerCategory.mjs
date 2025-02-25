@@ -44,6 +44,7 @@ async function displayListings(statusFilter = 'all') {
         'duration-300',
         'ease-out',
         'hover:scale-105',
+        'rounded-lg',
       )
 
       const imageUrl =

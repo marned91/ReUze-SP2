@@ -19,7 +19,7 @@
     class="min-h-screen grid grid-rows-[auto_1fr_auto] overflow-x-hidden w-screen"
   >
     <header
-      class="bg-white w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 border border-solid border-black"
+      class="bg-white/90 backdrop-blur-md shadow-md w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20"
     >
       <nav class="w-full flex items-center justify-between">
         <button
@@ -56,7 +56,7 @@
 
         <a
           href="/profile/"
-          class="md:hidden font-headerFooter bg-highlight px-5 py-2.5 rounded-full"
+          class="md:hidden font-headerFooter block py-2.5 px-8 rounded-full font-medium bg-brand-dark text-white"
           id="profile-mobile"
           >PROFILE</a
         >
@@ -70,7 +70,7 @@
 
         <div
           id="mobile-menu"
-          class="hidden md:flex md:items-center md:static md:w-auto absolute top-16 left-0 w-full bg-white border border-black md:border-none md:bg-transparent py-5 md:py-0 lg:py-0 xl:py-0 2xl:py-0"
+          class="hidden backdrop-blur-md shadow-2xl md:backdrop-blur-none md:shadow-none rounded-b-xl md:flex md:items-center md:static md:w-auto absolute top-16 left-0 w-full bg-white md:bg-transparent py-5 md:py-0 lg:py-0 xl:py-0 2xl:py-0"
         >
           <ul
             class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between font-headerFooter gap-2"
@@ -136,10 +136,10 @@
     <main>
       <section class="bg-brand p-20 md:p-26 lg:p-28">
         <div
-          class="flex flex-col-reverse lg:flex-row bg-white p-10 rounded-3xl gap-10 lg:gap-20 m-auto"
+          class="flex flex-col-reverse lg:flex-row bg-white p-10 rounded-3xl gap-10 lg:gap-20 m-auto w-[90%]"
         >
-          <div id="profile-image"></div>
-          <div id="profile-info" class="w-[90%] lg:w-[50%]"></div>
+          <div id="profile-image" class="flex-1"></div>
+          <div id="profile-info" class="flex-1"></div>
         </div>
       </section>
       <section class="bg-brand-light pb-20">
@@ -155,7 +155,7 @@
       </section>
     </main>
     <footer
-      class="bg-white py-5 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 w-full mt-auto border border-solid border-black"
+      class="bg-white py-5 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 w-full mt-auto shadow-t-md border-t border-gray-300 bg-gradient-to-b from-white to-gray-100"
     >
       <div class="flex justify-between justify-center">
         <img

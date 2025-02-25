@@ -7,7 +7,7 @@
  * @returns {void} This function does not return a value.
  */
 
-function onLogout() {
+async function onLogout() {
   localStorage.removeItem('token')
   localStorage.removeItem('user')
 
@@ -23,10 +23,14 @@ export function setLogoutListener() {
   const logoutElement = document.querySelector('#logout')
 
   if (logoutElement) {
-    logoutElement.addEventListener('click', () => {
-      onLogout()
-    })
+    logoutElement.addEventListener(
+      'click',
+      (event) => {
+        event.preventDefault() // Prevent unexpected behavior
+        event.stopImmediatePropagation() // Stops multiple event triggers
+        onLogout()
+      },
+      { once: true },
+    ) // Ensures the event only runs once
   }
 }
-
-setLogoutListener()

@@ -11,7 +11,7 @@ const tags = {
   vintage:
     /\b(vintage|retro|old|antique|classic|nostalgia|mid-century|heritage|throwback)\b/i,
   other:
-    /\b(car|headset|electronics|tablet|phone|camera|digital-camera|computer|game(s)?|toy(s)?|speaker(s)?|stereo|electric-bicycle|electric-scooter|scooter|costume(s)?|ipad|airpods|phone-case|Mac|android|apple|windows)\b/i,
+    /\b(car|headset|electronics|tablet|phone|camera|digital-camera|computer|game(s)?|toy(s)?|speaker(s)?|stereo|electric-bicycle|electric-scooter|scooter|costume(s)?|ipad|airpods|phone-case|Mac|android|apple|windows|guitar|electric|instrument|keyboard|piano)\b/i,
 }
 
 export function tagCategories(title, description) {

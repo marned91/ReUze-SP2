@@ -37,3 +37,21 @@ export async function updateProfileData(username, updatedData) {
     throw error
   }
 }
+
+//Profile Wins
+export async function fetchProfileWins(username) {
+  try {
+    const response = await doFetch(
+      `${API_AUCTION_PROFILE}/${username}/wins?_bids=true`,
+    )
+    if (!response || !Array.isArray(response)) {
+      console.error('No bidding history found')
+      return []
+    }
+
+    return response
+  } catch (error) {
+    console.error('Error fetching profile wins:', error)
+    return []
+  }
+}

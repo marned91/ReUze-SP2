@@ -51,6 +51,7 @@ async function displaySearchListings(listings) {
       'duration-300',
       'ease-out',
       'hover:scale-105',
+      'rounded-lg',
     )
 
     const listingImage = document.createElement('img')
