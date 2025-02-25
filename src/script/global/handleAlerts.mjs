@@ -5,9 +5,9 @@ export function handleAlert(
   timeout = 1000,
 ) {
   const alertClasses = {
-    info: 'bg-[#DEE5E8] border-[#437081] text-[#437081]',
-    success: 'bg-[#DB764F] border-[#196E8E] text-[#383939]',
-    error: 'bg-[#7A8080] border-[#196E8E] text-[#383939]',
+    info: 'bg-[#E0EFF5] border-[#CCE1EA] text-black shadow-xl',
+    success: 'bg-[#A5D5E7] border-[#B7DBE9] text-accent-dark shadow-xl',
+    error: 'bg-[#7A8080] border-[#989F9F] text-white shadow-xl',
   }
 
   const alertDiv = document.createElement('div')

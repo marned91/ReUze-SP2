@@ -130,7 +130,10 @@
       </nav>
     </header>
     <main class="bg-brand">
-      <div id="alert-container"></div>
+      <div
+        id="alert-container"
+        class="fixed top-30 inset-x-0 flex justify-center z-50"
+      ></div>
       <section
         class="flex flex-col-reverse p-10 md:p-20 lg:p-30 justify-center m-auto w-full lg:w-[70%] xl:w-[50%] 2xl:w-[40%]"
       >
@@ -165,7 +168,7 @@
                 />
               </div>
               <div>
-                <label for="email" class="block text-black text-sm mt-5"
+                <label for="email" class="block text-black text-sm mt-2"
                   >Email</label
                 >
                 <input
@@ -179,7 +182,7 @@
                 />
               </div>
               <div>
-                <label for="password" class="block text-black text-sm mt-5"
+                <label for="password" class="block text-black text-sm mt-2"
                   >Password</label
                 >
                 <input
@@ -192,24 +195,9 @@
                 />
               </div>
               <div>
-                <label for="bio" class="block text-black text-sm mt-5"
-                  >BIO</label
-                >
-                <textarea
-                  id="bio-register"
-                  name="bio"
-                  maxlength="160"
-                  required
-                  rows="4"
-                  placeholder="Max 160 characters."
-                  class="w-full border-b-[1px] border-black px-4 py-2 focus:outline-none focus:ring focus:ring-accent"
-                ></textarea>
-                <p id="char-count" class="text-sm font-smallFont text-gray-500">
-                  0 / 160
-                </p>
-              </div>
-              <div>
-                <label for="avatarUrl" class="block text-black mt-5 text-sm"
+                <label
+                  for="avatarUrl"
+                  class="block text-black mt-10 text-sm mt-2"
                   >Avatar URL</label
                 >
                 <input
@@ -221,7 +209,7 @@
                 />
               </div>
               <div>
-                <label for="avatarAlt" class="block text-black mt-5 text-sm"
+                <label for="avatarAlt" class="block text-black mt-2 text-sm"
                   >Avatar Alt Text</label
                 >
                 <input

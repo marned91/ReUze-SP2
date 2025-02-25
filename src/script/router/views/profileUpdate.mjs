@@ -1,5 +1,6 @@
 import { authGuard } from '../../utils/authGuard.mjs'
 import { fetchProfileData, updateProfileData } from '../../api/profile.mjs'
+import { handleAlert } from '../../global/handleAlerts.mjs'
 
 authGuard()
 
@@ -40,11 +41,11 @@ async function handleProfileUpdate() {
 
       try {
         await updateProfileData(username, updatedData) // Corrected function call
-        alert('Profile updated successfully!')
+        handleAlert('Profile updated successfully!', 'success')
         setTimeout(() => (window.location.pathname = '/profile/'), 2000)
       } catch (updateError) {
         console.error('Error updating profile:', updateError)
-        alert('Failed to update profile.')
+        handleAlert('Failed to update profile. Please try again', 'error')
       }
     })
   } catch (error) {

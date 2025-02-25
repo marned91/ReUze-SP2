@@ -1,4 +1,5 @@
-console.log('login.mjs is loaded')
+import { handleAlert } from '../../global/handleAlerts.mjs'
+import { login } from '../../api/auth.mjs'
 /**
  * Handles the login process by gathering form data and calling the login function from the API.
  *
@@ -15,7 +16,6 @@ console.log('login.mjs is loaded')
  * // Assume an event is triggered from the form submission
  * form.addEventListener("submit", (event) => onLogin(event));
  */
-import { login } from '../../api/auth.mjs'
 
 async function onLogin(event) {
   event.preventDefault()
@@ -36,22 +36,26 @@ async function onLogin(event) {
   try {
     const data = await login({ email, password })
 
-    alert('Login successful!', 'success')
+    // If login fails, `data` will be undefined or `errors` will contain the failure message.
+    if (!data || (data.errors && data.errors.length > 0)) {
+      const errorMessage =
+        data?.errors?.[0]?.message ||
+        'Invalid email or password. Please try again'
+      handleAlert(errorMessage, 'error')
+      return
+    }
+
+    handleAlert('Login successful!', 'success')
     form.reset()
 
     setTimeout(() => (window.location.pathname = '/'), 2000)
-
-    //return data;
   } catch (error) {
-    alert(`Login failed: ${error.message}`, 'error')
+    handleAlert(`Login failed: ${error.message}`, 'error')
   } finally {
     fieldset.disabled = false
     button.textContent = originalButtonText
   }
 }
 
-onLogin()
-
 const form = document.forms.login
-
 form.addEventListener('submit', onLogin)

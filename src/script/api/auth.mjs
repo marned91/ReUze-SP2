@@ -1,5 +1,6 @@
 import { API_AUTH_LOGIN } from './constants.mjs'
 import { API_AUTH_REGISTER } from './constants.mjs'
+import { doFetch } from './doFetch.mjs'
 /**
  * Logs in a user with the provided email and password.
  *
@@ -26,28 +27,19 @@ import { API_AUTH_REGISTER } from './constants.mjs'
 export async function login({ email, password }) {
   const body = JSON.stringify({ email, password })
 
-  try {
-    const response = await fetch(API_AUTH_LOGIN, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body,
-    })
+  const data = await doFetch(API_AUTH_LOGIN, {
+    method: 'POST',
+    body,
+    headers: { 'Content-Type': 'application/json' },
+  })
 
-    if (response.ok) {
-      const { data } = await response.json()
-      const { accessToken: token, ...user } = data
-      localStorage.setItem('token', token)
-      localStorage.setItem('user', JSON.stringify(user))
-      return data
-    }
-
-    throw new Error('Could not log in with this account')
-  } catch (error) {
-    console.error('Login error:', error)
-    throw error
+  if (data) {
+    const { accessToken: token, ...user } = data
+    localStorage.setItem('token', token)
+    localStorage.setItem('user', JSON.stringify(user))
   }
+
+  return data
 }
 /**
  * Registers a new user with the provided details.
@@ -82,31 +74,15 @@ export async function login({ email, password }) {
 
  */
 export async function register({ name, email, password, avatar }) {
-  const body = JSON.stringify({
+  const body = {
     name,
     email,
     password,
     avatar: { url: avatar.url, alt: avatar.alt },
-  })
-
-  try {
-    const response = await fetch(API_AUTH_REGISTER, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body,
-    })
-
-    if (response.ok) {
-      const { data } = await response.json()
-      return data
-    } else {
-      const error = await response.json()
-      throw new Error(error.message || 'Could not register account')
-    }
-  } catch (error) {
-    console.error('Registration error:', error)
-    throw error
   }
+
+  return await doFetch(API_AUTH_REGISTER, {
+    method: 'POST',
+    body: JSON.stringify(body),
+  })
 }

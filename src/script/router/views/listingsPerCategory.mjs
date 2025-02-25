@@ -1,5 +1,6 @@
 import { fetchAllListingsByTag } from '../../api/listings.mjs'
 import { setupStatusFilter } from '../../utils/filterActiveExpired.mjs'
+import { handleAlert } from '../../global/handleAlerts.mjs'
 
 async function displayListings(statusFilter = 'all') {
   const urlParams = new URLSearchParams(window.location.search)
@@ -131,7 +132,7 @@ async function displayListings(statusFilter = 'all') {
       listingsContainer.appendChild(listingElement)
     })
   } catch (error) {
-    console.error('Error fetching listings:', error)
+    handleAlert('Error fetching listings:', error, 'error')
     const errorMessage = document.createElement('p')
     errorMessage.textContent = 'Failed to load listings.'
     errorMessage.classList.add('text-red-500')

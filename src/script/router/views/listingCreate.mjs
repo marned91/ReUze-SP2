@@ -1,6 +1,7 @@
 import { authGuard } from '../../utils/authGuard.mjs'
 import { createListing } from '../../api/listings.mjs'
 import { tagCategories } from '../../utils/tagsHandling.mjs'
+import { handleAlert } from '../../global/handleAlerts.mjs'
 
 authGuard()
 
@@ -30,11 +31,11 @@ form.addEventListener('submit', async (event) => {
     const response = await createListing(listingData)
 
     if (response) {
-      alert('Listing created successfully!')
+      handleAlert('Listing created successfully!', 'success')
       window.location.pathname = '/profile/'
     }
   } catch (error) {
-    alert('Failed to create listing. Please try again.')
+    handleAlert('Failed to create listing. Please try again.', 'error')
   }
 })
 

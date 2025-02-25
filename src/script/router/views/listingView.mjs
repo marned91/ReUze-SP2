@@ -1,12 +1,12 @@
 import { fetchSingleListing } from '../../api/listings.mjs'
 import { handleBid } from '../../utils/handleBid.mjs'
+import { handleAlert } from '../../global/handleAlerts.mjs'
 
 async function displaySingleListing() {
   const listing = await fetchSingleListing()
-  console.log('Fetched listing:', listing)
 
   if (!listing) {
-    console.error('Listing not found.')
+    handleAlert('Listing not found. Please reload the page', 'error')
     return
   }
 
@@ -128,8 +128,7 @@ bidButton.addEventListener('click', async (event) => {
     const result = await handleBid(listingId, bidAmount, displaySingleListing)
     console.log('Bid placed successfully:', result)
   } catch (error) {
-    console.error('Error placing bid:', error)
-    alert('Failed to place bid. Please try again.')
+    handleAlert('Failed to place bid. Please try again.')
   }
 })
 

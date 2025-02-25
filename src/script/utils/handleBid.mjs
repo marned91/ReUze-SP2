@@ -1,6 +1,7 @@
 import { placeBid } from '../api/bid.mjs'
 import { fetchSingleListing } from '../api/listings.mjs'
 import { fetchProfileData } from '../api/profile.mjs'
+import { handleAlert } from '../global/handleAlerts.mjs'
 
 export async function handleBid(listingId, bidAmount, displaySingleListing) {
   const token = localStorage.getItem('token')
@@ -8,13 +9,13 @@ export async function handleBid(listingId, bidAmount, displaySingleListing) {
   const username = userInfo?.name
 
   if (!token) {
-    alert('You must be logged in to place a bid.')
+    handleAlert('You must be logged in to place a bid.', 'error')
     return
   }
 
   const numericBidAmount = Number(bidAmount)
   if (isNaN(numericBidAmount) || numericBidAmount <= 0) {
-    alert('Please enter a valid bid amount.')
+    handleAlert('Please enter a valid bid amount.', 'error')
     return
   }
 
@@ -22,7 +23,7 @@ export async function handleBid(listingId, bidAmount, displaySingleListing) {
     const profile = await fetchProfileData(username)
     const availableCredits = profile.credits
     if (numericBidAmount > availableCredits) {
-      alert('You do not have enough credits to place this bid.')
+      handleAlert('You do not have enough credits to place this bid.', 'error')
       return
     }
 
@@ -34,13 +35,14 @@ export async function handleBid(listingId, bidAmount, displaySingleListing) {
     const result = await placeBid(listingId, newBid)
 
     if (result) {
-      alert(
+      handleAlert(
         `Your bid of $${numericBidAmount} has been placed! The new current bid is $${newBid}.`,
+        'success',
       )
       displaySingleListing() // Refresh the listing to show the updated bid
     }
   } catch (error) {
     console.error('Error placing bid:', error)
-    alert('Failed to place bid. Please try again.')
+    handleAlert('Failed to place bid. Please try again.', 'error')
   }
 }

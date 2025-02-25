@@ -1,6 +1,7 @@
 import { authGuard } from '../../utils/authGuard.mjs'
 import { fetchProfileData } from '../../api/profile.mjs'
 import { displayProfileListings } from '../../utils/listingsPerProfile.mjs'
+import { handleAlert } from '../../global/handleAlerts.mjs'
 
 authGuard()
 
@@ -10,7 +11,7 @@ async function displayProfile() {
 
   const profileData = await fetchProfileData(username)
   if (!profileData) {
-    console.error('Profile data not found.')
+    handleAlert('Profile data not found. Please try again', 'error')
     return
   }
 

@@ -1,5 +1,6 @@
 import { fetchProfileListings } from '../api/profile.mjs'
 import { deleteListing } from '../api/listings.mjs'
+import { onDeleteListing } from './onDeleteListing.mjs'
 
 export async function displayProfileListings(username) {
   const listingsContainer = document.getElementById('profile-listings')
@@ -35,7 +36,6 @@ export async function displayProfileListings(username) {
   listingsContainer.appendChild(createListingCard)
 
   const listings = await fetchProfileListings(username)
-  console.log('Fetched Listings:', listings)
 
   listings.forEach(
     ({ id, title, description, media, endsAt, _count, bids }) => {
@@ -120,8 +120,9 @@ export async function displayProfileListings(username) {
       )
       deleteListingIcon.id = 'delete-listing-icon'
 
-      deleteListingIcon.addEventListener('click', () => {
-        deleteListing(id)
+      // Replace the event listener with the onDeleteListing function
+      deleteListingIcon.addEventListener('click', (event) => {
+        onDeleteListing(event, id)
       })
 
       const deleteWrapper = document.createElement('div')

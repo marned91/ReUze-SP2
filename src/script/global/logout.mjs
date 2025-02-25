@@ -1,3 +1,4 @@
+import { handleAlert } from './handleAlerts.mjs'
 /**
  * This function should log the user out by removing user data from the browser.
  * This includes the removal of the user's token and user information.
@@ -11,7 +12,7 @@ async function onLogout() {
   localStorage.removeItem('token')
   localStorage.removeItem('user')
 
-  alert('You have been logged out', 'info')
+  handleAlert('You have been logged out', 'info')
 
   setTimeout(() => (window.location.href = '/auth/login/'), 2000)
 }

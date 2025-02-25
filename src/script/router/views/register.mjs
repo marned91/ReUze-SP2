@@ -1,4 +1,4 @@
-console.log('register.mjs is loaded')
+import { handleAlert } from '../../global/handleAlerts.mjs'
 /**
  * This function should pass data to the register function in api/auth and handle the response
  * This function extracts the name, email, password, avatar URL, and avatar alt text from the form data,
@@ -24,7 +24,6 @@ async function onRegister(event) {
   const name = formData.get('name')
   const email = formData.get('email')
   const password = formData.get('password')
-  const bio = formData.get('bio-register')
   const avatarUrl = formData.get('avatarUrl')
   const avatarAlt = formData.get('avatarAlt')
 
@@ -37,21 +36,20 @@ async function onRegister(event) {
   button.textContent = 'Registering...'
 
   try {
-    const data = await register({ name, email, password, bio, avatar })
-    alert('Registration was successful! You can now log in.', 'success')
+    const data = await register({ name, email, password, avatar })
+    handleAlert('Registration was successful! You can now log in.', 'success')
     form.reset()
     setTimeout(() => (window.location.pathname = '/auth/login/'), 2000)
     return data
   } catch (error) {
-    alert(`Registration failed: ${error.message}`, 'error')
+    handleAlert(`Registration failed: ${error.message}`, 'error')
   } finally {
     fieldset.disabled = false
     button.textContent = originalButtonText
   }
 }
 
-onRegister()
-
 const form = document.forms.register
 
+// Add event listener for form submission, which will call onRegister when the form is submitted
 form.addEventListener('submit', onRegister)
