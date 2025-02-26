@@ -1,5 +1,6 @@
 import { API_AUCTION } from './constants.mjs'
 import { doFetch } from './doFetch.mjs'
+import { handleAlert } from '../global/handleAlerts.mjs'
 
 //for fetching all listings
 export async function fetchAllListingsByTag(tag, page = 1, limit = 50) {
@@ -28,7 +29,7 @@ export async function fetchAllListingsByTag(tag, page = 1, limit = 50) {
   return listings.sort((a, b) => new Date(b.created) - new Date(a.created))
 }
 
-//for fetching a single listing
+//Fetching a single listing
 export async function fetchSingleListing() {
   const urlParams = new URLSearchParams(window.location.search)
   const listingId = urlParams.get('id')
@@ -99,21 +100,22 @@ export async function fetchListingsBySearch(query) {
 
 //Delete listing
 export async function deleteListing(id) {
-  const confirmDelete = confirm('Are you sure you want to delete this listing?')
-  if (!confirmDelete) return
-
   const DELETE_LISTING_API = `${API_AUCTION}/${id}`
 
   try {
     const response = await doFetch(DELETE_LISTING_API, { method: 'DELETE' })
     if (response === null) {
-      alert('Listing deleted successfully!')
-      window.location.reload()
+      handleAlert('Listing deleted successfully!', 'success')
+      setTimeout(() => (window.location.pathname = /profile/), 2000)
     } else {
       console.error('Failed to delete the listing:', response)
       throw new Error('Failed to delete the listing')
     }
   } catch (error) {
     console.error(error)
+    handleAlert(
+      'An error occurred while deleting the listing. Please try again.',
+      'error',
+    )
   }
 }

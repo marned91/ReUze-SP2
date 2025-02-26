@@ -32,7 +32,7 @@ form.addEventListener('submit', async (event) => {
 
     if (response) {
       handleAlert('Listing created successfully!', 'success')
-      window.location.pathname = '/profile/'
+      setTimeout(() => (window.location.pathname = /profile/), 2000)
     }
   } catch (error) {
     handleAlert('Failed to create listing. Please try again.', 'error')

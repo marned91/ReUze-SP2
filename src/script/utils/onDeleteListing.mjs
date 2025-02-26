@@ -1,5 +1,5 @@
-import { handleAlert } from '../global/handleAlerts.mjs'
 import { deleteListing } from '../api/listings.mjs'
+
 export async function onDeleteListing(event, listingId) {
   event.preventDefault()
 
@@ -7,7 +7,7 @@ export async function onDeleteListing(event, listingId) {
   const modal = document.getElementById('delete-modal')
   modal.classList.remove('hidden') // Show the modal
 
-  // Get the cancel button
+  // Get the cancel and confirm buttons
   const cancelButton = document.getElementById('cancel-btn')
   const confirmButton = document.getElementById('confirm-btn')
 
@@ -19,15 +19,7 @@ export async function onDeleteListing(event, listingId) {
   // Add event listener for confirm
   confirmButton.addEventListener('click', async () => {
     try {
-      await deleteListing(listingId) // Call your existing delete function
-      handleAlert('Your listing was successfully deleted!', 'success')
-      window.location.reload()
-    } catch (error) {
-      console.error('Error during listing deletion:', error)
-      handleAlert(
-        'An error occurred while deleting the listing. Please try again.',
-        'error',
-      )
+      await deleteListing(listingId) // Call the delete function
     } finally {
       modal.classList.add('hidden') // Hide the modal
     }
