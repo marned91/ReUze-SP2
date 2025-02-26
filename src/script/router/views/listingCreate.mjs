@@ -25,7 +25,12 @@ form.addEventListener('submit', async (event) => {
     endsAt: deadline,
   }
 
-  console.log('Final Listing Data:', listingData)
+  const fieldset = form.querySelector('fieldset')
+  const button = form.querySelector('button')
+  const originalButtonText = button.textContent
+
+  fieldset.disabled = true
+  button.textContent = 'Creating Listing...'
 
   try {
     const response = await createListing(listingData)
@@ -36,6 +41,9 @@ form.addEventListener('submit', async (event) => {
     }
   } catch (error) {
     handleAlert('Failed to create listing. Please try again.', 'error')
+  } finally {
+    fieldset.disabled = false
+    button.textContent = originalButtonText
   }
 })
 

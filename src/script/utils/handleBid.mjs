@@ -8,6 +8,9 @@ export async function handleBid(listingId, bidAmount, displaySingleListing) {
   const userInfo = JSON.parse(localStorage.getItem('user'))
   const username = userInfo?.name
 
+  const bidButton = document.getElementById('bid-button') // Get the button
+  const originalButtonText = bidButton.textContent
+
   if (!token) {
     handleAlert('You must be logged in to place a bid.', 'error')
     return
@@ -18,6 +21,9 @@ export async function handleBid(listingId, bidAmount, displaySingleListing) {
     handleAlert('Please enter a valid bid amount.', 'error')
     return
   }
+
+  bidButton.disabled = true
+  bidButton.textContent = 'Placing bid...'
 
   try {
     const profile = await fetchProfileData(username)
@@ -44,5 +50,8 @@ export async function handleBid(listingId, bidAmount, displaySingleListing) {
   } catch (error) {
     console.error('Error placing bid:', error)
     handleAlert('Failed to place bid. Please try again.', 'error')
+  } finally {
+    bidButton.disabled = false
+    bidButton.textContent = originalButtonText
   }
 }

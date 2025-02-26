@@ -39,6 +39,13 @@ async function handleProfileUpdate() {
         },
       }
 
+      const fieldset = form.querySelector('fieldset')
+      const button = form.querySelector('button')
+      const originalButtonText = button.textContent
+
+      fieldset.disabled = true
+      button.textContent = 'Updating Profile...'
+
       try {
         await updateProfileData(username, updatedData) // Corrected function call
         handleAlert('Profile updated successfully!', 'success')
@@ -50,6 +57,9 @@ async function handleProfileUpdate() {
     })
   } catch (error) {
     console.error('Error fetching current profile data:', error)
+  } finally {
+    fieldset.disabled = false
+    button.textContent = originalButtonText
   }
 }
 
