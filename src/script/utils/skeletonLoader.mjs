@@ -5,8 +5,11 @@
 export function showSkeletonLoader() {
   const skeletonLoader = document.getElementById('skeleton-loader')
   const skeletonLoaderExtra = document.getElementById('skeleton-loader-extra')
-  if (skeletonLoader || skeletonLoaderExtra) {
+  if (skeletonLoader) {
     skeletonLoader.classList.remove('hidden')
+  }
+  if (skeletonLoaderExtra) {
+    skeletonLoaderExtra.classList.remove('hidden')
   }
 }
 
@@ -17,7 +20,10 @@ export function showSkeletonLoader() {
 export function hideSkeletonLoader() {
   const skeletonLoader = document.getElementById('skeleton-loader')
   const skeletonLoaderExtra = document.getElementById('skeleton-loader-extra')
-  if (skeletonLoader || skeletonLoaderExtra) {
+  if (skeletonLoader) {
     skeletonLoader.classList.add('hidden')
+  }
+  if (skeletonLoaderExtra) {
+    skeletonLoaderExtra.classList.add('hidden')
   }
 }

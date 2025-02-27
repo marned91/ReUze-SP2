@@ -31,10 +31,6 @@ import {
  * // Displays all active listings.
  */
 
-function simulateDelay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
 async function displayListings(statusFilter = 'all') {
   const urlParams = new URLSearchParams(window.location.search)
   const tag = urlParams.get('tag')
@@ -167,8 +163,9 @@ async function displayListings(statusFilter = 'all') {
       listingsContainer.appendChild(listingElement)
     })
   } catch (error) {
-    hideSkeletonLoader()
     handleAlert('Error fetching listings:', error, 'error')
+  } finally {
+    hideSkeletonLoader()
   }
 }
 
