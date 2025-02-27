@@ -5,7 +5,7 @@ import { setLogoutListener } from './script/global/logout.mjs'
 import router from './script/router'
 await router(window.location.pathname)
 
-console.log('main.mjs is loading')
+console.log('main.mjs is loading - hello')
 
 updateHeader()
 setupMenuToggle()
