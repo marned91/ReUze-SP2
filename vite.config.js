@@ -8,7 +8,6 @@ export default defineConfig({
     target: 'esnext',
     outDir: 'dist',
     sourcemap: true,
-    minify: 'terser',
     rollupOptions: {
       input: {
         home: resolve(__dirname, 'index.html'), // Home logged-in users

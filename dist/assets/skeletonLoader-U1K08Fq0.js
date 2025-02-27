@@ -1,1 +1,0 @@
-function o(){const e=document.getElementById("skeleton-loader"),t=document.getElementById("skeleton-loader-extra");e&&e.classList.remove("hidden"),t&&t.classList.remove("hidden")}function d(){const e=document.getElementById("skeleton-loader"),t=document.getElementById("skeleton-loader-extra");e&&e.classList.add("hidden"),t&&t.classList.add("hidden")}export{d as h,o as s};
