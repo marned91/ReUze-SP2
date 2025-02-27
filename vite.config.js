@@ -5,6 +5,7 @@ export default defineConfig({
   appType: 'mpa',
   base: '',
   build: {
+    outDir: 'dist',
     target: 'esnext',
     sourcemap: true,
     rollupOptions: {
