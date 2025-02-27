@@ -3,6 +3,14 @@ import { fetchSingleListing } from '../api/listings.mjs'
 import { fetchProfileData } from '../api/profile.mjs'
 import { handleAlert } from '../global/handleAlerts.mjs'
 
+/**
+ * Handles placing a bid on a listing, including checks for user authentication, credits, and valid bid amount.
+ * Updates the listing with the new bid if successful.
+ *
+ * @param {string} listingId - The ID of the listing where the bid is being placed.
+ * @param {number} bidAmount - The amount the user is bidding.
+ * @param {function} displaySingleListing - A function to refresh the listing view after the bid is placed.
+ */
 export async function handleBid(listingId, bidAmount, displaySingleListing) {
   const token = localStorage.getItem('token')
   const userInfo = JSON.parse(localStorage.getItem('user'))
@@ -48,7 +56,6 @@ export async function handleBid(listingId, bidAmount, displaySingleListing) {
       displaySingleListing() // Refresh the listing to show the updated bid
     }
   } catch (error) {
-    console.error('Error placing bid:', error)
     handleAlert('Failed to place bid. Please try again.', 'error')
   } finally {
     bidButton.disabled = false

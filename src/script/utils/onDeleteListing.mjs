@@ -1,27 +1,32 @@
 import { deleteListing } from '../api/listings.mjs'
 
+/**
+ * Handles the deletion of a listing.
+ * It shows a modal for the user to confirm the deletion and calls the delete API if confirmed.
+ *
+ * @param {Event} event - The click event triggered by the delete icon.
+ * @param {string} listingId - The ID of the listing that is to be deleted.
+ * @returns {Promise<void>} - A promise that resolves when the deletion process is complete.
+ */
+
 export async function onDeleteListing(event, listingId) {
   event.preventDefault()
 
-  // Show the modal
   const modal = document.getElementById('delete-modal')
-  modal.classList.remove('hidden') // Show the modal
+  modal.classList.remove('hidden')
 
-  // Get the cancel and confirm buttons
   const cancelButton = document.getElementById('cancel-btn')
   const confirmButton = document.getElementById('confirm-btn')
 
-  // Add event listener for cancel
   cancelButton.addEventListener('click', () => {
-    modal.classList.add('hidden') // Hide the modal
+    modal.classList.add('hidden')
   })
 
-  // Add event listener for confirm
   confirmButton.addEventListener('click', async () => {
     try {
-      await deleteListing(listingId) // Call the delete function
+      await deleteListing(listingId)
     } finally {
-      modal.classList.add('hidden') // Hide the modal
+      modal.classList.add('hidden')
     }
   })
 }
@@ -37,7 +42,6 @@ deleteListingIcon.classList.add(
 )
 deleteListingIcon.id = 'delete-listing-icon'
 
-// Trigger the onDeleteListing function when the delete icon is clicked
 deleteListingIcon.addEventListener('click', (event) => {
-  onDeleteListing(event, id) // Pass the event and listing ID
+  onDeleteListing(event, id)
 })

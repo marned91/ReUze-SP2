@@ -4,6 +4,21 @@ import { handleAlert } from '../../global/handleAlerts.mjs'
 
 authGuard()
 
+/**
+ * Handles the profile update process for the user.
+ *
+ * This function fetches the current profile data of the user from the server using the `fetchProfileData` function,
+ * populates the profile form with existing data, and allows the user to update their bio and profile image. Upon form
+ * submission, it sends the updated data to the server and handles both success and error cases, displaying appropriate
+ * alerts and updating the page accordingly.
+ *
+ * @async
+ * @returns {void} - This function does not return any value.
+ *
+ * @example
+ * // This will handle the profile update process for the user.
+ * handleProfileUpdate();
+ */
 async function handleProfileUpdate() {
   const userInfo = JSON.parse(localStorage.getItem('user'))
   const username = userInfo?.name
@@ -51,7 +66,6 @@ async function handleProfileUpdate() {
         handleAlert('Profile updated successfully!', 'success')
         setTimeout(() => (window.location.pathname = '/profile/'), 2000)
       } catch (updateError) {
-        console.error('Error updating profile:', updateError)
         handleAlert('Failed to update profile. Please try again', 'error')
       }
     })
@@ -71,4 +85,4 @@ bioInput.addEventListener('input', () => {
   charCount.textContent = `${length} / 160`
 })
 
-handleProfileUpdate() // Use the renamed function
+handleProfileUpdate()

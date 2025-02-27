@@ -14,6 +14,15 @@ const tags = {
     /\b(car|headset|electronics|tablet|phone|camera|digital-camera|computer|game(s)?|toy(s)?|speaker(s)?|stereo|electric-bicycle|electric-scooter|scooter|costume(s)?|ipad|airpods|phone-case|Mac|android|apple|windows|guitar|electric|instrument|keyboard|piano)\b/i,
 }
 
+/**
+ * Tags a listing based on keywords found in its title or description.
+ * The function matches predefined tags (e.g., Art, Fashion, etc.) with regular expressions
+ * and returns a list of categories that apply to the listing.
+ *
+ * @param {string} title - The title of the listing.
+ * @param {string} description - The description of the listing.
+ * @returns {string[]} An array of categories (tags) that match the title or description.
+ */
 export function tagCategories(title, description) {
   const tagCategories = []
 

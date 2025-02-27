@@ -3,11 +3,25 @@ import { fetchProfileWins } from '../../api/profile.mjs'
 
 authGuard()
 
+/**
+ * Displays the user's winning history on their profile page.
+ *
+ * This function fetches the user's winning listings from the server using the `fetchProfileWins` function. If the user
+ * has no wins, it displays a message encouraging them to browse listings and start bidding. If there are wins, it creates
+ * a card for each winning listing, showing the image, title, date of the win, and the final bid amount.
+ *
+ * @async
+ * @returns {void} - This function does not return any value.
+ *
+ * @example
+ * // This will display the user's winning history on their profile page.
+ * displayProfileWinningHistory();
+ */
 async function displayProfileWinningHistory() {
   const userInfo = JSON.parse(localStorage.getItem('user'))
   const username = userInfo?.name
   const profileWinsContainer = document.getElementById('profile-wins')
-  profileWinsContainer.innerHTML = '' // Clear the container before appending new content
+  profileWinsContainer.innerHTML = ''
 
   const wins = await fetchProfileWins(username)
 
@@ -17,7 +31,7 @@ async function displayProfileWinningHistory() {
     const noWinsMessage = document.createElement('p')
     noWinsMessage.textContent =
       'No wins yet! Browse listings and start bidding on items: '
-    noWinsMessage.classList.add('font-small', 'mb-6') // Centering the message and adding margin
+    noWinsMessage.classList.add('font-small', 'mb-6')
     noWinsContainer.appendChild(noWinsMessage)
 
     const noWinsButton = document.createElement('a')

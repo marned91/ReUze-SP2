@@ -3,6 +3,20 @@ import { setUpSearch } from '../../utils/searchListings.mjs'
 
 setUpSearch('#search-input', '#search-button')
 
+/**
+ * Displays the search results based on the query parameter in the URL.
+ *
+ * This function retrieves the search query from the URL and fetches the listings that match the search query.
+ * It then dynamically displays the search query and the corresponding search results in the `#search-query` and `#search-results` elements.
+ * If no results are found, it will display a message indicating that no listings were found.
+ *
+ * @async
+ * @returns {Promise<void>} - A promise that resolves when the search results have been displayed.
+ *
+ * @example
+ * // This will display the search results for the query in the URL.
+ * displaySearchResults();
+ */
 async function displaySearchResults() {
   const urlParams = new URLSearchParams(window.location.search)
   const query = urlParams.get('q')
@@ -31,6 +45,20 @@ async function displaySearchResults() {
   }
 }
 
+/**
+ * Displays the listings returned from a search query.
+ *
+ * This function creates HTML elements for each listing and appends them to the `#search-results` element.
+ * It displays information such as the listing's title, description, deadline, current bid, and tags.
+ * Additionally, it handles the display of listings' images and the active/expired status based on the `endsAt` date.
+ *
+ * @param {Array} listings - The list of listings to display. Each listing should have `id`, `title`, `description`, `media`, `endsAt`, `bids`, and `tags` properties.
+ * @returns {void} - This function does not return any value.
+ *
+ * @example
+ * // This will display the listings passed to it.
+ * displaySearchListings(listings);
+ */
 async function displaySearchListings(listings) {
   const searchResultsDiv = document.getElementById('search-results')
   listings.forEach((listing) => {

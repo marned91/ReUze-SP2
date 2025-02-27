@@ -8,5 +8,3 @@ await router(window.location.pathname)
 updateHeader()
 setupMenuToggle()
 setLogoutListener()
-
-console.log('main.mjs is loading')

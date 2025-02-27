@@ -1,3 +1,16 @@
+/**
+ * Updates the visibility of header elements based on the user's login status.
+ *
+ * This function checks if a valid login token exists in `localStorage`.
+ * - If the user is logged in (token exists), it shows the user's profile options and logout button, while hiding the signup, login, home, and categories options.
+ * - If no token is found (user is not logged in), it hides the user's profile options and logout button, while showing the signup, login, home, and categories options.
+ *
+ * @returns {void}
+ *
+ * @example
+ * updateHeader();
+ * // Updates the header elements based on the login status of the user.
+ */
 export function updateHeader() {
   const mobileProfileElement = document.getElementById('profile-mobile')
   const profileElement = document.getElementById('profile')

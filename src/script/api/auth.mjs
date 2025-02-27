@@ -7,21 +7,15 @@ import { doFetch } from './doFetch.mjs'
  * This function sends a POST request to the login API, passing the user's email and password in the request body.
  * If the login is successful, the response containing an access token and user data is saved to localStorage.
  *
- * @param {Object} data - The login data.
- * @param {string} data.email - The user's email address.
- * @param {string} data.password - The user's password.
- * @returns {Promise<Object>} A promise that resolves to the user's login response.
- * @throws {Error} Error if the login fails.
+ * @param {Object} credentials - The login data.
+ * @param {string} credentials.email - The user's email address.
+ * @param {string} credentials.password - The user's password.
+ * @returns {Promise<Object|null>} A promise that resolves to the user's login response or null if the request fails.
+ * @throws {Error} If the login request encounters an issue.
  *
  * @example
  * const loginData = { email: "user@example.com", password: "password123" };
- *
- * try {
- *   const userData = await login(loginData);
- *   // Handle successful login here
- * } catch (error) {
- *   // Handle login error here
- * }
+ * const userData = await login(loginData);
  */
 
 export async function login({ email, password }) {
@@ -41,38 +35,32 @@ export async function login({ email, password }) {
 
   return data
 }
+
 /**
  * Registers a new user with the provided details.
- * 
- * This function sends a POST request to the registration API, passing the user's name, email, password, 
- * and optional avatar details in the request body. If the registration is successful, it returns the 
- * response containing the user's data.
  *
- * @param {Object} data - The registration data.
- * @param {string} data.name - The user's name (required).
- * @param {string} data.email - The user's email address (required).
- * @param {string} data.password - The user's password (required).
- * @param {string} [data.avatar.url] - URL for the user's avatar image.
- * @param {string} [data.avatar.alt] - Alt text for the user's avatar image.
- * @returns {Promise<Object>} A promise that resolves to the user's registration response.
- * @throws {Error} Throws an error if the registration fails or the response is not successful.
- * 
+ * This function sends a POST request to the registration API with the user's name, email, password, and avatar details.
+ *
+ * @param {Object} userData - The user registration data.
+ * @param {string} userData.name - The user's name.
+ * @param {string} userData.email - The user's email address.
+ * @param {string} userData.password - The user's password.
+ * @param {Object} userData.avatar - The user's avatar information.
+ * @param {string} userData.avatar.url - The URL of the user's avatar image.
+ * @param {string} userData.avatar.alt - The alt text for the avatar image.
+ * @returns {Promise<Object|null>} A promise that resolves to the registration response or null if the request fails.
+ * @throws {Error} If the registration request encounters an issue.
+ *
  * @example
- * const userData = {
+ * const newUser = {
  *   name: "John Doe",
- *   email: "john@example.com",
- *   password: "password123",
- *   avatar: { url: "https://example.com/avatar.jpg", alt: "John's Avatar" }
+ *   email: "johndoe@example.com",
+ *   password: "securePassword123",
+ *   avatar: { url: "https://example.com/avatar.jpg", alt: "John's avatar" }
  * };
- * 
- * try {
- *   const registeredUser = await register(userData);
- *   // Handle the registered user data here
- * } catch (error) {
- *   // Handle the registration error here
- * }
-
+ * const response = await register(newUser);
  */
+
 export async function register({ name, email, password, avatar }) {
   const body = {
     name,

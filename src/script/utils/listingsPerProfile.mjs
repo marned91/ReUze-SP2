@@ -1,7 +1,12 @@
 import { fetchProfileListings } from '../api/profile.mjs'
-import { deleteListing } from '../api/listings.mjs'
 import { onDeleteListing } from './onDeleteListing.mjs'
 
+/**
+ * Displays all listings for a given user profile.
+ * It also includes a button to create new listings and delete existing ones.
+ *
+ * @param {string} username - The username whose listings will be displayed.
+ */
 export async function displayProfileListings(username) {
   const listingsContainer = document.getElementById('profile-listings')
 
@@ -120,7 +125,6 @@ export async function displayProfileListings(username) {
       )
       deleteListingIcon.id = 'delete-listing-icon'
 
-      // Replace the event listener with the onDeleteListing function
       deleteListingIcon.addEventListener('click', (event) => {
         onDeleteListing(event, id)
       })

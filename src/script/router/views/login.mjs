@@ -1,22 +1,22 @@
 import { handleAlert } from '../../global/handleAlerts.mjs'
 import { login } from '../../api/auth.mjs'
+
 /**
- * Handles the login process by gathering form data and calling the login function from the API.
+ * Handles the login form submission.
  *
- * This function prevents the default form submission behavior, retrieves the email and password
- * from the form, and calls the `login` function from the API. On successful login, it alerts the user,
- * resets the form, and redirects to the homepage. If the login fails, it shows an error message.
+ * This function is triggered when the user submits the login form. It prevents the default form submission,
+ * extracts the form data (email and password), and sends it to the `login` function for authentication.
+ * It updates the UI to indicate loading, displays success or error alerts based on the result, and redirects
+ * the user to the homepage after a successful login.
  *
- * @param {Event} event - The form submission event triggered when the user attempts to log in.
- * @returns {Promise<Object>} The data returned from the login API function if the login is successful.
- * @throws {Error} If there is an issue with the login request or the credentials are incorrect.
+ * @async
+ * @param {Event} event - The submit event triggered when the user attempts to log in.
+ * @returns {void} - This function does not return any value.
  *
  * @example
- * // Example of how to use the onLogin function:
- * // Assume an event is triggered from the form submission
- * form.addEventListener("submit", (event) => onLogin(event));
+ * // This will handle the login form submission when the user clicks the login button.
+ * loginForm.addEventListener('submit', onLogin);
  */
-
 async function onLogin(event) {
   event.preventDefault()
 
@@ -36,7 +36,6 @@ async function onLogin(event) {
   try {
     const data = await login({ email, password })
 
-    // If login fails, `data` will be undefined or `errors` will contain the failure message.
     if (!data || (data.errors && data.errors.length > 0)) {
       const errorMessage =
         data?.errors?.[0]?.message ||

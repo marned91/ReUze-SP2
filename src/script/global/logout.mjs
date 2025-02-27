@@ -1,13 +1,17 @@
 import { handleAlert } from './handleAlerts.mjs'
-/**
- * This function should log the user out by removing user data from the browser.
- * This includes the removal of the user's token and user information.
- * After logging out, it alerts the user and redirects them to the login page.
- *
- * @function onLogout
- * @returns {void} This function does not return a value.
- */
 
+/**
+ * Logs the user out by removing authentication data from localStorage and redirecting to the login page.
+ *
+ * This function clears the stored authentication token and user data from localStorage, then displays an alert notifying the user they have been logged out.
+ * After a brief delay, the user is redirected to the login page.
+ *
+ * @returns {void}
+ *
+ * @example
+ * onLogout();
+ * // Removes the user's token and data from localStorage, displays a logout alert, and redirects to the login page.
+ */
 async function onLogout() {
   localStorage.removeItem('token')
   localStorage.removeItem('user')
@@ -18,7 +22,17 @@ async function onLogout() {
 }
 
 /**
- * Functions you attach to logout events that calls ui/auth/logout function
+ * Sets up a click event listener on the logout element to trigger the logout process.
+ *
+ * This function finds the element with the ID `logout` and adds a click event listener.
+ * When clicked, it prevents the default behavior, stops the event propagation, and calls the `onLogout` function to log the user out.
+ * The listener is set to trigger only once.
+ *
+ * @returns {void}
+ *
+ * @example
+ * setLogoutListener();
+ * // Sets up a logout event listener on the element with the ID "logout" to trigger the logout process.
  */
 export function setLogoutListener() {
   const logoutElement = document.querySelector('#logout')
@@ -27,11 +41,11 @@ export function setLogoutListener() {
     logoutElement.addEventListener(
       'click',
       (event) => {
-        event.preventDefault() // Prevent unexpected behavior
-        event.stopImmediatePropagation() // Stops multiple event triggers
+        event.preventDefault()
+        event.stopImmediatePropagation()
         onLogout()
       },
       { once: true },
-    ) // Ensures the event only runs once
+    )
   }
 }

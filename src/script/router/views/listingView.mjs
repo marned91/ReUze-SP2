@@ -2,6 +2,21 @@ import { fetchSingleListing } from '../../api/listings.mjs'
 import { handleBid } from '../../utils/handleBid.mjs'
 import { handleAlert } from '../../global/handleAlerts.mjs'
 
+/**
+ * Displays a single listing's details.
+ *
+ * This function fetches a single listing using the `fetchSingleListing` function, processes its data,
+ * and dynamically populates the page with details such as the listing's image, title, description, deadline,
+ * bid count, bid information, and status (active or expired).
+ * It also shows the bidding option if the listing is still active and the user is authenticated.
+ *
+ * @async
+ * @returns {Promise<void>} - A promise that resolves when the single listing has been displayed.
+ *
+ * @example
+ * // This will display the details of a single listing.
+ * displaySingleListing();
+ */
 async function displaySingleListing() {
   const listing = await fetchSingleListing()
 
@@ -93,7 +108,6 @@ async function displaySingleListing() {
     bidInfo.textContent = 'No bids yet.'
   }
 
-  // Append all elements
   singleListingInfo.append(
     titleContainer,
     description,
@@ -126,7 +140,6 @@ bidButton.addEventListener('click', async (event) => {
 
   try {
     const result = await handleBid(listingId, bidAmount, displaySingleListing)
-    console.log('Bid placed successfully:', result)
   } catch (error) {
     handleAlert('Failed to place bid. Please try again.')
   }

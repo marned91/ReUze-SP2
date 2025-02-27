@@ -5,6 +5,20 @@ import { handleAlert } from '../../global/handleAlerts.mjs'
 
 authGuard()
 
+/**
+ * Displays the user's profile information on the profile page.
+ *
+ * This function fetches the profile data of the user from localStorage and the server using the `fetchProfileData`
+ * function. It then dynamically updates the profile section with the user's avatar, name, bio, credits, and listing
+ * count. Additionally, it provides links to edit the profile and view the purchase history.
+ *
+ * @async
+ * @returns {void} - This function does not return any value.
+ *
+ * @example
+ * // This will display the profile page with the user's information.
+ * displayProfile();
+ */
 async function displayProfile() {
   const userInfo = JSON.parse(localStorage.getItem('user'))
   const username = userInfo?.name
@@ -27,7 +41,6 @@ async function displayProfile() {
 
   const profileInfo = document.getElementById('profile-info')
 
-  // Profile image
   const profileImage = document.getElementById('profile-image')
   const img = document.createElement('img')
   img.src = avatar?.url || '/assets/default-profile-image.jpg'
@@ -35,14 +48,12 @@ async function displayProfile() {
   img.classList.add('w-full', 'max-h-[500px]', 'object-cover')
   profileImage.appendChild(img)
 
-  // Profile name (H1)
   const profileName = document.createElement('h1')
   profileName.id = 'profile-name'
   profileName.classList.add('font-largeFont', 'text-4xl')
   profileName.textContent = name
   profileInfo.appendChild(profileName)
 
-  // Buttons (Edit Profile & Purchase History)
   const linksContainer = document.createElement('div')
   linksContainer.classList.add('flex', 'gap-4', 'pt-5', 'w-full')
 
@@ -84,7 +95,6 @@ async function displayProfile() {
   linksContainer.appendChild(purchaseHistoryLink)
   profileInfo.appendChild(linksContainer)
 
-  // Profile BIO
   const bioContainer = document.createElement('div')
   bioContainer.classList.add('mt-2', 'lg:mt-4', 'pt-3')
 
@@ -105,7 +115,6 @@ async function displayProfile() {
   bioContainer.appendChild(bioText)
   profileInfo.appendChild(bioContainer)
 
-  // Profile credit
   const creditContainer = document.createElement('div')
   creditContainer.classList.add('mt-4')
 
@@ -126,7 +135,6 @@ async function displayProfile() {
   creditContainer.appendChild(creditText)
   profileInfo.appendChild(creditContainer)
 
-  // Profile listings count
   const listingsContainer = document.createElement('div')
   listingsContainer.classList.add('mt-4')
 

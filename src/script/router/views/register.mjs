@@ -1,16 +1,23 @@
 import { handleAlert } from '../../global/handleAlerts.mjs'
-/**
- * This function should pass data to the register function in api/auth and handle the response
- * This function extracts the name, email, password, avatar URL, and avatar alt text from the form data,
- * then calls the `register` function. Upon successful registration, it alerts the user, resets the form,
- * and redirects to the login page.
- *
- * @param {Event} event - The form submission event.
- * @returns {Promise<Object>} The response data from the `register` function, typically containing user details.
- */
-
 import { register } from '../../api/auth.mjs'
 
+/**
+ * Handles the user registration process.
+ *
+ * This function is triggered when the registration form is submitted. It collects the form data, including the user's
+ * name, email, password, and avatar details, and sends it to the server for registration via the `register` function.
+ * Upon successful registration, it displays a success message and redirects the user to the login page. If registration fails,
+ * it displays an error message.
+ *
+ * @async
+ * @param {Event} event - The form submission event.
+ * @returns {Promise<Object>} - A promise that resolves to the response data from the registration API, or `undefined`
+ * if the registration fails.
+ *
+ * @example
+ * // Triggered when the registration form is submitted.
+ * onRegister(event);
+ */
 async function onRegister(event) {
   event.preventDefault()
 
@@ -50,6 +57,4 @@ async function onRegister(event) {
 }
 
 const form = document.forms.register
-
-// Add event listener for form submission, which will call onRegister when the form is submitted
 form.addEventListener('submit', onRegister)

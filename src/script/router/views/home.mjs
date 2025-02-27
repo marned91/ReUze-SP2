@@ -5,5 +5,3 @@ import { setUpSearch } from '../../utils/searchListings.mjs'
 authGuard()
 setupTagNavigation()
 setUpSearch('#search-input', '#search-button')
-
-console.log('home.mjs is loading')
