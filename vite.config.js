@@ -6,6 +6,9 @@ export default defineConfig({
   base: './',
   build: {
     target: 'esnext',
+    outDir: 'dist',
+    sourcemap: true,
+    minify: 'terser',
     rollupOptions: {
       input: {
         home: resolve(__dirname, 'index.html'), // Home logged-in users
@@ -20,6 +23,11 @@ export default defineConfig({
         listingCreate: resolve(__dirname, 'listings/create/index.html'), // Create new listing
         listingView: resolve(__dirname, 'listings/view/index.html'), // View listing
         listingsSearch: resolve(__dirname, 'listings/search/index.html'), //Search results
+      },
+      output: {
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]',
       },
     },
   },
