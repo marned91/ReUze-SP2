@@ -15,7 +15,7 @@ export default async function router(pathname = window.location.pathname) {
       await import('./views/publicHome.mjs')
       break
     case '/public/categories/index.html':
-    case '/public/categories/': //categories for non-logged in users
+    case '/public/categories/': // Categories for non-logged-in users
       await import('./views/publicCategories.mjs')
       break
     case '/auth/login/index.html': // Login
@@ -39,7 +39,7 @@ export default async function router(pathname = window.location.pathname) {
     case '/listings/create/': // Create new listing logged-in users
       await import('./views/listingCreate.mjs')
       break
-    case '/listings/view/index.html': // View listing. Logged in users can place bids, non-logged-in users will not get this option
+    case '/listings/view/index.html': // View listing. Logged-in users can place bids, non-logged-in users will not get this option
     case '/listings/view/':
       await import('./views/listingView.mjs')
       break
@@ -47,7 +47,7 @@ export default async function router(pathname = window.location.pathname) {
     case '/listings/search/':
       await import('./views/listingsSearchResult.mjs')
       break
-    case '/listings/index.html': // all listings per category
+    case '/listings/index.html': // All listings per category
     case '/listings/':
       if (category) {
         const validCategories = [
@@ -61,14 +61,8 @@ export default async function router(pathname = window.location.pathname) {
         ]
         if (validCategories.includes(category.toLowerCase())) {
           await import('./views/listingsPerCategory.mjs')
-        } else {
-          await import('./views/notFound.mjs')
         }
-      } else {
-        await import('./views/notFound.mjs')
       }
       break
-    default:
-      await import('./views/notFound.mjs')
   }
 }
