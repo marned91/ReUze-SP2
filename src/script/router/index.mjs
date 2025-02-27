@@ -17,12 +17,12 @@ export default async function router(pathname = window.location.pathname) {
     case '/public/categories/': //categories for non-logged in users
       await import('./views/publicCategories.mjs')
       break
-    case '/auth/login/': // Login
-    case '/auth/login/index.html':
+    case '/auth/login/index.html': // Login
+    case '/auth/login/':
       await import('./views/login.mjs')
       break
-    case '/auth/register/': // Register
-    case '/auth/register/index.html':
+    case '/auth/register/index.html': // Register
+    case '/auth/register/':
       await import('./views/register.mjs')
       break
     case '/profile/': // Profile logged-in users
@@ -37,16 +37,16 @@ export default async function router(pathname = window.location.pathname) {
     case '/listings/create/': // Create new listing logged-in users
       await import('./views/listingCreate.mjs')
       break
-    case '/listings/view/':
     case '/listings/view/index.html': // View listing. Logged in users can place bids, non-logged-in users will not get this option
+    case '/listings/view/':
       await import('./views/listingView.mjs')
       break
-    case '/listings/search/':
     case '/listings/search/index.html': // View listings search results
+    case '/listings/search/':
       await import('./views/listingsSearchResult.mjs')
       break
-    case '/listings/':
     case '/listings/index.html': // all listings per category
+    case '/listings/':
       if (category) {
         const validCategories = [
           'sport',
