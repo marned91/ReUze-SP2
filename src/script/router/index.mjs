@@ -8,6 +8,7 @@ export default async function router(pathname = window.location.pathname) {
   const normalizedPath = pathname === '/index.html' ? '/' : pathname
   switch (normalizedPath) {
     case '/': // Home logged-in users
+    case '':
       await import('./views/home.mjs')
       break
     case '/public/': // Home non-logged-in users
