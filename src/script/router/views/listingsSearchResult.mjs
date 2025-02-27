@@ -1,5 +1,9 @@
 import { fetchListingsBySearch } from '../../api/listings.mjs'
 import { setUpSearch } from '../../utils/searchListings.mjs'
+import {
+  showSkeletonLoader,
+  hideSkeletonLoader,
+} from '../../utils/skeletonLoader.mjs'
 
 setUpSearch('#search-input', '#search-button')
 
@@ -20,6 +24,8 @@ setUpSearch('#search-input', '#search-button')
 async function displaySearchResults() {
   const urlParams = new URLSearchParams(window.location.search)
   const query = urlParams.get('q')
+
+  showSkeletonLoader()
 
   if (query) {
     const searchQueryDiv = document.getElementById('search-query')
@@ -42,6 +48,7 @@ async function displaySearchResults() {
     searchResultsDiv.appendChild(noResultsMessage)
   } else {
     displaySearchListings(listings)
+    hideSkeletonLoader()
   }
 }
 

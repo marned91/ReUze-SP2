@@ -1,6 +1,10 @@
 import { fetchAllListingsByTag } from '../../api/listings.mjs'
 import { setupStatusFilter } from '../../utils/filterActiveExpired.mjs'
 import { handleAlert } from '../../global/handleAlerts.mjs'
+import {
+  showSkeletonLoader,
+  hideSkeletonLoader,
+} from '../../utils/skeletonLoader.mjs'
 
 /**
  * Fetches and displays listings based on a status filter and selected tag.
@@ -26,6 +30,11 @@ import { handleAlert } from '../../global/handleAlerts.mjs'
  * displayListings('active');
  * // Displays all active listings.
  */
+
+function simulateDelay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 async function displayListings(statusFilter = 'all') {
   const urlParams = new URLSearchParams(window.location.search)
   const tag = urlParams.get('tag')
@@ -38,6 +47,8 @@ async function displayListings(statusFilter = 'all') {
 
   const listingsContainer = document.getElementById('listings')
   listingsContainer.innerHTML = ''
+
+  showSkeletonLoader()
 
   try {
     const listings = await fetchAllListingsByTag(tag)
@@ -156,11 +167,8 @@ async function displayListings(statusFilter = 'all') {
       listingsContainer.appendChild(listingElement)
     })
   } catch (error) {
+    hideSkeletonLoader()
     handleAlert('Error fetching listings:', error, 'error')
-    const errorMessage = document.createElement('p')
-    errorMessage.textContent = 'Failed to load listings.'
-    errorMessage.classList.add('text-red-500')
-    listingsContainer.appendChild(errorMessage)
   }
 }
 

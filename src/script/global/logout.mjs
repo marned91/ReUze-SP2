@@ -36,6 +36,7 @@ async function onLogout() {
  */
 export function setLogoutListener() {
   const logoutElement = document.querySelector('#logout')
+  logoutElement.classList.add('cursor-pointer')
 
   if (logoutElement) {
     logoutElement.addEventListener(

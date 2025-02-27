@@ -2,6 +2,10 @@ import { authGuard } from '../../utils/authGuard.mjs'
 import { fetchProfileData } from '../../api/profile.mjs'
 import { displayProfileListings } from '../../utils/listingsPerProfile.mjs'
 import { handleAlert } from '../../global/handleAlerts.mjs'
+import {
+  showSkeletonLoader,
+  hideSkeletonLoader,
+} from '../../utils/skeletonLoader.mjs'
 
 authGuard()
 
@@ -20,6 +24,9 @@ authGuard()
  * displayProfile();
  */
 async function displayProfile() {
+  const profileContainer = document.getElementById('profile-container')
+  profileContainer.classList.add('hidden')
+  showSkeletonLoader()
   const userInfo = JSON.parse(localStorage.getItem('user'))
   const username = userInfo?.name
 
@@ -155,6 +162,8 @@ async function displayProfile() {
   profileInfo.appendChild(listingsContainer)
 
   displayProfileListings(username)
+  profileContainer.classList.remove('hidden')
+  hideSkeletonLoader()
 }
 
 displayProfile()

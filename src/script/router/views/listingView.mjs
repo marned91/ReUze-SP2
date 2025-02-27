@@ -1,6 +1,10 @@
 import { fetchSingleListing } from '../../api/listings.mjs'
 import { handleBid } from '../../utils/handleBid.mjs'
 import { handleAlert } from '../../global/handleAlerts.mjs'
+import {
+  showSkeletonLoader,
+  hideSkeletonLoader,
+} from '../../utils/skeletonLoader.mjs'
 
 /**
  * Displays a single listing's details.
@@ -16,9 +20,20 @@ import { handleAlert } from '../../global/handleAlerts.mjs'
  * @example
  * // This will display the details of a single listing.
  * displaySingleListing();
+ *
  */
+
 async function displaySingleListing() {
+  const contentContainer = document.getElementById('single-listing-container')
+  contentContainer.classList.add('hidden')
+
+  showSkeletonLoader()
+
   const listing = await fetchSingleListing()
+
+  contentContainer.classList.remove('hidden')
+
+  hideSkeletonLoader()
 
   if (!listing) {
     handleAlert('Listing not found. Please reload the page', 'error')
