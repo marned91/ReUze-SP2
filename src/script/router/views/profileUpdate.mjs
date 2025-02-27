@@ -1,6 +1,10 @@
 import { authGuard } from '../../utils/authGuard.mjs'
 import { fetchProfileData, updateProfileData } from '../../api/profile.mjs'
 import { handleAlert } from '../../global/handleAlerts.mjs'
+import {
+  showSkeletonLoader,
+  hideSkeletonLoader,
+} from '../../utils/skeletonLoader.mjs'
 
 authGuard()
 
@@ -23,11 +27,17 @@ async function handleProfileUpdate() {
   const userInfo = JSON.parse(localStorage.getItem('user'))
   const username = userInfo?.name
 
+  const updateProfileContainer = document.getElementById(
+    'profile-edit-container',
+  )
+  updateProfileContainer.classList.add('hidden')
+
   const profileImageContainer = document.getElementById('profile-image')
   const bioField = document.getElementById('bio')
   const imageUrlField = document.getElementById('image-url')
 
   try {
+    showSkeletonLoader()
     const profile = await fetchProfileData(username)
 
     bioField.value = profile?.bio || 'No BIO added yet'
@@ -41,6 +51,8 @@ async function handleProfileUpdate() {
 
       imageUrlField.value = profile.avatar.url
     }
+
+    updateProfileContainer.classList.remove('hidden')
 
     const form = document.getElementById('profile-edit-form')
     form.addEventListener('submit', async (event) => {
@@ -56,7 +68,6 @@ async function handleProfileUpdate() {
 
       const fieldset = form.querySelector('fieldset')
       const button = form.querySelector('button')
-      const originalButtonText = button.textContent
 
       fieldset.disabled = true
       button.textContent = 'Updating Profile...'
@@ -72,6 +83,7 @@ async function handleProfileUpdate() {
   } catch (error) {
     console.error('Error fetching current profile data:', error)
   } finally {
+    hideSkeletonLoader()
     fieldset.disabled = false
     button.textContent = originalButtonText
   }
