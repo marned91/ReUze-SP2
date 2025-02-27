@@ -18,9 +18,11 @@ export default async function router(pathname = window.location.pathname) {
       await import('./views/publicCategories.mjs')
       break
     case '/auth/login/': // Login
+    case '/auth/login/index.html':
       await import('./views/login.mjs')
       break
     case '/auth/register/': // Register
+    case '/auth/register/index.html':
       await import('./views/register.mjs')
       break
     case '/profile/': // Profile logged-in users
