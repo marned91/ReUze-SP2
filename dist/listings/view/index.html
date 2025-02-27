@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Update your ReUZe profile. New avatar image or bio."
+      content="View full ReUZe listing and place a bid if you are interested!"
     />
-    <title>Update Profile</title>
+    <title>ReUze | View</title>
     <link rel="icon" type="image/png" href="../../assets/monogram-hq-BOrXbzIE.png" />
     <script type="module" crossorigin src="../../assets/notFound-D8trMym1.js"></script>
     <link rel="stylesheet" crossorigin href="../../assets/notFound-D1q_t6Mj.css">
@@ -16,7 +16,7 @@
     class="min-h-screen grid grid-rows-[auto_1fr_auto] overflow-x-hidden w-screen"
   >
     <header
-      class="bg-white/90 backdrop-blur-md shadow-md w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 font-headerFooter"
+      class="bg-white/90 backdrop-blur-md shadow-md w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20"
     >
       <nav class="w-full flex items-center justify-between">
         <button
@@ -53,7 +53,7 @@
 
         <a
           href="/profile/"
-          class="md:hidden font-headerFooter block py-2.5 px-8 rounded-full font-medium bg-brand-dark text-white"
+          class="md:hidden font-headerFooter bg-highlight px-5 py-2.5 rounded-full"
           id="profile-mobile"
           >PROFILE</a
         >
@@ -91,7 +91,7 @@
             <li>
               <a
                 href="/public/categories/"
-                class="block py-2.5 px-3 font-light hover:font-medium"
+                class="block py-2.5 px-3 font-light hover:font-medium underline"
                 id="public-categories"
                 >LISTINGS</a
               >
@@ -113,7 +113,7 @@
             <li class="hidden md:block">
               <a
                 href="/profile/"
-                class="block py-2.5 px-8 rounded-full font-medium bg-brand-dark text-white"
+                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-brand-dark hover:text-white"
                 id="profile"
                 >PROFILE</a
               >
@@ -130,100 +130,104 @@
         </div>
       </nav>
     </header>
-    <main class="bg-brand p-20 md:p-26 lg:p-28">
+    <main class="bg-brand p-10 md:p-20 lg:p-28">
       <div
         id="alert-container"
         class="fixed top-30 inset-x-0 flex justify-center z-50"
       ></div>
-      <div id="skeleton-loader" class="hidden w-[80%] m-auto">
-        <!-- Profile card with image and text to the left -->
-        <div
-          role="status"
-          class="bg-white rounded-lg space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center p-20 mb-10"
-        >
-          <div
-            class="flex items-center justify-center w-full h-48 bg-gray-200 rounded-sm sm:w-96 dark:bg-gray-400"
-          >
-            <svg
-              class="w-10 h-10 text-gray-200 dark:text-gray-600"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 20 18"
+      <div
+        id="single-listing-container"
+        class="flex flex-col justify-center bg-white py-10 xl:py-20 rounded-3xl gap-10 m-auto w-[80%] lg:w-[70%]"
+      >
+        <div id="single-listing-image" class="items-center px-5 md:px-20"></div>
+        <div class="w-full">
+          <div id="single-listing-info" class="px-5 md:px-20"></div>
+          <div class="text-sm w-full mt-10">
+            <form
+              id="bid-form"
+              class="flex items-center gap-3 px-5 md:px-20 hidden"
             >
-              <path
-                d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"
-              />
-            </svg>
+              <select
+                id="bid-amount"
+                type="number"
+                name="bid-amount"
+                class="rounded-xl border border-gray-400 px-2 py-3 w-auto sm:w-full text-black font-smallFont text-sm"
+                required
+              >
+                <option value="" disabled selected>Select bid amount</option>
+                <option value="1">1</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+                <option value="35">35</option>
+                <option value="40">40</option>
+                <option value="45">45</option>
+                <option value="50">50</option>
+                <option value="55">55</option>
+                <option value="60">60</option>
+                <option value="65">65</option>
+                <option value="70">70</option>
+                <option value="75">75</option>
+                <option value="80">80</option>
+                <option value="85">85</option>
+                <option value="90">90</option>
+                <option value="95">95</option>
+                <option value="100">100</option>
+              </select>
+              <button
+                id="bid-button"
+                type="submit"
+                class="font-mediumFont bg-brand-dark w-[30%] px-2 py-3 rounded-3xl text-sm text-white font-medium duration-300 ease-out hover:scale-105"
+              >
+                BID NOW!
+              </button>
+            </form>
           </div>
-          <div class="w-full">
-            <div
-              class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-400 w-48 mb-4"
-            ></div>
-            <div
-              class="h-2 bg-gray-200 rounded-full dark:bg-gray-400 max-w-[480px] mb-2.5"
-            ></div>
-            <div
-              class="h-2 bg-gray-200 rounded-full dark:bg-gray-400 mb-2.5"
-            ></div>
-            <div
-              class="h-2 bg-gray-200 rounded-full dark:bg-gray-400 max-w-[440px] mb-2.5"
-            ></div>
-            <div
-              class="h-2 bg-gray-200 rounded-full dark:bg-gray-400 max-w-[460px] mb-2.5"
-            ></div>
-            <div
-              class="h-2 bg-gray-200 rounded-full dark:bg-gray-400 max-w-[360px]"
-            ></div>
-          </div>
-          <span class="sr-only">Loading...</span>
         </div>
       </div>
       <div
-        id="profile-edit-container"
-        class="flex flex-col-reverse lg:flex-row bg-white p-10 rounded-3xl gap-10 lg:gap-20 m-auto"
+        id="skeleton-loader"
+        class="hidden flex justify-center items-center p-10"
       >
-        <div id="profile-image"></div>
-        <div class="w-full lg:w-[50%]">
-          <h1 class="font-largeFont text-4xl text-center">EDIT PROFILE</h1>
-          <form id="profile-edit-form" class="space-y-4">
-            <fieldset>
-              <div>
-                <label for="bio" class="block font-smallFont font-bold mt-10"
-                  >BIO:</label
-                >
-                <textarea
-                  id="bio"
-                  name="bio"
-                  maxlength="160"
-                  rows="4"
-                  class="w-full font-smallFont text-sm mt-2 p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500"
-                ></textarea>
-                <p id="char-count" class="text-sm font-smallFont text-gray-500">
-                  0 / 160
-                </p>
-                <div>
-                  <label
-                    for="image-url"
-                    class="block font-smallFont font-bold mt-10"
-                    >Profile Image URL:</label
-                  >
-                  <input
-                    type="url"
-                    id="image-url"
-                    name="image-url"
-                    class="w-full font-smallFont text-sm mt-2 p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  class="bg-brand-dark text-white text-lg font-headlines-nav px-6 py-2 rounded-3xl transform transition duration-300 ease-out hover:scale-105 w-full hover:bg-accent mt-10"
-                >
-                  Save Changes
-                </button>
-              </div>
-            </fieldset>
-          </form>
+        <div
+          role="status"
+          class="max-w-2xl w-full py-20 px-10 border border-gray-200 rounded-sm shadow-sm animate-pulse dark:border-gray-400"
+        >
+          <div
+            class="flex items-center justify-center h-80 mb-6 bg-gray-300 rounded-sm dark:bg-gray-300"
+          >
+            <svg
+              class="w-16 h-16 text-gray-100 dark:text-gray-600"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 16 20"
+            >
+              <path
+                d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z"
+              />
+              <path
+                d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z"
+              />
+            </svg>
+          </div>
+          <div
+            class="h-3 bg-gray-100 rounded-full dark:bg-gray-300 w-full mb-6"
+          ></div>
+          <div
+            class="h-4 bg-gray-100 rounded-full dark:bg-gray-300 w-3/4 mb-4"
+          ></div>
+          <div
+            class="h-4 bg-gray-100 rounded-full dark:bg-gray-300 w-1/2 mb-4"
+          ></div>
+          <div
+            class="h-3 bg-gray-100 rounded-full dark:bg-gray-300 w-full mb-8"
+          ></div>
+          <div class="flex items-center mt-6"></div>
+          <span class="sr-only">Loading...</span>
         </div>
       </div>
     </main>
