@@ -47,8 +47,11 @@ export async function doFetch(url, options = {}) {
       console.log('API Response:', data)
       return data
     } else {
-      const error = await response.json()
-      throw new Error(error.message)
+      const errorResponse = await response.json()
+      const errorMessage = errorResponse.errors
+        ? errorResponse.errors[0].message
+        : 'Unknown error'
+      throw new Error(errorMessage)
     }
   } catch (error) {
     console.error('Error fetching data:', error)

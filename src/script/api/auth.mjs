@@ -68,9 +68,12 @@ export async function register({ name, email, password, avatar }) {
     password,
     avatar: { url: avatar.url, alt: avatar.alt },
   }
-
-  return await doFetch(API_AUTH_REGISTER, {
-    method: 'POST',
-    body: JSON.stringify(body),
-  })
+  try {
+    return await doFetch(API_AUTH_REGISTER, {
+      method: 'POST',
+      body: JSON.stringify(body),
+    })
+  } catch (error) {
+    throw new Error(` ${error.message || 'Unknown error'}`)
+  }
 }
