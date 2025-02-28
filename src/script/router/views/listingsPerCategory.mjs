@@ -31,6 +31,8 @@ import {
  * // Displays all active listings.
  */
 
+console.log('listingsPerCategory.mjs is loading')
+
 async function displayListings(statusFilter = 'all') {
   const urlParams = new URLSearchParams(window.location.search)
   const tag = urlParams.get('tag')
