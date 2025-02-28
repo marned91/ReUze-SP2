@@ -47,7 +47,7 @@ async function onLogin(event) {
     handleAlert('Login successful!', 'success')
     form.reset()
 
-    setTimeout(() => (window.location.pathname = '/'), 2000)
+    setTimeout(() => (window.location.href = '/'), 1000)
   } catch (error) {
     handleAlert(`Login failed: ${error.message}`, 'error')
   } finally {

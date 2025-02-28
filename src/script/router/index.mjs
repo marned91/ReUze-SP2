@@ -20,7 +20,6 @@ export default async function router(pathname = window.location.pathname) {
       break
     case '/auth/login/index.html': // Login
     case '/auth/login/':
-      console.log('Loading login.mjs')
       await import('./views/login.mjs')
       break
     case '/auth/register/index.html': // Register
