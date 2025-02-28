@@ -19,17 +19,33 @@ export function handleAlert(
   message,
   type = 'info',
   functionToCall = null,
-  timeout = 1000,
+  timeout = 2000,
 ) {
+  const alertHeadlines = {
+    info: '',
+    success: 'Success!',
+    error: 'Something went wrong...',
+  }
+
   const alertClasses = {
-    info: 'bg-[#E0EFF5] border-[#CCE1EA] text-black shadow-xl',
-    success: 'bg-[#A5D5E7] border-[#B7DBE9] text-accent-dark shadow-xl',
-    error: 'bg-[#7A8080] border-[#989F9F] text-white shadow-xl',
+    info: 'bg-[#E0EFF5] border-[#CCE1EA] text-black shadow-xl text-lg',
+    success: 'bg-[#A5D5E7] border-[#B7DBE9] text-brand-dark shadow-xl text-lg',
+    error: 'bg-[#7A8080] border-[#989F9F] text-white shadow-xl text-lg',
   }
 
   const alertDiv = document.createElement('div')
   alertDiv.className = `w-full max-w-md mx-auto p-4 border rounded-lg shadow-md ${alertClasses[type]}`
-  alertDiv.textContent = message
+
+  if (alertHeadlines[type]) {
+    const headlineDiv = document.createElement('strong')
+    headlineDiv.textContent = alertHeadlines[type]
+    alertDiv.appendChild(headlineDiv)
+    alertDiv.appendChild(document.createElement('br'))
+  }
+
+  const messageDiv = document.createElement('span')
+  messageDiv.textContent = message
+  alertDiv.appendChild(messageDiv)
 
   const alertContainer = document.getElementById('alert-container')
   alertContainer.appendChild(alertDiv)

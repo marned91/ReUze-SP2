@@ -36,12 +36,12 @@ export async function handleBid(listingId, bidAmount, displaySingleListing) {
   try {
     const profile = await fetchProfileData(username)
     const availableCredits = profile.credits
+
     if (numericBidAmount > availableCredits) {
-      handleAlert('You do not have enough credits to place this bid.', 'error')
       return
     }
 
-    const listing = await fetchSingleListing(listingId) // Get the current listing
+    const listing = await fetchSingleListing(listingId)
     const currentBid =
       listing.bids.length > 0 ? listing.bids[listing.bids.length - 1].amount : 0
     const newBid = currentBid + numericBidAmount
@@ -53,7 +53,7 @@ export async function handleBid(listingId, bidAmount, displaySingleListing) {
         `Your bid of $${numericBidAmount} has been placed! The new current bid is $${newBid}.`,
         'success',
       )
-      displaySingleListing() // Refresh the listing to show the updated bid
+      displaySingleListing()
     }
   } catch (error) {
     handleAlert('Failed to place bid. Please try again.', 'error')

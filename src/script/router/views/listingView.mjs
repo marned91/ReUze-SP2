@@ -105,7 +105,7 @@ async function displaySingleListing() {
 
   const description = document.createElement('p')
   description.textContent = listing.description || 'No description added.'
-  description.classList.add('font-smallFont', 'italic', 'mt-7')
+  description.classList.add('font-smallFont', 'italic', 'mt-7', 'font-light')
 
   const deadline = document.createElement('p')
   deadline.textContent = `Deadline: ${new Date(listing.endsAt).toLocaleString()}`
