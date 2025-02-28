@@ -48,7 +48,7 @@ async function displaySingleListing() {
 
   // Create image element
   const img = document.createElement('img')
-  img.src = listing.media?.[0]?.url || '/assets/default-listing-image.png'
+  img.src = listing.media?.[0]?.url || '../../assets/default-listing-image.png'
   img.alt = listing.media?.[0]?.alt || listing.title || 'Listing image'
   img.classList.add('w-full', 'max-h-[400px]', 'object-cover', 'rounded-3xl')
   singleListingImage.appendChild(img)
