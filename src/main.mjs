@@ -7,6 +7,7 @@ await router(window.location.pathname)
 
 console.log('main.mjs is loading - hello')
 
+await router(window.location.pathname)
 updateHeader()
 setupMenuToggle()
 setLogoutListener()
