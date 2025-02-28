@@ -3,8 +3,6 @@ import { setupTagNavigation } from '../utils/goToTag.mjs'
 import { setUpSearch } from '../utils/searchListings.mjs'
 // This function controls which JavaScript file is loaded on which page
 export default async function router(pathname = window.location.pathname) {
-  console.log('Router is running, pathname:', window.location.pathname)
-
   const urlParams = new URLSearchParams(window.location.search)
   const category = urlParams.get('tag')
 
@@ -12,8 +10,13 @@ export default async function router(pathname = window.location.pathname) {
   switch (normalizedPath) {
     case '/': // Home logged-in users. Calling functions instead of dynamic import as dynamic import resulted in home.mjs being used on all pages
       setupTagNavigation()
-      setUpSearch('#search-input', '#search-button')
       updateHomePage()
+      if (
+        document.querySelector('#search-input') &&
+        document.querySelector('#search-button')
+      ) {
+        setUpSearch('#search-input', '#search-button')
+      }
       break
     case '/auth/login/index.html': // Login
     case '/auth/login/':
