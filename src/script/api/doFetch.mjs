@@ -46,6 +46,9 @@ export async function doFetch(url, options = {}) {
       const { data } = await response.json()
       console.log('API Response:', data)
       return data
+    } else {
+      const error = await response.json()
+      throw new Error(error.message)
     }
   } catch (error) {
     console.error('Error fetching data:', error)

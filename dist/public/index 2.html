@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Discover a variety of listings on ReUze. Sign up or log in to create and bid on listings."
+    />
+    <title>ReUze | Discover Listings and More!</title>
+    <link rel="icon" type="image/png" href="../assets/monogram-hq-BOrXbzIE.png" />
+    <script
+      src="https://kit.fontawesome.com/4abbc2116c.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" crossorigin src="../assets/main-Cbclldai.js"></script>
+    <link rel="stylesheet" crossorigin href="../assets/main-D1q_t6Mj.css">
+  </head>
+  <body
+    class="min-h-screen grid grid-rows-[auto_1fr_auto] overflow-x-hidden w-screen"
+  >
+    <header
+      class="bg-white/90 backdrop-blur-md shadow-md w-full flex items-center justify-between py-3 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20"
+    >
+      <nav class="w-full flex items-center justify-between">
+        <button
+          id="menu-toggle"
+          class="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+
+        <a
+          href="/"
+          class="absolute left-1/2 transform -translate-x-1/2 md:static md:translate-x-0"
+        >
+          <img
+            src="../assets/reuze-high-resolution-logo-transparent-CKaRXZsP.png"
+            alt="ReUze Logo"
+            class="w-36 md:w-44 h-auto"
+          />
+        </a>
+
+        <a
+          href="/profile/"
+          class="md:hidden font-headerFooter bg-highlight px-5 py-2.5 rounded-full"
+          id="profile-mobile"
+          >PROFILE</a
+        >
+
+        <a
+          href="/auth/register/"
+          class="md:hidden font-headerFooter bg-highlight px-5 py-2.5 rounded-full"
+          id="signup-mobile"
+          >SIGN UP!</a
+        >
+
+        <div
+          id="mobile-menu"
+          class="hidden backdrop-blur-md shadow-2xl md:backdrop-blur-none md:shadow-none rounded-b-xl md:flex md:items-center md:static md:w-auto absolute top-16 left-0 w-full bg-white md:bg-transparent py-5 md:py-0 lg:py-0 xl:py-0 2xl:py-0"
+        >
+          <ul
+            class="flex justify-center lg:justify-between xl:justify-between 2xl:justify-between font-headerFooter gap-5"
+          >
+            <li>
+              <a
+                href="/"
+                class="block py-2.5 px-3 font-light hover:font-medium underline"
+                id="home"
+                >HOME</a
+              >
+            </li>
+            <li>
+              <a
+                href="/public/"
+                class="block py-2.5 px-3 font-light hover:font-medium underline"
+                id="public-home"
+                >HOME</a
+              >
+            </li>
+            <li>
+              <a
+                href="/public/categories/"
+                class="block py-2.5 px-3 font-light hover:font-medium"
+                id="public-categories"
+                >LISTINGS</a
+              >
+            </li>
+            <li
+              id="logout"
+              class="block py-2.5 px-3 font-light hover:font-medium"
+            >
+              LOG OUT
+            </li>
+            <li>
+              <a
+                href="/auth/login/"
+                class="block py-2.5 px-3 font-light hover:font-medium"
+                id="login"
+                >LOG IN</a
+              >
+            </li>
+            <li class="hidden md:block">
+              <a
+                href="/profile/"
+                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-brand-dark hover:text-white"
+                id="profile"
+                >PROFILE</a
+              >
+            </li>
+            <li class="hidden md:block">
+              <a
+                href="/auth/register/"
+                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-brand-dark hover:text-white"
+                id="signup"
+                >SIGN UP!</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div
+        id="alert-container"
+        class="fixed top-30 inset-x-0 flex justify-center z-50"
+      ></div>
+      <section class="bg-brand">
+        <div
+          class="flex flex-col lg:flex-row justify-between gap-10 items-center p-10 md:p-20 lg:p-30 w-[90%] 2xl:w-[80%] m-auto"
+        >
+          <div class="text-white px-5 items-center">
+            <h1 class="font-largeFont text-4xl">
+              WELCOME TO THE JOURNEY OF REUSE!
+            </h1>
+            <p class="font-smallFont font-light pt-5 pb-10">
+              The auction site where unique finds get a second life! Browse
+              listings freely, and log in to place your bids.
+            </p>
+            <a
+              href="/public/categories/"
+              class="font-mediumFont text-lg bg-brand-light rounded-3xl py-3 px-10 text-black transition-transform duration-300 ease-out hover:scale-105 inline-block hover:font-semibold"
+              >View Listings</a
+            >
+          </div>
+          <div>
+            <img
+              src="../assets/public-home-BRs1JyQF.png"
+              alt="orange lounge chair with a beige blanket on the side in a light modern living room"
+              class="w-full h-auto"
+            />
+          </div>
+        </div>
+      </section>
+      <section
+        class="py-20 px-32 flex flex-col md:flex-row justify-between justify-center text-center gap-20 md:gap-5 m-auto w-full lg:w-[85%]"
+      >
+        <div>
+          <i class="fa-brands fa-pagelines text-brand-dark text-9xl"></i>
+          <p class="pt-5">For the environment</p>
+        </div>
+        <div>
+          <i class="fa-solid fa-house text-brand-dark text-9xl"></i>
+          <p class="pt-5">For your home</p>
+        </div>
+        <div>
+          <i class="fa-regular fa-face-smile-beam text-brand-dark text-9xl"></i>
+          <p class="pt-5">For your economy</p>
+        </div>
+      </section>
+      <section class="bg-brand-light px-10 py-40 lg:px-30">
+        <div class="m-auto w-full lg:w-[80%]">
+          <h2 class="font-mediumFont text-3xl">Search Listings</h2>
+          <p class="font-smallFont pt-5 pb-10 w.fill xl:w-[50%]">
+            Search our listings to see if you find anything you like! Psst! You
+            need to be logged in to make a bid.
+          </p>
+          <div id="search-container" class="flex gap-3">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search listing titles..."
+              class="rounded-2xl border border-gray-400 p-1.5 w-[40%] ps-5 text-black font-smallFont"
+            />
+            <button
+              id="search-button"
+              class="font-mediumFont bg-accent-dark text-white px-7 py-2 rounded-3xl font-medium sm:text-base text-sm transition-transform duration-300 ease-out hover:scale-105"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="bg-white py-5 px-5 md:px-10 lg:px-20 xl:px-20 2xl:px-20 w-full mt-auto shadow-t-md border-t border-gray-300 bg-gradient-to-b from-white to-gray-100"
+    >
+      <div class="flex justify-between items-center">
+        <img
+          src="../assets/reuze-high-resolution-logo-transparent-CKaRXZsP.png"
+          alt="ReUze logo"
+          class="w-36 md:w-44 h-auto"
+        />
+        <div class="flex flex-col gap-2 items-end font-headerFooter font-light">
+          <a href="/global/terms.html" class="hover:font-medium"
+            >TERMS & CONDITIONS</a
+          >
+          <span class="text-sm text-gray-700 sm:text-center dark:text-gray-400"
+            >© 2025
+            <a href="https://flowbite.com/" class="hover:underline">ReUze™</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

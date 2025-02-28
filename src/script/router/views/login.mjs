@@ -17,6 +17,8 @@ import { login } from '../../api/auth.mjs'
  * // This will handle the login form submission when the user clicks the login button.
  * loginForm.addEventListener('submit', onLogin);
  */
+console.log('login.mjs is executing')
+
 async function onLogin(event) {
   event.preventDefault()
 
@@ -47,7 +49,7 @@ async function onLogin(event) {
     handleAlert('Login successful!', 'success')
     form.reset()
 
-    setTimeout(() => (window.location.href = '/'), 1000)
+    setTimeout(() => (window.location.href = '/'), 2000)
   } catch (error) {
     handleAlert(`Login failed: ${error.message}`, 'error')
   } finally {
