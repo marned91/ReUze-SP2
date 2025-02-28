@@ -9,4 +9,6 @@ console.log('main.mjs is loading - hello')
 updateHeader()
 setupMenuToggle()
 setLogoutListener()
-await router(window.location.pathname)
+document.addEventListener('DOMContentLoaded', () => {
+  router()
+})
