@@ -10,7 +10,7 @@ export default async function router(pathname = window.location.pathname) {
 
   const normalizedPath = pathname === '/index.html' ? '/' : pathname
   switch (normalizedPath) {
-    case '/': // Home logged-in users
+    case '/': // Home logged-in users. Calling functions instead of dynamic import as dynamic import resulted in home.mjs being used on all pages
       setupTagNavigation()
       setUpSearch('#search-input', '#search-button')
       updateHomePage()
