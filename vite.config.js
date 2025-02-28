@@ -10,9 +10,7 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       input: {
-        home: resolve(__dirname, 'index.html'), // Home logged-in users
-        publicHome: resolve(__dirname, 'public/index.html'), // Home non-logged-in users
-        publicCategories: resolve(__dirname, 'public/categories/index.html'), //Categories for non-logged-in users
+        home: resolve(__dirname, 'index.html'), // Home
         listingsPerCategory: resolve(__dirname, 'listings/index.html'), //Listings per category
         login: resolve(__dirname, 'auth/login/index.html'), // Login
         register: resolve(__dirname, 'auth/register/index.html'), // Register

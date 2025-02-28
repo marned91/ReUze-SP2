@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -83,22 +83,6 @@
                 >HOME</a
               >
             </li>
-            <li>
-              <a
-                href="/public/"
-                class="block py-2.5 px-3 font-light hover:font-medium"
-                id="public-home"
-                >HOME</a
-              >
-            </li>
-            <li>
-              <a
-                href="/public/categories/"
-                class="block py-2.5 px-3 font-light hover:font-medium"
-                id="public-categories"
-                >LISTINGS</a
-              >
-            </li>
             <li
               id="logout"
               class="block py-2.5 px-3 font-light hover:font-medium mr-2"
@@ -124,7 +108,7 @@
             <li class="hidden md:block">
               <a
                 href="/auth/register/"
-                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-accent-dark hover:text-white"
+                class="block bg-highlight py-2.5 px-8 rounded-full font-medium hover:bg-brand-dark hover:text-white"
                 id="signup"
                 >SIGN UP!</a
               >
@@ -138,7 +122,10 @@
         id="alert-container"
         class="fixed top-30 inset-x-0 flex justify-center z-50"
       ></div>
-      <section class="bg-brand p-10 md:p-24 text-white">
+      <section
+        id="home-logged-in"
+        class="bg-brand p-10 md:p-24 text-white hidden"
+      >
         <div>
           <h1 class="font-largeFont text-4xl pb-10">LET THE REUSE BEGIN!</h1>
           <p class="font-smallFont font-light pb-10">
@@ -161,7 +148,75 @@
           </button>
         </div>
       </section>
-      <section>
+      <section id="home-not-logged-in" class="hidden">
+        <div
+          class="flex flex-col lg:flex-row justify-between bg-brand gap-10 items-center p-10 md:p-20 lg:p-30 m-auto"
+        >
+          <div class="text-white px-5 items-center">
+            <h1 class="font-largeFont text-4xl">
+              WELCOME TO THE JOURNEY OF REUSE!
+            </h1>
+            <p class="font-smallFont font-light pt-5 pb-10">
+              The auction site where unique finds get a second life! Browse
+              listings freely, and log in to place your bids.
+            </p>
+            <a
+              href="#listing-cateories-home"
+              class="font-mediumFont text-lg bg-brand-light rounded-3xl py-3 px-10 text-black transition-transform duration-300 ease-out hover:scale-105 inline-block hover:font-semibold"
+              >View Listings</a
+            >
+          </div>
+          <div>
+            <img
+              src="/assets/public-home.png"
+              alt="orange lounge chair with a beige blanket on the side in a light modern living room"
+              class="w-full h-auto"
+            />
+          </div>
+        </div>
+        <div
+          class="py-20 px-32 flex flex-col md:flex-row justify-between justify-center text-center gap-20 md:gap-5 m-auto w-full lg:w-[85%]"
+        >
+          <div>
+            <i class="fa-brands fa-pagelines text-brand-dark text-9xl"></i>
+            <p class="pt-5">For the environment</p>
+          </div>
+          <div>
+            <i class="fa-solid fa-house text-brand-dark text-9xl"></i>
+            <p class="pt-5">For your home</p>
+          </div>
+          <div>
+            <i
+              class="fa-regular fa-face-smile-beam text-brand-dark text-9xl"
+            ></i>
+            <p class="pt-5">For your economy</p>
+          </div>
+        </div>
+        <div class="bg-brand-light px-10 py-20 lg:px-30">
+          <div class="m-auto w-full lg:w-[80%]">
+            <h2 class="font-mediumFont text-3xl">Search Listings</h2>
+            <p class="font-smallFont pt-5 pb-10 w.fill xl:w-[50%]">
+              Search our listings to see if you find anything you like! Psst!
+              You need to be logged in to make a bid.
+            </p>
+            <div id="search-container" class="flex gap-3">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search listing titles..."
+                class="rounded-2xl border border-gray-400 p-1.5 w-[40%] ps-5 text-black font-smallFont"
+              />
+              <button
+                id="search-button"
+                class="font-mediumFont bg-accent-dark text-white px-7 py-2 rounded-3xl font-medium sm:text-base text-sm transition-transform duration-300 ease-out hover:scale-105"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="listing-cateories-home">
         <div
           class="grid grid-cols-1 md:grid-cols-3 content-center gap-5 px-20 py-20 border"
         >

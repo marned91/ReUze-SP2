@@ -1,3 +1,4 @@
+import { updateHomePage } from '../router/views/home.mjs'
 import { handleAlert } from './handleAlerts.mjs'
 
 /**
@@ -15,6 +16,8 @@ import { handleAlert } from './handleAlerts.mjs'
 async function onLogout() {
   localStorage.removeItem('token')
   localStorage.removeItem('user')
+
+  updateHomePage()
 
   handleAlert('You have been logged out', 'info')
 

@@ -11,13 +11,6 @@ export default async function router(pathname = window.location.pathname) {
     case '':
       await import('./views/home.mjs')
       break
-    case '/public/': // Home non-logged-in users
-      await import('./views/publicHome.mjs')
-      break
-    case '/public/categories/index.html':
-    case '/public/categories/': // Categories for non-logged-in users
-      await import('./views/publicCategories.mjs')
-      break
     case '/auth/login/index.html': // Login
     case '/auth/login/':
       await import('./views/login.mjs')
