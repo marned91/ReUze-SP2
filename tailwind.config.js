@@ -11,7 +11,7 @@ export default {
       },
       colors: {
         brand: {
-          light: '#DEE5E8',
+          light: '#DAE3E6',
           DEFAULT: '#437081',
           dark: '#383939',
         },
@@ -20,6 +20,7 @@ export default {
           dark: '#196E8E',
         },
         highlight: '#DB764F',
+        gradient: '#7399A7',
       },
       screens: {
         xs: '460px',
