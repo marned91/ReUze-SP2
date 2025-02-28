@@ -81,10 +81,13 @@ async function displayListings(statusFilter = 'all') {
         'rounded-lg',
       )
 
+      // Default image URL does not work on live page due to a build issue
+      // In production, the image at '/assets/default-listing-image.png' is not being included in the 'dist' folder during the build process.
+      // Also tested placing the image in the 'public' folder, but it still wasn't included. Possibly due to Vite’s build configuration not copying the image correctly.
       const imageUrl =
         listing.media && listing.media.length > 0
           ? listing.media[0].url
-          : '../../assets/default-listing-image.png'
+          : '/assets/default-listing-image.png'
       const img = document.createElement('img')
       img.src = imageUrl
       img.alt = listing.title

@@ -46,27 +46,25 @@ async function displaySingleListing() {
   singleListingImage.innerHTML = ''
   singleListingInfo.innerHTML = ''
 
-  // Create image element
+  // Default image URL does not work on live page due to a build issue
+  // In production, the image at '/assets/default-listing-image.png' is not being included in the 'dist' folder during the build process.
+  // Also tested placing the image in the 'public' folder, but it still wasn't included. Possibly due to Vite’s build configuration not copying the image correctly.
   const img = document.createElement('img')
-  img.src = listing.media?.[0]?.url || '../../assets/default-listing-image.png'
+  img.src = listing.media?.[0]?.url || '/assets/default-listing-image.png'
   img.alt = listing.media?.[0]?.alt || listing.title || 'Listing image'
   img.classList.add('w-full', 'max-h-[400px]', 'object-cover', 'rounded-3xl')
   singleListingImage.appendChild(img)
 
-  // Create title container
   const titleContainer = document.createElement('div')
   titleContainer.classList.add('flex', 'items-center', 'gap-4', 'flex-wrap')
 
-  // Create title element
   const title = document.createElement('h1')
   title.textContent = listing.title || 'No title available'
   title.classList.add('font-largeFont', 'text-4xl')
 
-  // Create tags container
   const tagsDiv = document.createElement('div')
   tagsDiv.classList.add('flex', 'flex-wrap', 'gap-1')
 
-  // Add status tag
   const currentDateTag = new Date()
   const endAtDate = new Date(listing.endsAt)
   const status = endAtDate > currentDateTag ? 'active' : 'expired'
@@ -83,7 +81,6 @@ async function displaySingleListing() {
   )
   tagsDiv.appendChild(statusElement)
 
-  // Add listing tags
   if (listing.tags && listing.tags.length > 0) {
     listing.tags.forEach((tag) => {
       const tagElement = document.createElement('span')
@@ -100,7 +97,6 @@ async function displaySingleListing() {
     })
   }
 
-  // Append title and tags together
   titleContainer.append(title, tagsDiv)
 
   const description = document.createElement('p')
