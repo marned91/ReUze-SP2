@@ -20,5 +20,3 @@ export async function setUpSearch(inputSelector, buttonSelector) {
   }
   searchButton.addEventListener('click', handleSearch)
 }
-
-setUpSearch('#search-input', '#search-button')

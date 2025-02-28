@@ -1,8 +1,3 @@
-// import { setupTagNavigation } from '../../utils/goToTag.mjs'
-// import { setUpSearch } from '../../utils/searchListings.mjs'
-
-// console.log('home.mjs is loading')
-
 export async function updateHomePage() {
   const homeLoggedInContent = document.getElementById('home-logged-in')
   const homeNotLoggedInContent = document.getElementById('home-not-logged-in')

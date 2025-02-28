@@ -1,6 +1,6 @@
 import { updateHomePage } from './views/home.mjs'
 import { setupTagNavigation } from '../utils/goToTag.mjs'
-
+import { setUpSearch } from '../utils/searchListings.mjs'
 // This function controls which JavaScript file is loaded on which page
 export default async function router(pathname = window.location.pathname) {
   console.log('Router is running, pathname:', window.location.pathname)
@@ -12,6 +12,7 @@ export default async function router(pathname = window.location.pathname) {
   switch (normalizedPath) {
     case '/': // Home logged-in users
       setupTagNavigation()
+      setUpSearch('#search-input', '#search-button')
       updateHomePage()
       break
     case '/auth/login/index.html': // Login
