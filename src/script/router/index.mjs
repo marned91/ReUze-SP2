@@ -11,11 +11,19 @@ export default async function router(pathname = window.location.pathname) {
     case '/': // Home logged-in users. Calling functions instead of dynamic import as dynamic import resulted in home.mjs being used on all pages
       setupTagNavigation()
       updateHomePage()
+      //Search form for logged in users
       if (
         document.querySelector('#search-input') &&
         document.querySelector('#search-button')
       ) {
         setUpSearch('#search-input', '#search-button')
+      }
+      //Search form for non-logged in users
+      if (
+        document.querySelector('#search-input-extra') &&
+        document.querySelector('#search-button-extra')
+      ) {
+        setUpSearch('#search-input-extra', '#search-button-extra')
       }
       break
     case '/auth/login/index.html': // Login
