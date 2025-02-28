@@ -84,7 +84,7 @@ async function displayListings(statusFilter = 'all') {
       const imageUrl =
         listing.media && listing.media.length > 0
           ? listing.media[0].url
-          : '/assets/default-listing-image.png'
+          : '../../assets/default-listing-image.png'
       const img = document.createElement('img')
       img.src = imageUrl
       img.alt = listing.title
