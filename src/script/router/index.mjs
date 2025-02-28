@@ -1,3 +1,6 @@
+import { updateHomePage } from './views/home.mjs'
+import { setupTagNavigation } from '../utils/goToTag.mjs'
+
 // This function controls which JavaScript file is loaded on which page
 export default async function router(pathname = window.location.pathname) {
   console.log('Router is running, pathname:', window.location.pathname)
@@ -8,8 +11,8 @@ export default async function router(pathname = window.location.pathname) {
   const normalizedPath = pathname === '/index.html' ? '/' : pathname
   switch (normalizedPath) {
     case '/': // Home logged-in users
-    case '':
-      await import('./views/home.mjs')
+      setupTagNavigation()
+      updateHomePage()
       break
     case '/auth/login/index.html': // Login
     case '/auth/login/':
