@@ -80,7 +80,6 @@
                 >HOME</a
               >
             </li>
-            </li>
             <li
               id="logout"
               class="block py-2.5 px-3 font-light hover:font-medium mr-2"
@@ -120,27 +119,30 @@
         id="alert-container"
         class="fixed top-30 inset-x-0 flex justify-center z-50"
       ></div>
-      <section class="bg-gradient-to-r from-brand to-gradient text-white p-20 lg:p-32">
+      <section
+        class="bg-gradient-to-r from-brand to-gradient text-white p-20 lg:p-32"
+      >
         <div class="w-[90%] xl:w-[70%] m-auto">
-        <div id="search-query" class="pb-5"></div>
-        <p class="font-smallFont font-light pb-10">
-          Couldn’t find what you were looking for? Try searching for something
-          else!
-        </p>
-        <div id="search-container" class="flex gap-3">
-          <input
-            type="text"
-            id="search-input"
-            placeholder="Search listing titles..."
-            class="rounded-xl p-1.5 w-[90%] md:w-[70%] lg:w-[40%] ps-5 text-black"
-          />
-          <button
-            id="search-button"
-            class="font-mediumFont bg-brand-light text-black px-7 py-2 rounded-3xl font-medium sm:text-base text-sm transition-transform duration-300 ease-out hover:scale-105"
-          >
-            Search
-          </button>
-        </div>
+          <div id="search-query" class="pb-5"></div>
+          <p class="font-smallFont font-light pb-10">
+            Couldn’t find what you were looking for? Try searching for something
+            else!
+          </p>
+          <div id="search-container" class="flex gap-3">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search listing titles..."
+              class="rounded-xl p-1.5 w-[90%] md:w-[70%] lg:w-[40%] ps-5 text-black"
+              aria-label="Search listings"
+            />
+            <button
+              id="search-button"
+              class="font-mediumFont bg-brand-light text-black px-7 py-2 rounded-3xl font-medium sm:text-base text-sm transition-transform duration-300 ease-out hover:scale-105"
+            >
+              Search
+            </button>
+          </div>
         </div>
       </section>
       <section class="p-10 xl:p-20 bg-brand-light">
