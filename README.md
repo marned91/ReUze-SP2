@@ -2,10 +2,11 @@
 <img width="1283" alt="Skjermbilde 2025-03-01 kl  15 52 19" src="https://github.com/user-attachments/assets/36ce6873-6543-49c0-8697-140d19bfc474" />
 
 # Purpose
-The purpose of this project is to create a responsive and dynamic auction platform where users can buy and sell items through a bidding system. This web application interacts with an existing API, allowing users to list items, place bids, and manage their profiles. It was developed as part of Noroff's Frontend Development course (FED2).
+The purpose of this project is to create a responsive, user-friendly and dynamic auction platform where users can buy and sell items through a bidding system. The theme is reuse and second-hand items, making it easier to find affordable, sustainable products. This web application interacts with an existing API, allowing users to list items, place bids, and manage their profiles. It was developed as part of Noroff's Frontend Development course (FED2).
 
 # Description
-ReUze is a front-end auction website designed to let users participate in auctions by listing items and placing bids. All users have access to browsing listings and view them in full. Built using HTML, CSS, and JavaScript, the project integrates with an external API to handle user authentication, item listings, and bidding functionalities.
+ReUze is a front-end auction website designed to let users participate in auctions by listing items and placing bids. All users have access to browsing listings and view them in full. The goal is to provide a space for users to list, bid on, and purchase items while promoting sustainability and responsible consumption.
+Built using HTML, CSS, and JavaScript, the project integrates with an external API to handle user authentication, item listings, and bidding functionalities.
 
 ### Key features include:
 - View and Browse Listings: All users can browse and view listings
@@ -13,6 +14,7 @@ ReUze is a front-end auction website designed to let users participate in auctio
 - Item Listings: Users can create and manage auction listings, including adding images, descriptions, and setting deadlines.
 - Bidding System: Registered users can place bids on items they are interested in.
 - Profile Management: Users can update their avatars and view their total credits.
+- Category Pages: Listings can be viewed by category (e.g., Sport, Fashion, Vintage).
 - Search Functionality: Unregistered users can browse through the listings, but can only view them; bids can only be placed by registered users.
 
 ### Learning Outcomes:
@@ -36,7 +38,17 @@ The fictional client for this project is a digital auction company looking to of
 - PostCSS: Utilized for processing the Tailwind CSS.
 - API: Interacted with the auction API to manage user data, listings, and bids.
 - GitHub: Version control was handled via GitHub.
+- ESLint & Prettier: Ensures code consistency and best practices across the project.
 - Netlify: Deployed on Netlify for public access.
+
+# Project Structure:
+The site uses a custom JavaScript router function to manage page navigation without the need for a JavaScript framework. This project is built with multiple pages and content that dynamically load based on the user's navigation.
+- Homepage: Displays featured categories and search option.
+- Authentication: Login/register pages.
+- Profile: Users can view and edit their profile details, view listing history, and purchase history.
+- Listings: View, filter active/expired and search for available auction items.
+- Listing Creation: Registered users can create new auction listings.
+- Bidding: Registered users can place bids on items.
 
 ### Development Tools
 - Figma: Used for wireframing, prototyping and design guide.
@@ -55,6 +67,16 @@ To get the project running on your local machine, follow these steps:
 ### Running the Development Server:
 Start the development server with Vite:
 ```npm run dev```
+
+### Build the project for production:
+```npm run build```
+
+### Test Build the project for production:
+```npm run preview```
+
+# Deployment
+The project is hosted on Netlify for live demo purposes. You can view the live version [here](https://reuze.netlify.app/).
+
 
 # Contributing
 As this project is for a course assignment, I am not currently accepting external contributions. However, I welcome any feedback or suggestions for improvement. Feel free to create an issue in the repository if you have any thoughts on how to enhance the project.
