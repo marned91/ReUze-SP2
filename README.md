@@ -55,7 +55,6 @@ To get the project running on your local machine, follow these steps:
 ### Running the Development Server:
 Start the development server with Vite:
 ```npm run dev```
-Visit localhost in your browser to view the project.
 
 # Contributing
 As this project is for a course assignment, I am not currently accepting external contributions. However, I welcome any feedback or suggestions for improvement. Feel free to create an issue in the repository if you have any thoughts on how to enhance the project.
