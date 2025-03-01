@@ -44,7 +44,6 @@ export async function doFetch(url, options = {}) {
 
     if (response.ok) {
       const { data } = await response.json()
-      console.log('API Response:', data)
       return data
     } else {
       const errorResponse = await response.json()

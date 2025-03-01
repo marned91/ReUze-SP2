@@ -15,10 +15,6 @@
  * - vintage
  * - other
  *
- * @example
- * // Example usage:
- * setupTagNavigation();
- *
  * // If the user clicks on a tag with id="fashion", the page will navigate to:
  * // "/listings/index.html?tag=fashion"
  *

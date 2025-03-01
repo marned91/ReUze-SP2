@@ -10,9 +10,6 @@ import { handleAlert } from '../global/handleAlerts.mjs'
  * @function
  * @returns {void} - This function does not return a value, it performs a redirection if the user is not logged in.
  *
- * @example
- * // Call the authGuard to protect a page from unauthorized access
- * authGuard();
  */
 export function authGuard() {
   if (!localStorage.token) {

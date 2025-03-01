@@ -9,9 +9,6 @@ import { handleAlert } from './handleAlerts.mjs'
  *
  * @returns {void}
  *
- * @example
- * onLogout();
- * // Removes the user's token and data from localStorage, displays a logout alert, and redirects to the login page.
  */
 async function onLogout() {
   localStorage.removeItem('token')

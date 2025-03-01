@@ -7,9 +7,6 @@
  *
  * @returns {void}
  *
- * @example
- * setupMenuToggle();
- * // Sets up the mobile menu toggle functionality.
  */
 export function setupMenuToggle() {
   const menuToggle = document.getElementById('menu-toggle')

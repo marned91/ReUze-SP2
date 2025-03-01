@@ -11,9 +11,6 @@
  * @param {number} [timeout=1000] - The time in milliseconds after which the alert will be removed. Default is 1000ms (1 second).
  * @returns {void}
  *
- * @example
- * handleAlert("Item deleted successfully!", "success", () => { console.log("Alert closed."); }, 2000);
- * // Displays a success alert for 2 seconds, and then logs "Alert closed."
  */
 export function handleAlert(
   message,

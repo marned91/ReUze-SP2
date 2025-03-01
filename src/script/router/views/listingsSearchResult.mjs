@@ -127,7 +127,6 @@ async function displaySearchListings(listings) {
     bidLabel.classList.add('font-bold')
 
     if (listing._count?.bids > 0) {
-      // This will show if there are bids
       const currentBidValue = document.createElement('span')
       currentBidValue.textContent = `$${listing.bids[listing.bids.length - 1].amount}`
       currentBidValue.classList.add('font-normal')
@@ -135,7 +134,6 @@ async function displaySearchListings(listings) {
       listingBid.classList.add('text-sm', 'text-gray-600', 'mt-1')
       listingBid.append(bidLabel, currentBidValue)
     } else {
-      // This will show if there are no bids
       const noBidsValue = document.createElement('span')
       noBidsValue.textContent = 'No bids yet'
       noBidsValue.classList.add('font-normal')

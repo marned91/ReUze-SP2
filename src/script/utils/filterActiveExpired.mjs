@@ -11,18 +11,6 @@
  * @param {Function} callback - A function to be called when the status filter selection changes.
  * The callback will receive the selected status value as its argument, which will be one of "all", "active", or "expired".
  *
- * @example
- * // Example usage:
- * setupStatusFilter((selectedStatus) => {
- *   if (selectedStatus === 'active') {
- *     // Show active items
- *   } else if (selectedStatus === 'expired') {
- *     // Show expired items
- *   } else {
- *     // Show all items
- *   }
- * });
- *
  * @returns {void} - This function does not return a value, it sets up an event listener.
  */
 
