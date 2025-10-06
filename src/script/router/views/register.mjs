@@ -50,6 +50,7 @@ async function onRegister(event) {
     return data
   } catch (error) {
     handleAlert(`Registration failed: ${error.message}`, 'error')
+    return null
   } finally {
     fieldset.disabled = false
     button.textContent = originalButtonText
