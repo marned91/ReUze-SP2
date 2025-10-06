@@ -1,5 +1,6 @@
 import { authGuard } from '../../utils/authGuard.mjs'
 import { fetchProfileWins } from '../../api/profile.mjs'
+import { handleAlert } from '../../global/handleAlerts.mjs'
 import {
   showSkeletonLoader,
   hideSkeletonLoader,
@@ -117,6 +118,10 @@ async function displayProfileWinningHistory() {
       profileWinsContainer.appendChild(winCard)
     })
   } catch (error) {
+    handleAlert(
+      'An error occurred while loading your wins! Please reload the page.',
+      'error',
+    )
   } finally {
     hideSkeletonLoader()
   }
