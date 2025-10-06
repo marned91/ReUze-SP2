@@ -27,6 +27,18 @@ Through the development of this project, I have demonstrated the following skill
 - Testing the application to ensure reliability and compliance with web standards.
 - Deployment: Deployed the final application on Netlify for public access.
 
+### Improvements for Portfolio 2
+
+As part of continuous improvement for *Portfolio 2*, the following enhancements were made:
+
+1. Fixed undefined variables in profileUpdate.mjs by declaring fieldset, button, and originalButtonText within the correct scope to prevent runtime reference errors.
+2. Removed unused variable in listingCreate.mjs by eliminating the unused response assignment from the createListing call, improving readability and bundle efficiency.
+3. Replaced string concatenation with template literals in listingsPerCategory.mjs for improved readability and maintainability.
+4. Handled empty catch block in profilePurchases.mjs by adding a user-facing error message via handleAlert, ensuring proper error handling instead of silent failures.
+5. Ensured consistent return values in register.mjs by returning null in the catch block, maintaining predictable and consistent function behavior.
+
+These updates align with best practices for maintainability, error handling, and modern JavaScript standards, while preserving the original functionality and project logic.
+
 ### Client and Target Audience
 The fictional client for this project is a digital auction company looking to offer a seamless user experience for both buyers and sellers. The platform caters to registered users for managing listings and placing bids, while unregistered users can explore auction listings.
 
