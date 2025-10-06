@@ -97,7 +97,7 @@ async function displayListings(statusFilter = 'all') {
 
       const description = document.createElement('p')
       description.textContent =
-        listing.description.slice(0, 100) + '...' || 'No description added.'
+        `${listing.description.slice(0, 100)}...` || 'No description added.'
       description.classList.add(
         'font-smallFont',
         'italic',
@@ -174,19 +174,6 @@ async function displayListings(statusFilter = 'all') {
 
 /**
  * Filters listings by their status based on the provided status filter.
- *
- * This function filters the listings array based on the status of each listing.
- * The status is determined by comparing the `endsAt` date of each listing with the current date.
- * Listings are classified as `'active'` if their `endsAt` date is in the future, and `'expired'` if the `endsAt` date is in the past.
- * The status filter can be set to `'all'` to include all listings, `'active'` to include only active listings, or `'expired'` to include only expired listings.
- *
- * @param {Array} listings - The array of listings to be filtered. Each listing should have an `endsAt` field representing the deadline date.
- * @param {string} statusFilter - The status filter. Can be `'all'`, `'active'`, or `'expired'`. Defaults to `'all'`.
- * @returns {Array} - A new array containing the filtered listings based on the specified status.
- *
- * @example
- * const activeListings = filterListingsByStatus(listings, 'active');
- * // Returns all active listings.
  */
 function filterListingsByStatus(listings, statusFilter) {
   const currentDate = new Date()
