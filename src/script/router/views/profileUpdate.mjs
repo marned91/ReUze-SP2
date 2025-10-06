@@ -68,24 +68,26 @@ async function handleProfileUpdate() {
 
       const fieldset = form.querySelector('fieldset')
       const button = form.querySelector('button')
+      const originalButtonText = button.textContent
 
       fieldset.disabled = true
       button.textContent = 'Updating Profile...'
 
       try {
-        await updateProfileData(username, updatedData) // Corrected function call
+        await updateProfileData(username, updatedData)
         handleAlert('Profile updated successfully!', 'success')
         setTimeout(() => (window.location.pathname = '/profile/'), 2000)
       } catch (updateError) {
         handleAlert('Failed to update profile. Please try again', 'error')
+      } finally {
+        fieldset.disabled = false
+        button.textContent = originalButtonText
       }
     })
   } catch (error) {
     console.error('Error fetching current profile data:', error)
   } finally {
     hideSkeletonLoader()
-    fieldset.disabled = false
-    button.textContent = originalButtonText
   }
 }
 
