@@ -33,12 +33,9 @@ form.addEventListener('submit', async (event) => {
   button.textContent = 'Creating Listing...'
 
   try {
-    const response = await createListing(listingData)
-
-    if (response) {
-      handleAlert('Listing created successfully!', 'success')
-      setTimeout(() => (window.location.pathname = /profile/), 2000)
-    }
+    await createListing(listingData)
+    handleAlert('Listing created successfully!', 'success')
+    setTimeout(() => (window.location.pathname = /profile/), 2000)
   } catch (error) {
     handleAlert('Failed to create listing. Please try again.', 'error')
   } finally {
